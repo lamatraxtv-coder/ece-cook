@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <allegro.h>
 
 int main() {
-    printf("Hello, World!\n");
+    allegro_init();
+
     return 0;
-}
+}END_OF_MAIN()
