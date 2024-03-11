@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.26)
-project(ece_cook C)
+project(allegro C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(ece_cook main.c)
+add_executable(allegro main.c)
+
+
+target_link_libraries(allegro mingw32 alleg44)
