@@ -58,8 +58,8 @@ int main() {
         putpixel(screen, j2posx, j2posy, makecol(0, 255, 0));
 
         // Affichage des positions des joueurs
-        textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "%4d %4d", j1posx, j1posy);
-        textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "%4d %4d", j2posx, j2posy);
+        textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
+        textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
 
         rest(40); // Petite pause pour rendre le jeu jouable
     }
