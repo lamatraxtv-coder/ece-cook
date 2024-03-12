@@ -10,6 +10,7 @@ void affichagechargement(){
         return;
     }
 
+
     blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);
 
     textprintf_ex(screen, font, 60, 120, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
