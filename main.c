@@ -5,8 +5,9 @@ int main() {
     int j1posx, j1posy; // coordonnées du joueur 1
     int j2posx, j2posy; // coordonnées du joueur 2
     int deplacement = 10; // amplitude des déplacements, initialisée à 10
+    int j1_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
+    int j2_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
 
-    srand(time(NULL));
 
     allegro_init();
     install_keyboard();
@@ -25,22 +26,46 @@ int main() {
     j2posx = SCREEN_W / 2;
     j2posy = SCREEN_H / 2;
 
-    // Boucle interactive
+    // fin si appuie sur echap
     while (!key[KEY_ESC]) {
         // Efface l'écran à chaque itération de la boucle
         clear_to_color(screen, makecol(0, 0, 0));
 
         // Logique de déplacement pour le joueur 1
-        if (key[KEY_UP]) j1posy -= deplacement;
-        if (key[KEY_DOWN]) j1posy += deplacement;
-        if (key[KEY_LEFT]) j1posx -= deplacement;
-        if (key[KEY_RIGHT]) j1posx += deplacement;
+        if (key[KEY_UP]) {
+            j1posy -= deplacement;
+            j1_orientation=1;
+        }
+        if (key[KEY_DOWN]){
+            j1posy += deplacement;
+            j1_orientation=3;
+        }
+        if (key[KEY_LEFT]){
+            j1posx -= deplacement;
+            j1_orientation=4;
+        }
+        if (key[KEY_RIGHT]) {
+            j1posx += deplacement;
+            j1_orientation=2;
+        }
 
         // Logique de déplacement pour le joueur 2
-        if (key[KEY_W]) j2posy -= deplacement; // Utilisation de W au lieu de Z
-        if (key[KEY_S]) j2posy += deplacement;
-        if (key[KEY_A]) j2posx -= deplacement; // Utilisation de A au lieu de Q
-        if (key[KEY_D]) j2posx += deplacement;
+        if (key[KEY_W]) {
+            j2posy -= deplacement;
+            j2_orientation=1;
+        }
+        if (key[KEY_S]) {
+            j2posy += deplacement;
+            j2_orientation=3;
+        }
+        if (key[KEY_A]) {
+            j2posx -= deplacement;
+            j2_orientation=4;
+        }
+        if (key[KEY_D]) {
+            j2posx += deplacement;
+            j2_orientation=1;
+        }
 
         // Contrôle des bords pour empêcher les points de sortir de l'écran
         if (j1posx < 0) j1posx = 0;
@@ -56,6 +81,8 @@ int main() {
         // Dessin des points pour chaque joueur
         putpixel(screen, j1posx, j1posy, makecol(255, 255, 51));
         putpixel(screen, j2posx, j2posy, makecol(0, 255, 0));
+
+
 
         // Affichage des positions des joueurs
         textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
