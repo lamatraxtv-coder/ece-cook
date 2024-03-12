@@ -1,13 +1,12 @@
-
 #include <allegro.h>
 
 int main()
 {
     int boolcolision=0;
-    // paramètres de l'élément à animer
-    int posx,posy;    // coordonnées
-    int tx,ty;        // taille (largeur et hauteur)
-    int deplacement;  // amplitude absolu des déplacements
+    int j1posx, j1posy; // coordonnées du joueur 1
+    int j2posx, j2posy; // coordonnées du joueur 2
+    int tx, ty;         // taille (largeur et hauteur)
+    int deplacement = 10; // amplitude des déplacements, initialisée à 10
 
     srand(time(NULL));
 
@@ -15,52 +14,71 @@ int main()
     install_keyboard();
 
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0)!=0)
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0) != 0)
     {
-        allegro_message("prb gfx mode");
+        allegro_message("problème de mode graphique");
         allegro_exit();
         exit(EXIT_FAILURE);
     }
 
-    // initialisation des variables de la forme
+    // Initialisation des variables de la forme
+    tx = 60;
+    ty = 40;
+    j1posx = SCREEN_W / 2 - tx / 2;
+    j1posy = SCREEN_H / 2 - ty / 2;
 
-    // tailles et position initiale au centre
-    tx=60;
-    ty=40;
-    posx=SCREEN_W/2-tx/2;
-    posy=SCREEN_H/2-ty/2;
-
-
+    j2posx = SCREEN_W / 2 - tx / 2;
+    j2posy = SCREEN_H / 2 - ty / 2;
 
     // Boucle interactive
     while (!key[KEY_ESC])
     {
-
-
-        rectfill(screen,posx,posy,posx+tx,posy+ty,makecol(0,0,0));
-
+        rectfill(screen, j1posx, j1posy, j1posx + tx, j1posy + ty, makecol(0, 0, 0));
+        rectfill(screen, j2posx, j2posy, j2posx + tx, j2posy + ty, makecol(0, 0, 0));
 
         if (key[KEY_UP])
-            posy = posy-deplacement; // mouvement négatif en ordonnées
+            j1posy -= deplacement;
         if (key[KEY_DOWN])
-            posy = posy+deplacement; // mouvement positif en ordonnées
+            j1posy += deplacement;
         if (key[KEY_LEFT])
-            posx = posx-deplacement; // mouvement négatif en abscisses
+            j1posx -= deplacement;
         if (key[KEY_RIGHT])
-            posx = posx+deplacement; // mouvement positif en abscisses
+            j1posx += deplacement;
+
+        if (key[KEY_Z])
+            j2posy -= deplacement;
+        if (key[KEY_S])
+            j2posy += deplacement;
+        if (key[KEY_Q])
+            j2posx -= deplacement;
+        if (key[KEY_D])
+            j2posx += deplacement;
+
+        if (key[KEY_W]) // Utiliser W au lieu de Z
+            j2posy -= deplacement;
+        if (key[KEY_S])
+            j2posy += deplacement;
+        if (key[KEY_A]) // Utiliser A au lieu de Q
+            j2posx -= deplacement;
+        if (key[KEY_D])
+            j2posx += deplacement;
+
 
         // Contrôle des bords pour empêcher l'objet de sortir de l'écran
+        if (j1posx < 0) j1posx = 0;
+        if (j1posx + tx > SCREEN_W) j1posx = SCREEN_W - tx;
+        if (j1posy < 0) j1posy = 0;
+        if (j1posy + ty > SCREEN_H) j1posy = SCREEN_H - ty;
 
-        if (posx < 0) posx = 0;
-        if (posx + tx > SCREEN_W) posx = SCREEN_W - tx;
-        if (posy < 0) posy = 0;
-        if (posy + ty > SCREEN_H) posy = SCREEN_H - ty;
+        if (j2posx < 0) j2posx = 0;
+        if (j2posx + tx > SCREEN_W) j2posx = SCREEN_W - tx;
+        if (j2posy < 0) j2posy = 0;
+        if (j2posy + ty > SCREEN_H) j2posy = SCREEN_H - ty;
 
-        // 3) AFFICHAGE NOUVELLE POSITION
-        rectfill(screen,posx,posy,posx+tx,posy+ty,makecol(255,128,128));
+        rectfill(screen, j1posx, j1posy, j1posx + tx, j1posy + ty, makecol(255, 128, 128));
+        rectfill(screen, j2posx, j2posy, j2posx + tx, j2posy + ty, makecol(255, 128, 128));
 
-        // 4) ON FAIT UNE PETITE PAUSE à chaque fois sinon ça va trop vite...
-        rest(20);
+        rest(40); // Petite pause pour rendre le jeu jouable
     }
 
     return 0;
