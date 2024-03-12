@@ -78,7 +78,11 @@ int main()
         rectfill(screen, j1posx, j1posy, j1posx + tx, j1posy + ty, makecol(255, 128, 128));
         rectfill(screen, j2posx, j2posy, j2posx + tx, j2posy + ty, makecol(255, 128, 128));
 
+        textprintf_ex(screen,font,60,300,makecol(0,255,0),makecol(0,0,0),"%4d %4d",j1posx,j1posy);
+        textprintf_ex(screen,font,60,100,makecol(0,255,0),makecol(0,0,0),"%4d %4d",j2posx,j2posy);
+
         rest(40); // Petite pause pour rendre le jeu jouable
+
     }
 
     return 0;
