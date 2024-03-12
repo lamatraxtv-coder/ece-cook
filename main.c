@@ -1,8 +1,22 @@
 #include <allegro.h>
 #include <stdio.h>
+
+void draw_grid(BITMAP *bmp, int width, int height, int cell_width, int cell_height) {
+    int i;
+
+    // Dessiner les lignes verticales
+    for (i = 0; i <= width; i += cell_width) {
+        vline(bmp, i, 0, height, makecol(255, 255, 255)); // Changez la couleur si nécessaire
+    }
+
+    // Dessiner les lignes horizontales
+    for (i = 0; i <= height; i += cell_height) {
+        hline(bmp, 0, i, width, makecol(255, 255, 255)); // Changez la couleur si nécessaire
+    }
+}
 void affichagechargement(){
     BITMAP *imagechargement;
-    imagechargement = load_bitmap("ece_cook_chargement.bmp", NULL);
+    imagechargement = load_bitmap("ece cook chargement.bmp", NULL);
 
     // Assurez-vous que l'image a été chargée correctement
     if (!imagechargement) {
