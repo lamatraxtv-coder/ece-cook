@@ -1,4 +1,5 @@
 #include <allegro.h>
+#include <stdio.h>
 
 int main() {
     int boolcolision = 0;
