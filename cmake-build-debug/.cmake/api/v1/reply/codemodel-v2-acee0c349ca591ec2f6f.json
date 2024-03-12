@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "ece_cook",
+					"name" : "allegro",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "ece_cook::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ece_cook-Debug-6240349ed413644f26b4.json",
-					"name" : "ece_cook",
+					"id" : "allegro::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-allegro-Debug-b3f5461579bf2481045a.json",
+					"name" : "allegro",
 					"projectIndex" : 0
 				}
 			]

@@ -731,7 +731,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "ece_cook"
+			"value" : "allegro"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1120,6 +1120,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "TRUE"
+		},
+		{
+			"name" : "allegro_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece_cook/cmake-build-debug"
+		},
+		{
+			"name" : "allegro_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "allegro_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece_cook"
 		},
 		{
 			"name" : "ece_cook_BINARY_DIR",
