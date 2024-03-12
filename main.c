@@ -24,7 +24,6 @@ void affichagechargement(){
 }
 
 int main() {
-    int boolcolision = 0;
     int j1posx, j1posy; // coordonnées du joueur 1
     int j2posx, j2posy; // coordonnées du joueur 2
     int deplacement = 10; // amplitude des déplacements, initialisée à 10
