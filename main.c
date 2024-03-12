@@ -1,5 +1,27 @@
 #include <allegro.h>
 #include <stdio.h>
+void affichagechargement(){
+    BITMAP *imagechargement;
+    imagechargement = load_bitmap("ece_cook_chargement.bmp", NULL);
+
+    // Assurez-vous que l'image a été chargée correctement
+    if (!imagechargement) {
+        allegro_message("Erreur de chargement de l'image");
+        return;
+    }
+
+    blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);
+
+    textprintf_ex(screen, font, 60, 120, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
+
+    while (!key[KEY_SPACE]) {
+        rest(100);
+    }
+
+    if (imagechargement) {
+        destroy_bitmap(imagechargement);
+    }
+}
 
 int main() {
     int boolcolision = 0;
@@ -8,6 +30,13 @@ int main() {
     int deplacement = 10; // amplitude des déplacements, initialisée à 10
     int j1_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
     int j2_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
+
+
+    BITMAP *PERSO1;
+    BITMAP *PERSO2;
+    BITMAP *Niveau;
+    BITMAP *coupe;
+    BITMAP *cuisson;
 
     allegro_init();
     install_keyboard();
@@ -18,7 +47,7 @@ int main() {
         allegro_exit();
         exit(EXIT_FAILURE);
     }
-
+    affichagechargement();
     // Initialisation des positions initiales au centre de l'écran
     j1posx = SCREEN_W / 2;
     j1posy = SCREEN_H / 2;
@@ -26,11 +55,11 @@ int main() {
     j2posx = SCREEN_W / 2;
     j2posy = SCREEN_H / 2;
 
+
     // fin si appuie sur echap
     while (!key[KEY_ESC]) {
         // Efface l'écran à chaque itération de la boucle
         clear_to_color(screen, makecol(0, 0, 0));
-
         // Logique de déplacement pour le joueur 1
         if (key[KEY_UP]) {
             j1posy -= deplacement;
@@ -89,6 +118,7 @@ int main() {
         textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
 
         rest(40); // Petite pause pour rendre le jeu jouable
+
     }
 
     return 0;
