@@ -9,12 +9,11 @@ int main() {
     int j1_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
     int j2_orientation =1; // 1 = haut 2 = droite 3 bas 4 gauche
 
-
     allegro_init();
     install_keyboard();
 
     set_color_depth(desktop_color_depth());
-    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0) != 0) {
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 900, 800, 0, 0) != 0) {
         allegro_message("problème de mode graphique");
         allegro_exit();
         exit(EXIT_FAILURE);
