@@ -15,6 +15,7 @@ void draw_grid(BITMAP *bmp, int width, int height, int cell_width, int cell_heig
     }
 }
 void affichagechargement(){
+    set_trans_blender(0,255,0,0);
     BITMAP *imagechargement;
     imagechargement = load_bitmap("ece cook chargement.bmp", NULL);
 
@@ -33,12 +34,12 @@ void affichagechargement(){
         rest(100);
     }
 
-    if (imagechargement) {
-        destroy_bitmap(imagechargement);
-    }
+
 }
 
+
 int main() {
+    set_trans_blender(0,255,0,0);
     int j1posx, j1posy; // coordonnées du joueur 1
     int j2posx, j2posy; // coordonnées du joueur 2
     int deplacement = 10; // amplitude des déplacements, initialisée à 10
