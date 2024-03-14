@@ -1,16 +1,7 @@
 #include <allegro.h>
 #include <stdio.h>
 
-// Déclaration de la fonction draw_grid (inchangée)
-void draw_grid(BITMAP *bmp, int width, int height, int cell_width, int cell_height) {
-    int i;
-    for (i = 0; i <= width; i += cell_width) {
-        vline(bmp, i, 0, height, makecol(255, 255, 255));
-    }
-    for (i = 0; i <= height; i += cell_height) {
-        hline(bmp, 0, i, width, makecol(255, 255, 255));
-    }
-}
+
 
 // Déclaration de la fonction affichagechargement (inchangée)
 void affichagechargement(){
