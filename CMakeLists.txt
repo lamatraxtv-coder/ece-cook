@@ -3,7 +3,9 @@ project(allegro C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(allegro main.c)
+add_executable(allegro main.c
+        sous-programme.c
+        librairies.h)
 
 
 target_link_libraries(allegro mingw32 alleg44)
