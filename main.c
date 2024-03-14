@@ -12,16 +12,23 @@ void affichagechargement(){
         return;
     }
     blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);
-    textprintf_ex(screen, font, 60, 120, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
+    textprintf_ex(screen, font, 320, 750, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
     while (!key[KEY_SPACE]) {
         rest(100);
     }
 }
 
 // Ajout de la fonction image_joueur
-void image_joueur(BITMAP *screen, BITMAP *image_joueur1, BITMAP *image_joueur2, int j1posx, int j1posy, int j2posx, int j2posy) {
-    draw_sprite(screen, image_joueur1, j1posx, j1posy);
-    draw_sprite(screen, image_joueur2, j2posx, j2posy);
+void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int O1,int O2) {
+    if(O1==1){}
+    if(O1==2){}
+    if(O1==3){}
+    if(O1==4){}
+    if(O2==1){}
+    if(O2==2){}
+    if(O2==3){}
+    if(O2==4){}
+
 }
 
 int main() {
@@ -49,19 +56,21 @@ int main() {
     int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
     int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
     int deplacement = 10;
+    int orienJ1=1;
+    int orienJ2=1;
 
     while (!key[KEY_ESC]) {
         clear_to_color(screen, makecol(0, 0, 0));
 
-        if (key[KEY_UP]) j1posy -= deplacement;
-        if (key[KEY_DOWN]) j1posy += deplacement;
-        if (key[KEY_LEFT]) j1posx -= deplacement;
-        if (key[KEY_RIGHT]) j1posx += deplacement;
+        if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
+        if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=2;}
+        if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=3;}
+        if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=4;}
 
-        if (key[KEY_W]) j2posy -= deplacement;
-        if (key[KEY_S]) j2posy += deplacement;
-        if (key[KEY_A]) j2posx -= deplacement;
-        if (key[KEY_D]) j2posx += deplacement;
+        if (key[KEY_W]) {j2posy -= deplacement; orienJ2=1;}
+        if (key[KEY_S]) {j2posy += deplacement; orienJ2=2;}
+        if (key[KEY_A]) {j2posx -= deplacement; orienJ2=3;}
+        if (key[KEY_D]) {j2posx += deplacement; orienJ2=4;}
 
         if (j1posx < 0) j1posx = 0;
         if (j1posx > SCREEN_W) j1posx = SCREEN_W;
@@ -75,7 +84,7 @@ int main() {
 
 
         // Remplacement des putpixel par image_joueur
-        image_joueur(screen, PERSO1, PERSO2, j1posx, j1posy, j2posx, j2posy);
+        image_joueur(screen, j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
 
         textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
