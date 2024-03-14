@@ -2,7 +2,8 @@
 #include <stdio.h>
 
 
-
+BITMAP *PERSO1_O[4]; // Tableau pour les 4 orientations du joueur 1
+BITMAP *PERSO2_O[4]; // Tableau pour les 4 orientations du joueur 2
 // Déclaration de la fonction affichagechargement (inchangée)
 void affichagechargement(){
     set_trans_blender(0,255,0,0);
@@ -18,17 +19,30 @@ void affichagechargement(){
     }
 }
 
-// Ajout de la fonction image_joueur
-void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int O1,int O2) {
-    if(O1==1){}
-    if(O1==2){}
-    if(O1==3){}
-    if(O1==4){}
-    if(O2==1){}
-    if(O2==2){}
-    if(O2==3){}
-    if(O2==4){}
+void load_player_images() {
+    // Chargement des images pour joueur 1
+    PERSO1_O[0] = load_bitmap("perso1O1.bmp", NULL);
+    PERSO1_O[1] = load_bitmap("perso1O2.bmp", NULL);
+    PERSO1_O[2] = load_bitmap("perso1O3.bmp", NULL);
+    PERSO1_O[3] = load_bitmap("perso1O4.bmp", NULL);
 
+    // Chargement des images pour joueur 2
+    PERSO2_O[0] = load_bitmap("perso2O1.bmp", NULL);
+    PERSO2_O[1] = load_bitmap("perso2O2.bmp", NULL);
+    PERSO2_O[2] = load_bitmap("perso2O3.bmp", NULL);
+    PERSO2_O[3] = load_bitmap("perso2O4.bmp", NULL);
+}
+// Ajout de la fonction image_joueur
+void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
+    // Dessin du joueur 1 avec l'orientation appropriée
+    if (orienJ1 >= 1 && orienJ1 <= 4) {
+        draw_sprite(screen, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
+    }
+
+    // Dessin du joueur 2 avec l'orientation appropriée
+    if (orienJ2 >= 1 && orienJ2 <= 4) {
+        draw_sprite(screen, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
+    }
 }
 
 int main() {
@@ -41,17 +55,11 @@ int main() {
         exit(EXIT_FAILURE);
     }
     affichagechargement();
+    load_player_images();
 
-    // Chargement des images des joueurs
-    BITMAP *PERSO1 = load_bitmap("perso1.bmp", NULL);
-    BITMAP *PERSO2 = load_bitmap("perso2.bmp", NULL);
 
     // Vérification du chargement
-    if (!PERSO1 || !PERSO2) {
-        allegro_message("Erreur de chargement des images des joueurs");
-        allegro_exit();
-        exit(EXIT_FAILURE);
-    }
+
 
     int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
     int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
@@ -63,24 +71,24 @@ int main() {
         clear_to_color(screen, makecol(0, 0, 0));
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
-        if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=2;}
-        if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=3;}
-        if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=4;}
+        if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
+        if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=4;}
+        if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=2;}
 
         if (key[KEY_W]) {j2posy -= deplacement; orienJ2=1;}
-        if (key[KEY_S]) {j2posy += deplacement; orienJ2=2;}
-        if (key[KEY_A]) {j2posx -= deplacement; orienJ2=3;}
-        if (key[KEY_D]) {j2posx += deplacement; orienJ2=4;}
+        if (key[KEY_S]) {j2posy += deplacement; orienJ2=3;}
+        if (key[KEY_A]) {j2posx -= deplacement; orienJ2=4;}
+        if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
         if (j1posx < 0) j1posx = 0;
-        if (j1posx > SCREEN_W) j1posx = SCREEN_W;
+        if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
         if (j1posy < 0) j1posy = 0;
-        if (j1posy > SCREEN_H) j1posy = SCREEN_H;
+        if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
 
         if (j2posx < 0) j2posx = 0;
-        if (j2posx > SCREEN_W) j2posx = SCREEN_W;
+        if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
         if (j2posy < 0) j2posy = 0;
-        if (j2posy > SCREEN_H) j2posy = SCREEN_H;
+        if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
 
 
         // Remplacement des putpixel par image_joueur
