@@ -1,7 +1,7 @@
 #include "librairies.h"
 
 
-
+// Fonction principale
 int main() {
     allegro_init();
     install_keyboard();
