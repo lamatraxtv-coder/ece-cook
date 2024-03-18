@@ -44,7 +44,7 @@ int main() {
 
         if (j2posx < 0) j2posx = 0;
         if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
-        if (j2posy < 0) j2posy = 0;
+        if (j2posy < 0) j2posy = 0;//
         if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
 
 
