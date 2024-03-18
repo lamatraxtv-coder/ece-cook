@@ -11,6 +11,7 @@ int main() {
         allegro_exit();
         exit(EXIT_FAILURE);
     }
+    //menu();
     affichagechargement();
     load_player_images();
 
