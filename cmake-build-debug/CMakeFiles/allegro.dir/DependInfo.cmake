@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/ludwi/ece-cook/main.c" "CMakeFiles/allegro.dir/main.c.obj" "gcc" "CMakeFiles/allegro.dir/main.c.obj.d"
-  "C:/Users/ludwi/ece-cook/sous-programme.c" "CMakeFiles/allegro.dir/sous-programme.c.obj" "gcc" "CMakeFiles/allegro.dir/sous-programme.c.obj.d"
+  "C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece-cook-main/main.c" "CMakeFiles/allegro.dir/main.c.obj" "gcc" "CMakeFiles/allegro.dir/main.c.obj.d"
+  "C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece-cook-main/sous-programme.c" "CMakeFiles/allegro.dir/sous-programme.c.obj" "gcc" "CMakeFiles/allegro.dir/sous-programme.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

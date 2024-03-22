@@ -43,19 +43,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Users\ludwi\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Users\ludwi\AppData\Local\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ludwi\ece-cook
+CMAKE_SOURCE_DIR = "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ludwi\ece-cook\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/allegro.dir/depend.make
@@ -69,32 +69,32 @@ include CMakeFiles/allegro.dir/progress.make
 include CMakeFiles/allegro.dir/flags.make
 
 CMakeFiles/allegro.dir/main.c.obj: CMakeFiles/allegro.dir/flags.make
-CMakeFiles/allegro.dir/main.c.obj: C:/Users/ludwi/ece-cook/main.c
+CMakeFiles/allegro.dir/main.c.obj: C:/Users/Arthur\ Portalier/OneDrive\ -\ Groupe\ INSEEC\ (POCE)/Bureau/ece-cook-main/main.c
 CMakeFiles/allegro.dir/main.c.obj: CMakeFiles/allegro.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ludwi\ece-cook\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/allegro.dir/main.c.obj"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/allegro.dir/main.c.obj -MF CMakeFiles\allegro.dir\main.c.obj.d -o CMakeFiles\allegro.dir\main.c.obj -c C:\Users\ludwi\ece-cook\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/allegro.dir/main.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/allegro.dir/main.c.obj -MF CMakeFiles\allegro.dir\main.c.obj.d -o CMakeFiles\allegro.dir\main.c.obj -c "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\main.c"
 
 CMakeFiles/allegro.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/allegro.dir/main.c.i"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ludwi\ece-cook\main.c > CMakeFiles\allegro.dir\main.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\main.c" > CMakeFiles\allegro.dir\main.c.i
 
 CMakeFiles/allegro.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/allegro.dir/main.c.s"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ludwi\ece-cook\main.c -o CMakeFiles\allegro.dir\main.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\main.c" -o CMakeFiles\allegro.dir\main.c.s
 
 CMakeFiles/allegro.dir/sous-programme.c.obj: CMakeFiles/allegro.dir/flags.make
-CMakeFiles/allegro.dir/sous-programme.c.obj: C:/Users/ludwi/ece-cook/sous-programme.c
+CMakeFiles/allegro.dir/sous-programme.c.obj: C:/Users/Arthur\ Portalier/OneDrive\ -\ Groupe\ INSEEC\ (POCE)/Bureau/ece-cook-main/sous-programme.c
 CMakeFiles/allegro.dir/sous-programme.c.obj: CMakeFiles/allegro.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\ludwi\ece-cook\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/allegro.dir/sous-programme.c.obj"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/allegro.dir/sous-programme.c.obj -MF CMakeFiles\allegro.dir\sous-programme.c.obj.d -o CMakeFiles\allegro.dir\sous-programme.c.obj -c C:\Users\ludwi\ece-cook\sous-programme.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/allegro.dir/sous-programme.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/allegro.dir/sous-programme.c.obj -MF CMakeFiles\allegro.dir\sous-programme.c.obj.d -o CMakeFiles\allegro.dir\sous-programme.c.obj -c "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\sous-programme.c"
 
 CMakeFiles/allegro.dir/sous-programme.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/allegro.dir/sous-programme.c.i"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\ludwi\ece-cook\sous-programme.c > CMakeFiles\allegro.dir\sous-programme.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\sous-programme.c" > CMakeFiles\allegro.dir\sous-programme.c.i
 
 CMakeFiles/allegro.dir/sous-programme.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/allegro.dir/sous-programme.c.s"
-	C:\Users\ludwi\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\ludwi\ece-cook\sous-programme.c -o CMakeFiles\allegro.dir\sous-programme.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\sous-programme.c" -o CMakeFiles\allegro.dir\sous-programme.c.s
 
 # Object files for target allegro
 allegro_OBJECTS = \
@@ -110,7 +110,7 @@ allegro.exe: CMakeFiles/allegro.dir/build.make
 allegro.exe: CMakeFiles/allegro.dir/linkLibs.rsp
 allegro.exe: CMakeFiles/allegro.dir/objects1.rsp
 allegro.exe: CMakeFiles/allegro.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\ludwi\ece-cook\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable allegro.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable allegro.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\allegro.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -122,6 +122,6 @@ CMakeFiles/allegro.dir/clean:
 .PHONY : CMakeFiles/allegro.dir/clean
 
 CMakeFiles/allegro.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ludwi\ece-cook C:\Users\ludwi\ece-cook C:\Users\ludwi\ece-cook\cmake-build-debug C:\Users\ludwi\ece-cook\cmake-build-debug C:\Users\ludwi\ece-cook\cmake-build-debug\CMakeFiles\allegro.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main" "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main" "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug" "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug" "C:\Users\Arthur Portalier\OneDrive - Groupe INSEEC (POCE)\Bureau\ece-cook-main\cmake-build-debug\CMakeFiles\allegro.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/allegro.dir/depend
 

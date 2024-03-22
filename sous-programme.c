@@ -51,6 +51,29 @@ void menu(){
     int a=0;
     while(a==0){
         blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+        textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "p1 : %4d %4d", mouse_x,mouse_y);
+        //if(!(mouse_x>=155 && mouse_x<=313 && mouse_y>=572 && mouse_y<=658 && mouse_x>=368 && mouse_x<=538 && mouse_x>=585 && mouse_x<=752) && mouse_x>313 && mouse_x<)
+        if(mouse_x>=155 && mouse_x<=313 && mouse_y>=572 && mouse_y<=658){
+            blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);
+            if(mouse_b & 1){
+                a=1;
+            }
+        }
+        if(mouse_x>=368 && mouse_x<=538 && mouse_y>=572 && mouse_y<=658){
+            blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);
+            if(mouse_b & 1){
+                a=1;
+            }
+        }
+        if(key[KEY_A]){
+            a=1;
+        }
+        if(mouse_x>=585 && mouse_x<=752 && mouse_y>=572 && mouse_y<=658){
+            blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);
+            if(mouse_b & 1){
+                a=1;
+            }
+        }
         if(key[KEY_A]){
             a=1;
         }

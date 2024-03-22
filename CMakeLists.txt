@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.00)
 project(allegro C)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 
 add_executable(allegro main.c
         sous-programme.c
