@@ -48,6 +48,7 @@ int menu(){
     BITMAP *menu1= load_bitmap("menu1.bmp",NULL);
     BITMAP *menu2= load_bitmap("menu2.bmp",NULL);
     BITMAP *menu3= load_bitmap("menu3.bmp",NULL);
+    BITMAP *menu4= load_bitmap("menu4.bmp", NULL);
     int a=0;
     int selection;
     blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
@@ -73,6 +74,11 @@ int menu(){
             if(mouse_b & 1){
                 a=1;
                 selection=3;
+            }
+        }
+        if(mouse_x>=487 && mouse_x<=634 && mouse_y>=715 && mouse_y <=762){
+            if(mouse_b & 1){
+                allegro_exit();
             }
         }
         if(!(mouse_x>=585 && mouse_x<=752 && mouse_x>=368 && mouse_x<=538 &&mouse_x>=155 && mouse_x<=313) && mouse_y<572 && mouse_y>658 && mouse_x < 155 && mouse_x >313 && mouse_x<368 && mouse_x>538 && mouse_x<585 && mouse_x > 753){
