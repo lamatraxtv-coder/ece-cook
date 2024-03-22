@@ -41,3 +41,19 @@ void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy
         draw_sprite(screen, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
+void menu(){
+    install_mouse();
+    show_mouse(screen);
+    BITMAP *menuneutre= load_bitmap("menuneutre.bmp",NULL);
+    BITMAP *menu1= load_bitmap("menu1.bmp",NULL);
+    BITMAP *menu2= load_bitmap("menu2.bmp",NULL);
+    BITMAP *menu3= load_bitmap("menu3.bmp",NULL);
+    int a=0;
+    while(a==0){
+        blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+        if(key[KEY_A]){
+            a=1;
+        }
+    }
+
+}
