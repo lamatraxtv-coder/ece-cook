@@ -41,7 +41,7 @@ void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy
         draw_sprite(screen, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
-void menu(){
+int menu(){
     install_mouse();
     show_mouse(screen);
     BITMAP *menuneutre= load_bitmap("menuneutre.bmp",NULL);
@@ -49,6 +49,7 @@ void menu(){
     BITMAP *menu2= load_bitmap("menu2.bmp",NULL);
     BITMAP *menu3= load_bitmap("menu3.bmp",NULL);
     int a=0;
+    int selection;
     blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
     while(a==0){
 
@@ -56,12 +57,14 @@ void menu(){
             blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);
             if(mouse_b & 1){
                 a=1;
+                selection=1;
             }
         }
         if(mouse_x>=368 && mouse_x<=538 && mouse_y>=572 && mouse_y<=658){
             blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);
             if(mouse_b & 1){
                 a=1;
+                selection=2;
             }
         }
 
@@ -69,6 +72,7 @@ void menu(){
             blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);
             if(mouse_b & 1){
                 a=1;
+                selection=3;
             }
         }
         if(!(mouse_x>=585 && mouse_x<=752 && mouse_x>=368 && mouse_x<=538 &&mouse_x>=155 && mouse_x<=313) && mouse_y<572 && mouse_y>658 && mouse_x < 155 && mouse_x >313 && mouse_x<368 && mouse_x>538 && mouse_x<585 && mouse_x > 753){
@@ -76,5 +80,6 @@ void menu(){
         }
 
     }
+    return selection;
 
 }
