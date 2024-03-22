@@ -12,7 +12,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
     //menu();
-    affichagechargement();
+    affichagechargement();//
     load_player_images();
 
 
