@@ -4,6 +4,7 @@
 // Fonction principale
 int main() {
     allegro_init();
+
     install_keyboard();
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 900, 800, 0, 0) != 0) {
@@ -11,12 +12,13 @@ int main() {
         allegro_exit();
         exit(EXIT_FAILURE);
     }
+    int niv_fini=0;
     int select;
+    int nivchoisi;
     select= menu();
-
-
     if (select==1){
-        affichagechargement();//
+        nivchoisi=selectniv(niv_fini);
+        affichagechargement();
         load_player_images();
         int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
         int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
@@ -57,6 +59,12 @@ int main() {
             rest(40);
         }
 
+    }
+    if(select==2){
+        allegro_exit();
+    }
+    if(select==3){
+        allegro_exit();
     }
     return 0;
 }

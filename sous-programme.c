@@ -48,7 +48,6 @@ int menu(){
     BITMAP *menu1= load_bitmap("menu1.bmp",NULL);
     BITMAP *menu2= load_bitmap("menu2.bmp",NULL);
     BITMAP *menu3= load_bitmap("menu3.bmp",NULL);
-    BITMAP *menu4= load_bitmap("menu4.bmp", NULL);
     int a=0;
     int selection;
     blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
@@ -87,5 +86,41 @@ int menu(){
 
     }
     return selection;
+
+}
+int selectniv(int fini){
+    install_mouse();
+    show_mouse(screen);
+    int a=0;
+    int choixniv;
+    BITMAP *choix1= load_bitmap("choix_niv_1U.bmp",NULL);
+    BITMAP *choix1_1= load_bitmap("choix_niv_1U_niv1.bmp",NULL);
+    BITMAP *choix2= load_bitmap("choix_niv_2U.bmp",NULL);
+    BITMAP *choix2_1= load_bitmap("choix_niv_2U_niv1.bmp",NULL);
+    BITMAP *choix2_2= load_bitmap("choix_niv_2U_niv2.bmp",NULL);
+    BITMAP *choix3= load_bitmap("choix_niv_3U.bmp",NULL);
+    BITMAP *choix3_1= load_bitmap("choix_niv_3U.bmp",NULL);
+    BITMAP *choix3_2= load_bitmap("choix_niv_3U.bmp",NULL);
+    BITMAP *choix3_3= load_bitmap("choix_niv_3U.bmp",NULL);
+    while(a==0){
+        if(fini==0){
+            blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
+            textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "p1 : %4d %4d", mouse_x, mouse_y);
+            if(key[KEY_ESC]){
+                a=1;
+            }
+
+        }
+        if(fini==1){
+
+            blit(choix2, screen, 0, 0, (SCREEN_W - choix2->w) / 2, (SCREEN_H - choix2->h) / 2, choix2->w, choix2->h);
+        }
+        if(fini==2){
+
+            blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w, choix3->h);
+        }
+    }
+
+    return choixniv;
 
 }
