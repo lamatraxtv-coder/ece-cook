@@ -59,10 +59,12 @@ CMakeFiles/allegro.dir/main.c.obj: C:/Users/Arthur\ Portalier/OneDrive\ -\ Group
   C:/MinGW/include/dos.h \
   C:/MinGW/include/errno.h \
   C:/MinGW/include/fcntl.h \
+  C:/MinGW/include/getopt.h \
   C:/MinGW/include/io.h \
   C:/MinGW/include/limits.h \
   C:/MinGW/include/malloc.h \
   C:/MinGW/include/msvcrtver.h \
+  C:/MinGW/include/process.h \
   C:/MinGW/include/sdkddkver.h \
   C:/MinGW/include/stdint.h \
   C:/MinGW/include/stdio.h \
@@ -72,6 +74,7 @@ CMakeFiles/allegro.dir/main.c.obj: C:/Users/Arthur\ Portalier/OneDrive\ -\ Group
   C:/MinGW/include/sys/types.h \
   C:/MinGW/include/sys/types.h \
   C:/MinGW/include/time.h \
+  C:/MinGW/include/unistd.h \
   C:/MinGW/include/w32api.h \
   C:/MinGW/include/wchar.h \
   C:/MinGW/lib/gcc/mingw32/6.3.0/include/stdarg.h \
@@ -136,10 +139,12 @@ CMakeFiles/allegro.dir/sous-programme.c.obj: C:/Users/Arthur\ Portalier/OneDrive
   C:/MinGW/include/dos.h \
   C:/MinGW/include/errno.h \
   C:/MinGW/include/fcntl.h \
+  C:/MinGW/include/getopt.h \
   C:/MinGW/include/io.h \
   C:/MinGW/include/limits.h \
   C:/MinGW/include/malloc.h \
   C:/MinGW/include/msvcrtver.h \
+  C:/MinGW/include/process.h \
   C:/MinGW/include/sdkddkver.h \
   C:/MinGW/include/stdint.h \
   C:/MinGW/include/stdio.h \
@@ -149,6 +154,7 @@ CMakeFiles/allegro.dir/sous-programme.c.obj: C:/Users/Arthur\ Portalier/OneDrive
   C:/MinGW/include/sys/types.h \
   C:/MinGW/include/sys/types.h \
   C:/MinGW/include/time.h \
+  C:/MinGW/include/unistd.h \
   C:/MinGW/include/w32api.h \
   C:/MinGW/include/wchar.h \
   C:/MinGW/lib/gcc/mingw32/6.3.0/include/stdarg.h \
@@ -222,8 +228,6 @@ C:/MinGW/include/sdkddkver.h:
 
 C:/MinGW/include/allegro/inline/3dmaths.inl:
 
-C:/MinGW/include/string.h:
-
 C:/MinGW/include/fcntl.h:
 
 C:/MinGW/include/allegro/inline/asm.inl:
@@ -276,21 +280,29 @@ C:/MinGW/include/allegro/platform/almngw32.h:
 
 C:/MinGW/include/malloc.h:
 
-C:/MinGW/include/dos.h:
+C:/MinGW/include/limits.h:
 
 C:/MinGW/include/stdlib.h:
 
-C:/MinGW/include/limits.h:
+C:/MinGW/include/dos.h:
+
+C:/MinGW/include/getopt.h:
 
 C:/MinGW/include/msvcrtver.h:
 
+C:/MinGW/include/process.h:
+
 C:/MinGW/include/stdio.h:
+
+C:/MinGW/include/string.h:
 
 C:/MinGW/include/strings.h:
 
 C:/MinGW/include/sys/types.h:
 
 C:/MinGW/include/time.h:
+
+C:/MinGW/include/unistd.h:
 
 C:/MinGW/include/wchar.h:
 

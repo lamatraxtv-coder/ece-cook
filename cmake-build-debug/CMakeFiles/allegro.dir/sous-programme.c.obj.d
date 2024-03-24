@@ -51,4 +51,5 @@ CMakeFiles/allegro.dir/sous-programme.c.obj: \
  c:\mingw\include\allegro/inline/3dmaths.inl \
  c:\mingw\include\allegro/alcompat.h \
  c:\mingw\include\allegro/platform/alwin.h c:\mingw\include\stdio.h \
- c:\mingw\include\sys/types.h
+ c:\mingw\include\sys/types.h c:\mingw\include\unistd.h \
+ c:\mingw\include\process.h c:\mingw\include\getopt.h

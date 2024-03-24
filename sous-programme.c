@@ -104,20 +104,78 @@ int selectniv(int fini){
     BITMAP *choix3_3= load_bitmap("choix_niv_3U.bmp",NULL);
     while(a==0){
         if(fini==0){
-            blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
+
+            if(mouse_x>50 && mouse_x<250 && mouse_y>351 && mouse_y<461){
+                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w, choix1_1->h);
+                if(mouse_b & 1){
+                    choixniv=1;
+                    a=1;
+                }
+            }
+            if(!(mouse_x>50 && mouse_x<250 && mouse_y>351 && mouse_y<461)){
+                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
+            }
             textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "p1 : %4d %4d", mouse_x, mouse_y);
             if(key[KEY_ESC]){
-                a=1;
+                fini=fini+1;
+                sleep(1);
             }
 
         }
         if(fini==1){
 
-            blit(choix2, screen, 0, 0, (SCREEN_W - choix2->w) / 2, (SCREEN_H - choix2->h) / 2, choix2->w, choix2->h);
+            if(mouse_x>50 && mouse_x<250 && mouse_y>351 && mouse_y<461){
+                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);
+                if(mouse_b & 1){
+                    choixniv=1;
+                    a=1;
+                }
+            }
+            if(mouse_x>350 && mouse_x<550 && mouse_y>351 && mouse_y<461){
+                blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);
+                if(mouse_b & 1){
+                    choixniv=1;
+                    a=1;
+                }
+            }
+            if(!(mouse_x>50 && mouse_x<250 || mouse_x>350 && mouse_x<550 && mouse_y>351 && mouse_y<461)) {
+                blit(choix2, screen, 0, 0, (SCREEN_W - choix2->w) / 2, (SCREEN_H - choix2->h) / 2, choix2->w,choix2->h);
+                if(mouse_b & 1){
+                    choixniv=2;
+                    a=1;
+                }
+            }
+            if(key[KEY_ESC]){
+                fini=fini+1;
+            }
         }
         if(fini==2){
+            if(mouse_x>50 && mouse_x<250 && mouse_y>351 && mouse_y<461){
+                blit(choix3_1, screen, 0, 0, (SCREEN_W - choix3_1->w) / 2, (SCREEN_H - choix3_1->h) / 2, choix3_1->w, choix3_1->h);
+                if(mouse_b & 1){
+                    choixniv=1;
+                    a=1;
+                }
+            }
+            if(mouse_x>350 && mouse_x<550 && mouse_y>351 && mouse_y<461) {
+                blit(choix3_2, screen, 0, 0, (SCREEN_W - choix3_2->w) / 2, (SCREEN_H - choix3_2->h) / 2, choix3_2->w,choix3_2->h);
+                if (mouse_b & 1) {
+                    choixniv = 1;
+                    a = 1;
+                }
+            }
+            if (mouse_x > 650 && mouse_x < 850 && mouse_y > 351 && mouse_y < 461) {
+                blit(choix3_3, screen, 0, 0, (SCREEN_W - choix3_3->w) / 2, (SCREEN_H - choix3_3->h) / 2,choix3_3->w, choix3_3->h);
 
-            blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w, choix3->h);
+                if (mouse_b & 1) {
+                    choixniv = 1;
+                    a = 1;
+                }
+            }
+
+            if(!(mouse_x>50 && mouse_x<250 || mouse_x>350 && mouse_x<550 && mouse_x>650 && mouse_x<850 && mouse_y>351 && mouse_y<461)) {
+                blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w,choix3->h);
+            }
         }
     }
 

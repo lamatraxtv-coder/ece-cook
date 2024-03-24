@@ -6,6 +6,7 @@
 // Path: librairies.h
 #include <allegro.h>
 #include <stdio.h>
+#include <unistd.h>
 
 
 BITMAP *PERSO1_O[4]; // Tableau pour les 4 orientations du joueur 1

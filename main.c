@@ -14,8 +14,9 @@ int main() {
     }
     int niv_fini=0;
     int select;
-    int nivchoisi;
+    int nivchoisi=0;
     select= menu();
+
     if (select==1){
         nivchoisi=selectniv(niv_fini);
         affichagechargement();
