@@ -18,4 +18,4 @@ void load_player_images();
 void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2);
 int menu();
 int selectniv(int niv_fini);
-int jeu();
+int jeu(int nivchoisi);

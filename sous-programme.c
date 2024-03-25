@@ -134,7 +134,7 @@ int selectniv(int fini){
             if(mouse_x>350 && mouse_x<550 && mouse_y>351 && mouse_y<461){
                 blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);
                 if(mouse_b & 1){
-                    choixniv=1;
+                    choixniv=2;
                     a=1;
                 }
             }
@@ -160,7 +160,7 @@ int selectniv(int fini){
             if(mouse_x>350 && mouse_x<550 && mouse_y>351 && mouse_y<461) {
                 blit(choix3_2, screen, 0, 0, (SCREEN_W - choix3_2->w) / 2, (SCREEN_H - choix3_2->h) / 2, choix3_2->w,choix3_2->h);
                 if (mouse_b & 1) {
-                    choixniv = 1;
+                    choixniv = 2;
                     a = 1;
                 }
             }
@@ -168,7 +168,7 @@ int selectniv(int fini){
                 blit(choix3_3, screen, 0, 0, (SCREEN_W - choix3_3->w) / 2, (SCREEN_H - choix3_3->h) / 2,choix3_3->w, choix3_3->h);
 
                 if (mouse_b & 1) {
-                    choixniv = 1;
+                    choixniv = 3;
                     a = 1;
                 }
             }
@@ -182,3 +182,50 @@ int selectniv(int fini){
     return choixniv;
 
 }
+
+int jeu(int nivchoisi){
+    int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
+    int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+    int deplacement = 20;
+    int orienJ1=1;
+    int orienJ2=1;
+
+
+    while (!key[KEY_ESC]) {
+        if(nivchoisi==1) {
+            //load et blit la bitmap du niv
+            //collisions
+        }
+        if(nivchoisi==2){
+            //load et blit la bitmap du niv
+            //collisions
+        }
+        if(nivchoisi==3){
+            //load et blit la bitmap du niv
+            //collisions
+        }
+        affichagechargement();
+        load_player_images();
+        if (j1posx < 0) j1posx = 0;
+        if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
+        if (j1posy < 0) j1posy = 0;
+        if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+
+        if (j2posx < 0) j2posx = 0;
+        if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
+        if (j2posy < 0) j2posy = 0;//
+        if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
+
+
+        image_joueur(screen, j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+
+        textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
+        textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
+
+        rest(40);
+    }
+
+
+}
+
+
