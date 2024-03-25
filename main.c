@@ -17,8 +17,8 @@ int main() {
     int nivchoisi=0;
     select= menu();
 
-    if (select==1) {
-        nivchoisi = selectniv(niv_fini);
+    if (select==1){
+        nivchoisi=selectniv(niv_fini);
         jeu(nivchoisi);
     }
     if(select==2){
