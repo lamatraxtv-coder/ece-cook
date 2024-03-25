@@ -99,9 +99,9 @@ int selectniv(int fini){
     BITMAP *choix2_1= load_bitmap("choix_niv_2U_niv1.bmp",NULL);
     BITMAP *choix2_2= load_bitmap("choix_niv_2U_niv2.bmp",NULL);
     BITMAP *choix3= load_bitmap("choix_niv_3U.bmp",NULL);
-    BITMAP *choix3_1= load_bitmap("choix_niv_3U.bmp",NULL);
-    BITMAP *choix3_2= load_bitmap("choix_niv_3U.bmp",NULL);
-    BITMAP *choix3_3= load_bitmap("choix_niv_3U.bmp",NULL);
+    BITMAP *choix3_1= load_bitmap("choix_niv_3U_niv1.bmp",NULL);
+    BITMAP *choix3_2= load_bitmap("choix_niv_3U_niv2.bmp",NULL);
+    BITMAP *choix3_3= load_bitmap("choix_niv_3U_niv3.bmp",NULL);
     while(a==0){
         if(fini==0){
 
@@ -173,7 +173,7 @@ int selectniv(int fini){
                 }
             }
 
-            if(!(mouse_x>50 && mouse_x<250 || mouse_x>350 && mouse_x<550 && mouse_x>650 && mouse_x<850 && mouse_y>351 && mouse_y<461)) {
+            if(!(mouse_x>50 && mouse_x<250 || mouse_x>350 && mouse_x<550 || mouse_x>650 && mouse_x<850 && mouse_y>351 && mouse_y<461)) {
                 blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w,choix3->h);
             }
         }

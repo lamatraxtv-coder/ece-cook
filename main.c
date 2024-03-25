@@ -23,7 +23,7 @@ int main() {
         load_player_images();
         int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
         int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
-        int deplacement = 10;
+        int deplacement = 20;
         int orienJ1=1;
         int orienJ2=1;
 
