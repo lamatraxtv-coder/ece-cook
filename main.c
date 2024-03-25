@@ -19,7 +19,7 @@ int main() {
 
     if (select==1){
         nivchoisi=selectniv(niv_fini);
-        jeu(nivchoisi);
+        jeu(nivchoisi);//
     }
     if(select==2){
         allegro_exit();

@@ -187,7 +187,7 @@ int jeu(int nivchoisi){
     int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
     int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
     int deplacement = 15;
-    int orienJ1=1;
+    int orienJ1=1;//
     int orienJ2=1;
     affichagechargement();
     load_player_images();
