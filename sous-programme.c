@@ -195,13 +195,16 @@ int jeu(int nivchoisi){
     while (!key[KEY_ESC]) {
         clear_to_color(screen, makecol(0, 0, 0));
         if(nivchoisi==1){
-
+        //blit et load du nieau associé
+        // collision du niveau
         }
         if(nivchoisi==2){
-
+        //blit et load du niveau associé
+        //collision du niveau
         }
         if(nivchoisi==3){
-
+        //blit et load du niveau associé
+        //collision du niveau
         }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
@@ -233,10 +236,7 @@ int jeu(int nivchoisi){
 
         rest(40);
     }
-    if(nivchoisi==2){
-
-    }
-
+}
+void tuto(){
 
 }
-

@@ -19,3 +19,4 @@ void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy
 int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);//
+void tuto();
