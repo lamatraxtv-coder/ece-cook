@@ -117,7 +117,7 @@ int selectniv(int fini){
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
                 blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w, choix1_M->h);
                 if(mouse_b & 1){
-                    choixniv=1;
+                    choixniv=0;
                     a=1;
                 }
             }
@@ -143,14 +143,14 @@ int selectniv(int fini){
             if(mouse_x>335 && mouse_x<583 && mouse_y>237 && mouse_y<739){
                 blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);
                 if(mouse_b & 1){
-                    choixniv=1;
+                    choixniv=2;
                     a=1;
                 }
             }
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
                 blit(choix2_M, screen, 0, 0, (SCREEN_W - choix2_M->w) / 2, (SCREEN_H - choix2_M->h) / 2, choix2_M->w, choix2_M->h);
                 if(mouse_b & 1){
-                    choixniv=1;
+                    choixniv=0;
                     a=1;
                 }
             }
@@ -172,21 +172,21 @@ int selectniv(int fini){
             if(mouse_x>335 && mouse_x<583 && mouse_y>237 && mouse_y<739) {
                 blit(choix3_2, screen, 0, 0, (SCREEN_W - choix3_2->w) / 2, (SCREEN_H - choix3_2->h) / 2, choix3_2->w,choix3_2->h);
                 if (mouse_b & 1) {
-                    choixniv = 1;
+                    choixniv = 2;
                     a = 1;
                 }
             }
             if (mouse_x > 625 && mouse_x < 876 && mouse_y>237 && mouse_y<739) {
                 blit(choix3_3, screen, 0, 0, (SCREEN_W - choix3_3->w) / 2, (SCREEN_H - choix3_3->h) / 2,choix3_3->w, choix3_3->h);
                 if (mouse_b & 1) {
-                    choixniv = 1;
+                    choixniv = 3;
                     a = 1;
                 }
             }
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
                 blit(choix3_M, screen, 0, 0, (SCREEN_W - choix3_M->w) / 2, (SCREEN_H - choix3_M->h) / 2, choix3_M->w, choix3_M->h);
                 if(mouse_b & 1){
-                    choixniv=1;
+                    choixniv=0;
                     a=1;
                 }
             }
@@ -213,15 +213,39 @@ int jeu(int nivchoisi){
         clear_to_color(screen, makecol(0, 0, 0));
         if(nivchoisi==1){
         //blit et load du nieau associé
-        // collision du niveau
+            if (j1posx < 0) j1posx = 0;
+            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
+            if (j1posy < 0) j1posy = 0;
+            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+
+            if (j2posx < 0) j2posx = 0;
+            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
+            if (j2posy < 0) j2posy = 0;//
+            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
         }
         if(nivchoisi==2){
         //blit et load du niveau associé
-        //collision du niveau
+            if (j1posx < 0) j1posx = 0;
+            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
+            if (j1posy < 0) j1posy = 0;
+            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+
+            if (j2posx < 0) j2posx = 0;
+            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
+            if (j2posy < 0) j2posy = 0;//
+            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
         }
         if(nivchoisi==3){
         //blit et load du niveau associé
-        //collision du niveau
+            if (j1posx < 0) j1posx = 0;
+            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
+            if (j1posy < 0) j1posy = 0;
+            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+
+            if (j2posx < 0) j2posx = 0;
+            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
+            if (j2posy < 0) j2posy = 0;//
+            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
         }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
@@ -234,18 +258,7 @@ int jeu(int nivchoisi){
         if (key[KEY_A]) {j2posx -= deplacement; orienJ2=4;}
         if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
-        if (j1posx < 0) j1posx = 0;
-        if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
-        if (j1posy < 0) j1posy = 0;
-        if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
 
-        if (j2posx < 0) j2posx = 0;
-        if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
-        if (j2posy < 0) j2posy = 0;//
-        if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
-
-
-        // Remplacement des putpixel par image_joueur
         image_joueur(screen, j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
 
         textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
