@@ -11,7 +11,7 @@ int main() {
         exit(EXIT_FAILURE);//sortie du programme
     }
 
-    int niv_fini = 0;
+    int niv_fini = 0; //commit test
     int select = 0;
     int nivchoisi = 0;
     int infinite=1;
