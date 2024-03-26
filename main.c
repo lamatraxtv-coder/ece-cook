@@ -2,7 +2,7 @@
 
 // Fonction principale
 int main() {
-    allegro_init();
+    allegro_init();//initialisation de allegro
     install_keyboard();
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 900, 800, 0, 0) != 0) {
