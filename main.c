@@ -8,7 +8,7 @@ int main() {
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 900, 800, 0, 0) != 0) {
         allegro_message("problème de mode graphique");
         allegro_exit();
-        exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);//sortie du programme
     }
 
     int niv_fini = 0;
