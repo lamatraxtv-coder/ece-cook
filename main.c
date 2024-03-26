@@ -24,8 +24,12 @@ int main() {
                 jeu(nivchoisi);
             }
 
-        } else if (select == 2 || select == 3) {
-
+        } else if (select == 2) {
+            allegro_exit();
+            break;
+        }
+        else if(select == 3){
+            allegro_exit();
             break;
         }
 
