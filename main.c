@@ -29,7 +29,7 @@ int main() {
             break;
         }
         else if(select == 3){
-            allegro_exit();
+            tuto();
             break;
         }
 
@@ -40,3 +40,4 @@ int main() {
     return 0;
 }
 END_OF_MAIN();
+//
