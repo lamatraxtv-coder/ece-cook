@@ -268,5 +268,39 @@ int jeu(int nivchoisi){
     }
 }
 void tuto(){
+    BITMAP *tutoP1= load_bitmap("tuto1.bmp",NULL);
+    BITMAP *tutoP2= load_bitmap("tuto2.bmp",NULL);
+    BITMAP *tutoP3= load_bitmap("tuto3.bmp",NULL);
+    BITMAP *tutoP4= load_bitmap("tuto4.bmp",NULL);
+    int compteur_page_tuto=1;
+    install_keyboard();
+    while(compteur_page_tuto<=5){
+        rest(100);
+        if(key[KEY_RIGHT]){
+            compteur_page_tuto+=1;
+        }
+        if(key[KEY_LEFT]){
+            compteur_page_tuto-=1;
+        }
+
+        switch(compteur_page_tuto){
+            case 1:
+                blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w,tutoP1->h);
+                break;
+            case 2:
+                blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w, tutoP2->h);
+                break;
+            case 3:
+                blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w, tutoP3->h);
+                break;
+            case 4:
+                blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
+                break;
+            default:
+                allegro_message("pas assez de page");
+                allegro_exit();
+        }
+
+    }
 
 }//
