@@ -124,7 +124,7 @@ int selectniv(int fini){
             if(!(mouse_x>38 && mouse_x<292||mouse_x>793 && mouse_x<863 && mouse_y>237 && mouse_y<739 ||mouse_y>27 && mouse_y<112)){
                 blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
             }
-            textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "p1 : %4d %4d", mouse_x, mouse_y);
+            //textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "p1 : %4d %4d", mouse_x, mouse_y);
             if(key[KEY_ESC]){
                 fini=fini+1;
                 sleep(1);
