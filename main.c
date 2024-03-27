@@ -11,7 +11,7 @@ int main() {
         exit(EXIT_FAILURE);//sortie du programme
     }
 
-    int niv_fini = 0; //commit test
+    int niv_fini = 0;
     int select = 0;
     int nivchoisi = 0;
     int infinite=1;
@@ -30,6 +30,7 @@ int main() {
         }
         else if(select == 3){
             tuto();
+            continue;
             break;
         }
 
