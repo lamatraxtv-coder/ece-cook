@@ -15,6 +15,7 @@ void affichagechargement(){
 }
 
 void load_player_images() {//
+
     // Chargement des images pour joueur 1
     PERSO1_O[0] = load_bitmap("perso1O1.bmp", NULL);
     PERSO1_O[1] = load_bitmap("perso1O2.bmp", NULL);

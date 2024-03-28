@@ -9,8 +9,8 @@
 #include <unistd.h>
 
 
-BITMAP *PERSO1_O[4]; // Tableau pour les 4 orientations du joueur 1
-BITMAP *PERSO2_O[4]; // Tableau pour les 4 orientations du joueur 2
+BITMAP * PERSO1_O[4];
+BITMAP * PERSO2_O[4];
 
 // Prototypes des fonctions
 void affichagechargement();
