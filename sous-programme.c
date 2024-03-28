@@ -238,15 +238,15 @@ int jeu(int nivchoisi){
         clear_to_color(screen, makecol(0, 0, 0));
         if(nivchoisi==1){
             blit(NIV1, screen, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
-            if (j1posx < 0) j1posx = 0;
-            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
-            if (j1posy < 0) j1posy = 0;
-            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+            if (j1posx <= 60) j1posx = 60;
+            if (j1posx >= 705) j1posx = 705;
+            if (j1posy <= 175) j1posy = 175;
+            if (j1posy >=625) j1posy = 625;
 
-            if (j2posx < 0) j2posx = 0;
-            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
-            if (j2posy < 0) j2posy = 0;//
-            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
+            if (j2posx <= 60) j2posx = 60;
+            if (j2posx >= 705) j2posx = 705;
+            if (j2posy <= 175) j2posy = 175;
+            if (j2posy >=625) j2posy = 625;
         }
         if(nivchoisi==2){
         //blit et load du niveau associé
