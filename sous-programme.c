@@ -113,6 +113,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=1;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
@@ -120,6 +132,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=0;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(!(mouse_x>38 && mouse_x<292||mouse_x>793 && mouse_x<863 && mouse_y>237 && mouse_y<739 ||mouse_y>27 && mouse_y<112)){
@@ -139,6 +163,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=1;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(mouse_x>335 && mouse_x<583 && mouse_y>237 && mouse_y<739){
@@ -146,6 +182,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=2;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
@@ -153,6 +201,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=0;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(!(mouse_x>38 && mouse_x<292  || mouse_x>335 && mouse_x<583 || mouse_x>793 && mouse_x<863 && mouse_y>237 && mouse_y<739||mouse_y>27 && mouse_y<112)) {
@@ -168,6 +228,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=1;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(mouse_x>335 && mouse_x<583 && mouse_y>237 && mouse_y<739) {
@@ -175,6 +247,18 @@ int selectniv(int fini){
                 if (mouse_b & 1) {
                     choixniv = 2;
                     a = 1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if (mouse_x > 625 && mouse_x < 876 && mouse_y>237 && mouse_y<739) {
@@ -182,6 +266,18 @@ int selectniv(int fini){
                 if (mouse_b & 1) {
                     choixniv = 3;
                     a = 1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(mouse_x>793 && mouse_x<863 && mouse_y>27 && mouse_y<112){
@@ -189,6 +285,18 @@ int selectniv(int fini){
                 if(mouse_b & 1){
                     choixniv=0;
                     a=1;
+                    destroy_bitmap("choix_niv_1U.bmp");
+                    destroy_bitmap("choix_niv_1U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U.bmp");
+                    destroy_bitmap("choix_niv_2U_niv1.bmp");
+                    destroy_bitmap("choix_niv_2U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U.bmp");
+                    destroy_bitmap("choix_niv_3U_niv1.bmp");
+                    destroy_bitmap("choix_niv_3U_niv2.bmp");
+                    destroy_bitmap("choix_niv_3U_niv3.bmp");
+                    destroy_bitmap("choix_niv_1U_M.bmp");
+                    destroy_bitmap("choix_niv_2U_M.bmp");
+                    destroy_bitmap("choix_niv_3U_M.bmp");
                 }
             }
             if(!(mouse_x>38 && mouse_x<292  || mouse_x>335 && mouse_x<583 || mouse_x > 625 && mouse_x < 876|| mouse_x>793 && mouse_x<863 && mouse_y>237 && mouse_y<739 ||mouse_y>27 && mouse_y<112)) {
@@ -207,13 +315,16 @@ int jeu(int nivchoisi){
     int deplacement = 15;
     int orienJ1=1;//
     int orienJ2=1;
+
     affichagechargement();
     load_player_images();
+
+    BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
         clear_to_color(screen, makecol(0, 0, 0));
         if(nivchoisi==1){
-        //blit et load du nieau associé
+            blit(NIV1, screen, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
             if (j1posx < 0) j1posx = 0;
             if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
             if (j1posy < 0) j1posy = 0;
