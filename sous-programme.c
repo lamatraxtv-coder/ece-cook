@@ -31,25 +31,17 @@ void load_player_images() {//
 
 
 // Ajout de la fonction image_joueur
-void image_joueur(BITMAP *buffer, BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
-    // Assurez-vous que le buffer est nettoyé / vidé avant de dessiner
-    clear_bitmap(buffer);
-
-    // Dessin du joueur 1 avec l'orientation appropriée sur le buffer
+void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
+    // Dessin du joueur 1 avec l'orientation appropriée
     if (orienJ1 >= 1 && orienJ1 <= 4) {
-        draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
+        draw_sprite(screen, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
     }
 
-    // Dessin du joueur 2 avec l'orientation appropriée sur le buffer
+    // Dessin du joueur 2 avec l'orientation appropriée
     if (orienJ2 >= 1 && orienJ2 <= 4) {
-        draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
+        draw_sprite(screen, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
-
-    // Copier le buffer sur l'écran
-    blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
 }
-
-
 int menu(){
     install_mouse();
     show_mouse(screen);
@@ -236,14 +228,11 @@ int jeu(int nivchoisi){
     int deplacement = 15;
     int orienJ1=1;//
     int orienJ2=1;
-    BITMAP *buffer = create_bitmap(SCREEN_W, SCREEN_H);
 
     affichagechargement();
     load_player_images();
 
     BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
-    /*BITMAP * NIV2 = load_bitmap("niv2.BMP",NULL);
-    BITMAP * NIV3 = load_bitmap("niv3.BMP",NULL);*/
 
     while (!key[KEY_ESC]) {
         clear_to_color(screen, makecol(0, 0, 0));
@@ -260,7 +249,7 @@ int jeu(int nivchoisi){
             if (j2posy >=625) j2posy = 625;
         }
         if(nivchoisi==2){
-        //blit et load du niveau associé
+            //blit et load du niveau associé
             if (j1posx < 0) j1posx = 0;
             if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
             if (j1posy < 0) j1posy = 0;
@@ -272,7 +261,7 @@ int jeu(int nivchoisi){
             if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
         }
         if(nivchoisi==3){
-        //blit et load du niveau associé
+            //blit et load du niveau associé
             if (j1posx < 0) j1posx = 0;
             if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
             if (j1posy < 0) j1posy = 0;
@@ -295,7 +284,7 @@ int jeu(int nivchoisi){
         if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
 
-        image_joueur(buffer,screen, j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        image_joueur(screen, j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
 
         textprintf_ex(screen, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         textprintf_ex(screen, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
