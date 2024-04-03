@@ -238,7 +238,7 @@ int jeu(int nivchoisi){
     }
     //install_mouse();
     //show_mouse(screen);
-    int deplacement = 5;
+    int deplacement = 10;
     int orienJ1=1;//
     int orienJ2=1;
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
@@ -262,42 +262,30 @@ int jeu(int nivchoisi){
             if (j2posx >= 705) j2posx = 705;
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
-
-
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
-
                 j1posx = 150;
             }
             if (j1posx >= 160 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
-
                 j1posy = 530;
             }
-            if (j1posx >= 315 && j1posx <= 500 && j1posy >= 260 && j1posy <= 600) {
+            if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
                 j1posx = 315;
             }
             if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
                 j1posy = 240;
             }
-
-
-// Collision avec le deuxième rectangle pour j2
-            if (j2posx >= 160 && j2posx <= 470 && j2posy >= 530 && j2posy <= 700) {
-                j2posy = 500; // Ajuste la position de j2 sur l'axe Y
+            if (j2posx >= 160 && j2posx <= 460 && j2posy >= 530 && j2posy <= 700) {
+                j2posy = 500;
             }
-
-// Collision avec le troisième rectangle pour j2
-            if (j2posx >= 315 && j2posx <= 460 && j2posy >= 260 && j2posy <= 600) {
-                j2posx = 470; // Ajuste la position de j2 sur l'axe X
+            if (j2posx >= 315 && j2posx <= 470 && j2posy >= 180 && j2posy <= 600) {
+                j2posx = 470;
             }
-
-// Collision avec le quatrième rectangle pour j2
             if (j2posx >= 160 && j2posx <= 780 && j2posy >= 188 && j2posy <= 260) {
-                j2posy = 260; // Ajuste la position de j2 sur l'axe Y
+                j2posy = 260;
             }
-
-
-
-
+            if (j2posx >= 610 && j2posx <= 705 && j2posy >= 340 && j2posy <= 550) {
+                j2posx = 610;
+            }
         }
         if(nivchoisi==2){
             //blit et load du niveau associé
