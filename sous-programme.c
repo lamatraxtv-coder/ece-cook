@@ -222,8 +222,21 @@ int selectniv(int fini){
 }
 
 int jeu(int nivchoisi){
-    int j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
-    int j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+    int j1posx, j1posy;
+    int j2posx, j2posy;
+    if(nivchoisi==1){
+        j1posx = 255, j1posy = 370;
+        j2posx = 555, j2posy = 370;
+    }
+    if(nivchoisi==2){
+        j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
+        j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+    }
+    if(nivchoisi==3){
+        j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
+        j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+    }
+
     int deplacement = 15;
     int orienJ1=1;//
     int orienJ2=1;
