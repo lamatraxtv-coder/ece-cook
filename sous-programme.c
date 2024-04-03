@@ -337,7 +337,7 @@ void tuto(){
             case 4:
                 blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
                 textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
-                break;
+                break;//
         }
 
     }
