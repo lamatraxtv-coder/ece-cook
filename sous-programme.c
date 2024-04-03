@@ -236,8 +236,9 @@ int jeu(int nivchoisi){
         j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
         j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
     }
-
-    int deplacement = 15;
+    //install_mouse();
+    //show_mouse(screen);
+    int deplacement = 5;
     int orienJ1=1;//
     int orienJ2=1;
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
@@ -253,38 +254,74 @@ int jeu(int nivchoisi){
 
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
             if (j1posx <= 60) j1posx = 60;
-            if (j1posx >= 705) j1posx = 705;
+            if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
             if (j1posy >=625) j1posy = 625;
 
             if (j2posx <= 60) j2posx = 60;
             if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;
+            if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
+
+
+            if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
+
+                j1posx = 150;
+            }
+            if (j1posx >= 160 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
+
+                j1posy = 530;
+            }
+            if (j1posx >= 315 && j1posx <= 500 && j1posy >= 260 && j1posy <= 600) {
+                j1posx = 315;
+            }
+            if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
+                j1posy = 240;
+            }
+
+
+// Collision avec le deuxième rectangle pour j2
+            if (j2posx >= 160 && j2posx <= 470 && j2posy >= 530 && j2posy <= 700) {
+                j2posy = 500; // Ajuste la position de j2 sur l'axe Y
+            }
+
+// Collision avec le troisième rectangle pour j2
+            if (j2posx >= 315 && j2posx <= 460 && j2posy >= 260 && j2posy <= 600) {
+                j2posx = 470; // Ajuste la position de j2 sur l'axe X
+            }
+
+// Collision avec le quatrième rectangle pour j2
+            if (j2posx >= 160 && j2posx <= 780 && j2posy >= 188 && j2posy <= 260) {
+                j2posy = 260; // Ajuste la position de j2 sur l'axe Y
+            }
+
+
+
+
         }
         if(nivchoisi==2){
             //blit et load du niveau associé
-            if (j1posx < 0) j1posx = 0;
-            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
-            if (j1posy < 0) j1posy = 0;
-            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+            if (j1posx <= 60) j1posx = 60;
+            if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j1posy <= 175) j1posy = 175;
+            if (j1posy >=625) j1posy = 625;
 
-            if (j2posx < 0) j2posx = 0;
-            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
-            if (j2posy < 0) j2posy = 0;//
-            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
+            if (j2posx <= 60) j2posx = 60;
+            if (j2posx >= 705) j2posx = 705;
+            if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j2posy >=625) j2posy = 625;
         }
         if(nivchoisi==3){
             //blit et load du niveau associé
-            if (j1posx < 0) j1posx = 0;
-            if (j1posx > SCREEN_W-70) j1posx = SCREEN_W-70;
-            if (j1posy < 0) j1posy = 0;
-            if (j1posy > SCREEN_H-70) j1posy = SCREEN_H-70;
+            if (j1posx <= 60) j1posx = 60;
+            if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j1posy <= 175) j1posy = 175;
+            if (j1posy >=625) j1posy = 625;
 
-            if (j2posx < 0) j2posx = 0;
-            if (j2posx > SCREEN_W-70) j2posx = SCREEN_W-70;
-            if (j2posy < 0) j2posy = 0;//
-            if (j2posy > SCREEN_H-70) j2posy = SCREEN_H-70;
+            if (j2posx <= 60) j2posx = 60;
+            if (j2posx >= 705) j2posx = 705;
+            if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j2posy >=625) j2posy = 625;
         }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
@@ -302,6 +339,8 @@ int jeu(int nivchoisi){
 
         textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
+        textprintf_ex(buffer, font, 60, 140, makecol(0, 255, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
+
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
     }
