@@ -11,11 +11,12 @@
 
 BITMAP * PERSO1_O[4];
 BITMAP * PERSO2_O[4];
+BITMAP * buffer;
 
 // Prototypes des fonctions
 void affichagechargement();
 void load_player_images();
-void image_joueur(BITMAP *screen, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2);
+void image_joueur(int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2);
 int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);//
