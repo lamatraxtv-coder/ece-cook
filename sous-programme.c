@@ -41,6 +41,21 @@ void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
+void commande(int nivchoisi, int recettes){
+    srand(time(NULL));
+    BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
+    int random; int randomrecette;
+    random=1;//rand()%10;
+    randomrecette=rand()%3;
+    if(random==1){
+        recettes=+1;
+    }
+    if(recettes==1){
+        blit(commandeneutre, buffer, 0, 0, (SCREEN_W - commandeneutre->w) / 2, (SCREEN_H - commandeneutre->h) / 2, commandeneutre->w, commandeneutre->h);
+
+    }
+
+}
 int menu(){
     install_mouse();
     show_mouse(screen);
@@ -226,6 +241,7 @@ int jeu(int nivchoisi){
     int j2posx, j2posy;
     int alimposx;
     int alimposy;
+    int nbrecette=0;
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
@@ -251,7 +267,7 @@ int jeu(int nivchoisi){
     BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
-
+        commande(nivchoisi, nbrecette);
 
         if(nivchoisi==1){
 

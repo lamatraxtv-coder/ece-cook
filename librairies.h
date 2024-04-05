@@ -7,6 +7,8 @@
 #include <allegro.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 
 
 BITMAP * PERSO1_O[4];
@@ -21,4 +23,5 @@ int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
+void commande(int nivchoisi, int recettes);
 
