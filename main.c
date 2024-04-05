@@ -15,6 +15,7 @@ int main() {
     int select = 0;
     int nivchoisi = 0;
     int infinite=1;
+    srand(time(NULL));
 
     do {
         select = menu();

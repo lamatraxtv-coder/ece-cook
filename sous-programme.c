@@ -41,19 +41,38 @@ void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
-void commande(int nivchoisi, int recettes){
-    srand(time(NULL));
-    BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
+int commande(int nivchoisi, int recettes, BITMAP * commande){
     int random; int randomrecette;
-    random=1;//rand()%10;
+
+    random=rand()%200;
+
+    printf("%d ",random);
     randomrecette=rand()%3;
     if(random==1){
-        recettes=+1;
+        recettes++;
+        if(recettes==5){
+            recettes=4;
+        }
     }
     if(recettes==1){
-        blit(commandeneutre, buffer, 0, 0, (SCREEN_W - commandeneutre->w) / 2, (SCREEN_H - commandeneutre->h) / 2, commandeneutre->w, commandeneutre->h);
-
+        draw_sprite(buffer, commande, 20 , -100);
     }
+    if(recettes==2){
+        draw_sprite(buffer, commande, 20 , -100);
+        draw_sprite(buffer, commande, 220 , -100);
+    }
+    if(recettes==3){
+        draw_sprite(buffer, commande, 20 , -100);
+        draw_sprite(buffer, commande, 220 , -100);
+        draw_sprite(buffer, commande, 420 , -100);
+    }
+    if(recettes==4){
+        draw_sprite(buffer, commande, 10 , -100);
+        draw_sprite(buffer, commande, 210 , -100);
+        draw_sprite(buffer, commande, 410 , -100);
+        draw_sprite(buffer, commande, 610 , -100);
+    }
+    return recettes;
 
 }
 int menu(){
@@ -242,6 +261,11 @@ int jeu(int nivchoisi){
     int alimposx;
     int alimposy;
     int nbrecette=0;
+    int deplacement = 10;
+    int orienJ1=1;//
+    int orienJ2=1;
+
+    BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
@@ -256,9 +280,6 @@ int jeu(int nivchoisi){
     }
     //install_mouse();
     //show_mouse(screen);
-    int deplacement = 10;
-    int orienJ1=1;//
-    int orienJ2=1;
 
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     affichagechargement();
@@ -267,8 +288,7 @@ int jeu(int nivchoisi){
     BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
-        commande(nivchoisi, nbrecette);
-
+        printf(" h %d h ",nbrecette);
         if(nivchoisi==1){
 
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
@@ -344,6 +364,7 @@ int jeu(int nivchoisi){
 
 
         image_joueur(j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        nbrecette=commande(nivchoisi, nbrecette,commandeneutre);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
