@@ -300,19 +300,19 @@ int jeu(int nivchoisi){
 
             if (j2posx <= 60) j2posx = 60;
             if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
         }
         if(nivchoisi==3){
             //blit et load du niveau associé
             if (j1posx <= 60) j1posx = 60;
-            if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j1posx >= 705) j1posx = 705;        // collision tour de cuisine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
             if (j1posy >=625) j1posy = 625;
 
             if (j2posx <= 60) j2posx = 60;
             if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
+            if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
         }
 
@@ -370,19 +370,19 @@ void tuto(){
         switch(compteur_page_tuto){
             case 1:
                 blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w,tutoP1->h);
-                textprintf_ex(screen, font, SCREEN_W/2 -60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 2:
                 blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w, tutoP2->h);
-                textprintf_ex(screen, font, SCREEN_W/2 - 60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 3:
                 blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w, tutoP3->h);
-                textprintf_ex(screen, font, SCREEN_W/2 - 60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 4:
                 blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
-                textprintf_ex(screen, font, SCREEN_W/2 - 60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
         }
     }
