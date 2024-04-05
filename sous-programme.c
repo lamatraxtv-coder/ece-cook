@@ -41,7 +41,8 @@ void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
-int commande(int nivchoisi, int recettes, BITMAP * commande){
+
+int ajout_commande(int nivchoisi, int recettes, BITMAP * commande){
     int random; int randomrecette;
 
     random=rand()%200;
@@ -56,6 +57,9 @@ int commande(int nivchoisi, int recettes, BITMAP * commande){
     }
     if(recettes==1){
         draw_sprite(buffer, commande, 20 , -100);
+        if(nivchoisi==1){
+
+        }
     }
     if(recettes==2){
         draw_sprite(buffer, commande, 20 , -100);
@@ -364,7 +368,7 @@ int jeu(int nivchoisi){
 
 
         image_joueur(j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
-        nbrecette=commande(nivchoisi, nbrecette,commandeneutre);
+        nbrecette=ajout_commande(nivchoisi, nbrecette,commandeneutre);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);

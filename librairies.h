@@ -23,5 +23,5 @@ int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
-int commande(int nivchoisi, int recettes, BITMAP * commande);
+int ajout_commande(int nivchoisi, int recettes, BITMAP * commande);
 
