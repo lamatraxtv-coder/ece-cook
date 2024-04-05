@@ -1,5 +1,7 @@
 #include "librairies.h"
+void génération(){
 
+}
 void affichagechargement(){
     set_trans_blender(0,255,0,0);
     BITMAP *imagechargement = load_bitmap("ece cook chargement.bmp", NULL);
@@ -224,6 +226,8 @@ int selectniv(int fini){
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
+    int alimposx;
+    int alimposy;
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
@@ -241,6 +245,7 @@ int jeu(int nivchoisi){
     int deplacement = 10;
     int orienJ1=1;//
     int orienJ2=1;
+
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     affichagechargement();
     load_player_images();
@@ -262,10 +267,11 @@ int jeu(int nivchoisi){
             if (j2posx >= 705) j2posx = 705;
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuissine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
+
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
             }
-            if (j1posx >= 160 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
+            if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
@@ -274,7 +280,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
                 j1posy = 240;
             }
-            if (j2posx >= 160 && j2posx <= 460 && j2posy >= 530 && j2posy <= 700) {
+            if (j2posx >= 160 && j2posx <= 450 && j2posy >= 530 && j2posy <= 700) {
                 j2posy = 500;
             }
             if (j2posx >= 315 && j2posx <= 470 && j2posy >= 180 && j2posy <= 600) {
@@ -312,7 +318,7 @@ int jeu(int nivchoisi){
             if (j2posy >=625) j2posy = 625;
         }
 
-        if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1;}
+        if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
         if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=4;}
         if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=2;}
@@ -325,9 +331,9 @@ int jeu(int nivchoisi){
 
         image_joueur(j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
 
-        textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
-        textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
-        textprintf_ex(buffer, font, 60, 140, makecol(0, 255, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
+        //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
+        //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
+        //textprintf_ex(buffer, font, 60, 140, makecol(0, 255, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
 
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
@@ -379,9 +385,7 @@ void tuto(){
             case 4:
                 blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
                 textprintf_ex(screen, font, 60, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
-                break;////
+                break;
         }
-
     }
-
-}//
+}
