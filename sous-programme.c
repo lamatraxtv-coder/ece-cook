@@ -1,7 +1,5 @@
 #include "librairies.h"
-void génération(){
 
-}
 void affichagechargement(){
     set_trans_blender(0,255,0,0);
     BITMAP *imagechargement = load_bitmap("ece cook chargement.bmp", NULL);
