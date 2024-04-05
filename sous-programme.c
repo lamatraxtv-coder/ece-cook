@@ -252,7 +252,7 @@ int jeu(int nivchoisi){
 
     while (!key[KEY_ESC]) {
 
-        clear_to_color(screen, makecol(0, 0, 0));
+
         if(nivchoisi==1){
 
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
@@ -353,7 +353,7 @@ void tuto(){
         if(key[KEY_LEFT]){
             compteur_page_tuto-=1;
         }
-        if(key[KEY_SPACE]){
+        if(key[KEY_SPACE] || key[KEY_ESC]){
             destroy_bitmap(tutoP1);
             destroy_bitmap(tutoP2);
             destroy_bitmap(tutoP3);
