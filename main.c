@@ -34,8 +34,6 @@ int main() {
             continue;
             break;
         }
-
-
     } while (infinite=1);
 
     allegro_exit();

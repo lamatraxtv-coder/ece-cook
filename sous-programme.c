@@ -378,6 +378,12 @@ int jeu(int nivchoisi){
         rest(40);
     }
     destroy_bitmap(buffer);
+    destroy_bitmap(bouf1_1);
+    destroy_bitmap(bouf2_1);
+    destroy_bitmap(bouf3_1);
+    destroy_bitmap(NIV1);
+    //destroy_bitmap(NIV2);
+    //destroy_bitmap(NIV3);
 }
 void tuto(){
     BITMAP *tutoP1= load_bitmap("tuto1.bmp",NULL);
