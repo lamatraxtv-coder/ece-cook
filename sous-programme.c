@@ -14,7 +14,7 @@ void affichagechargement(){
     }
 }
 
-void load_player_images() {//
+void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {//
 
     // Chargement des images pour joueur 1
     PERSO1_O[0] = load_bitmap("perso1O1.bmp", NULL);
@@ -31,7 +31,7 @@ void load_player_images() {//
 
 
 // Ajout de la fonction image_joueur
-void image_joueur(BITMAP * buffer, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
     // Dessin du joueur 1 avec l'orientation appropriée
     if (orienJ1 >= 1 && orienJ1 <= 4) {
         draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
@@ -273,6 +273,8 @@ int jeu(int nivchoisi){
     int orienJ1=1;//
     int orienJ2=1;
     BITMAP * buffer;
+    BITMAP * PERSO1_O[4];
+    BITMAP * PERSO2_O[4];
 
     BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
     if(nivchoisi==1){
@@ -296,7 +298,7 @@ int jeu(int nivchoisi){
 
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     affichagechargement();
-    load_player_images();
+    load_player_images(PERSO1_O,PERSO2_O);
 
     BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
 
@@ -376,7 +378,7 @@ int jeu(int nivchoisi){
         if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
 
-        image_joueur(buffer,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        image_joueur(buffer,PERSO1_O,PERSO2_O,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
         nbrecette=ajout_commande(buffer,nivchoisi, nbrecette, commandeneutre);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
