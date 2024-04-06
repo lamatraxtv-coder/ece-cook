@@ -45,21 +45,21 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int 
 // Supposons que MAX_COMMANDES est défini comme le nombre maximum de commandes
 #define MAX_COMMANDES 4
 
-int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recetteIndexes[MAX_COMMANDES]) {
+int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES]) {
     int random = rand() % 200; // Génération d'un nombre aléatoire entre 0 et 199
     BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3}; // Tableau des recettes
 
     // Condition pour ajouter une nouvelle commande si le nombre aléatoire est 1
     if (random == 1 && recettes < MAX_COMMANDES) {
         // Sélectionne une recette aléatoire pour la nouvelle commande
-        recetteIndexes[recettes] = rand() % 3;
+        recette[recettes] = rand() % 3;
         recettes++;
     }
 
     // Boucle sur le nombre actuel de recettes pour les afficher
     for (int i = 0; i < recettes; i++) {
         // Dessine la commande avec un décalage de 200 pixels sur l'axe des x pour chaque recette
-        draw_sprite(buffer, recettesDisponibles[recetteIndexes[i]], 20 + (200 * i), -100);
+        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
     }
 
     return recettes;
@@ -255,7 +255,7 @@ int jeu(int nivchoisi){
     int deplacement = 10;
     int orienJ1=1;//
     int orienJ2=1;
-    int recetteIndexes[MAX_COMMANDES];
+    int recette[MAX_COMMANDES];
     BITMAP * buffer;
     BITMAP * PERSO1_O[4];
     BITMAP * PERSO2_O[4];
@@ -264,7 +264,7 @@ int jeu(int nivchoisi){
     BITMAP * bouf2_1=load_bitmap("commande sushi saumon.bmp",NULL);
     BITMAP * bouf3_1=load_bitmap("commande sushi thon.bmp",NULL);
 
-    BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
+
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
@@ -368,7 +368,7 @@ int jeu(int nivchoisi){
 
 
         image_joueur(buffer,PERSO1_O,PERSO2_O,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
-        nbrecette=ajout_commande(buffer,nivchoisi, nbrecette,bouf1_1,bouf2_1,bouf3_1,recetteIndexes);
+        nbrecette=ajout_commande(buffer,nivchoisi, nbrecette,bouf1_1,bouf2_1,bouf3_1,recette);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
