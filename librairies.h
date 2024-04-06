@@ -2,7 +2,7 @@
 #define ALLEGRO_LIBRAIRIES_H
 
 #endif //ALLEGRO_LIBRAIRIES_H
-
+#define MAX_COMMANDES 4
 // Path: librairies.h
 #include <allegro.h>
 #include <stdio.h>
@@ -18,5 +18,5 @@ int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
-int ajout_commande(BITMAP * buffer,int nivchoisi, int recettes, BITMAP * commande);
+int ajout_commande(BITMAP * buffer,int nivchoisi, int recettes, BITMAP * recette1, BITMAP* recette2,BITMAP * recette3,int recetteIndexes[MAX_COMMANDES]);
 
