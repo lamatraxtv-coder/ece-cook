@@ -31,7 +31,7 @@ void load_player_images() {//
 
 
 // Ajout de la fonction image_joueur
-void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
+void image_joueur(BITMAP * buffer, int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
     // Dessin du joueur 1 avec l'orientation appropriée
     if (orienJ1 >= 1 && orienJ1 <= 4) {
         draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
@@ -42,13 +42,17 @@ void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, 
     }
 }
 
-int ajout_commande(int nivchoisi, int recettes, BITMAP * commande){
+int ajout_commande( BITMAP * buffer,int nivchoisi, int recettes, BITMAP * commande){
     int random; int randomrecette;
+    if (nivchoisi==1){
+
+    }
 
     random=rand()%200;
 
     printf("%d ",random);
     randomrecette=rand()%3;
+
     if(random==1){
         recettes++;
         if(recettes==5){
@@ -56,10 +60,10 @@ int ajout_commande(int nivchoisi, int recettes, BITMAP * commande){
         }
     }
     if(recettes==1){
-        draw_sprite(buffer, commande, 20 , -100);
-        if(nivchoisi==1){
+        if(randomrecette==1){
 
         }
+        draw_sprite(buffer, commande, 20 , -100);
     }
     if(recettes==2){
         draw_sprite(buffer, commande, 20 , -100);
@@ -268,11 +272,16 @@ int jeu(int nivchoisi){
     int deplacement = 10;
     int orienJ1=1;//
     int orienJ2=1;
+    BITMAP * buffer;
 
     BITMAP *commandeneutre= load_bitmap("template commande.bmp",NULL);
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
+
+        BITMAP * bouf1=load_bitmap("commande riz.bmp",NULL);
+        BITMAP * bouf2=load_bitmap("commande sushi saumon.bmp",NULL);
+        BITMAP * bouf3=load_bitmap("commande sushi thon.bmp",NULL);
     }
     if(nivchoisi==2){
         j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
@@ -367,8 +376,8 @@ int jeu(int nivchoisi){
         if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
 
-        image_joueur(j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
-        nbrecette=ajout_commande(nivchoisi, nbrecette,commandeneutre);
+        image_joueur(buffer,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        nbrecette=ajout_commande(buffer,nivchoisi, nbrecette, commandeneutre);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
