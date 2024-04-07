@@ -12,6 +12,7 @@ void affichagechargement(){
     while (!key[KEY_SPACE]) {
         rest(100);
     }
+    destroy_bitmap(imagechargement);
 }
 
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {//
@@ -249,8 +250,6 @@ int selectniv(int fini){
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
-    int alimposx;
-    int alimposy;
     int nbrecette=0;
     int deplacement = 10;
     int orienJ1=1;//
