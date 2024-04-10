@@ -111,6 +111,7 @@ int menu(){
         }
 
     }
+
     return selection;
 
 }
@@ -246,8 +247,8 @@ int selectniv(int fini){
     return choixniv;
 
 }
-
 int jeu(int nivchoisi){
+    volatile EtatJeu etat_jeu = {0};
     int j1posx, j1posy;
     int j2posx, j2posy;
     int nbrecette=0;
@@ -255,6 +256,12 @@ int jeu(int nivchoisi){
     int orienJ1=1;//
     int orienJ2=1;
     int recette[MAX_COMMANDES];
+
+    time_t debut,actuel;
+    double seconde;
+
+    time(&debut);
+
     BITMAP * buffer;
     BITMAP * PERSO1_O[4];
     BITMAP * PERSO2_O[4];
@@ -262,6 +269,7 @@ int jeu(int nivchoisi){
     BITMAP * bouf1_1=load_bitmap("commande riz.bmp",NULL);
     BITMAP * bouf2_1=load_bitmap("commande sushi saumon.bmp",NULL);
     BITMAP * bouf3_1=load_bitmap("commande sushi thon.bmp",NULL);
+
 
 
     if(nivchoisi==1){
@@ -278,8 +286,6 @@ int jeu(int nivchoisi){
     if(nivchoisi==3){
         j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
         j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
-
-
     }
     //install_mouse();
     //show_mouse(screen);
@@ -291,7 +297,10 @@ int jeu(int nivchoisi){
     BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
-        printf(" h %d h ",nbrecette);
+        time(&actuel);
+        seconde = difftime(actuel, debut);
+        textprintf_ex(screen,font,100,100, makecol(0,0,0),-1,"%.1f", seconde);
+        fflush(stdout);
         if(nivchoisi==1){
 
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
