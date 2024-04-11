@@ -47,17 +47,14 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int 
 #define MAX_COMMANDES 4
 
 int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES]) {
-    int random = rand() % 200; // Génération d'un nombre aléatoire entre 0 et 199
-    BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3}; // Tableau des recettes
+    int random = rand() % 200;
+    BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};
 
-    // Condition pour ajouter une nouvelle commande si le nombre aléatoire est 1
     if (random == 1 && recettes < MAX_COMMANDES) {
-        // Sélectionne une recette aléatoire pour la nouvelle commande
         recette[recettes] = rand() % 3;
         recettes++;
     }
 
-    // Boucle sur le nombre actuel de recettes pour les afficher
     for (int i = 0; i < recettes; i++) {
         // Dessine la commande avec un décalage de 200 pixels sur l'axe des x pour chaque recette
         draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
@@ -247,6 +244,32 @@ int selectniv(int fini){
     return choixniv;
 
 }
+
+void imagefin(){
+    install_mouse();
+    show_mouse(screen);
+    int verif=0;
+    BITMAP * imagefin= load_bitmap("../images/imagefin.bmp", NULL);
+    BITMAP * imagefinselect= load_bitmap("../images/imagefinselect.bmp", NULL);
+    while(!verif){
+
+        textprintf_ex(screen, font, 60, 140, makecol(0, 0, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
+        if(mouse_x>390&&mouse_x<530 && mouse_y>650 && mouse_y<715){
+            blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w,imagefinselect->h);
+            if(mouse_b & 1){
+                verif=1;
+            }
+        }
+        if(!(mouse_x>390&&mouse_x<530 && mouse_y>650 && mouse_y<715)){
+            blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w,imagefin->h);
+        }
+
+    }
+    destroy_bitmap(imagefinselect);
+    destroy_bitmap(imagefin);
+
+
+}
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
@@ -255,6 +278,7 @@ int jeu(int nivchoisi){
     int orienJ1=1;//
     int orienJ2=1;
     int recette[MAX_COMMANDES];
+    int fin=0;
 
     time_t debut,actuel;
     double seconde;
@@ -265,9 +289,9 @@ int jeu(int nivchoisi){
     BITMAP * PERSO1_O[4];
     BITMAP * PERSO2_O[4];
 
-    BITMAP * bouf1_1=load_bitmap("commande riz.bmp",NULL);
-    BITMAP * bouf2_1=load_bitmap("commande sushi saumon.bmp",NULL);
-    BITMAP * bouf3_1=load_bitmap("commande sushi thon.bmp",NULL);
+    BITMAP * bouf1_1=load_bitmap("../images/commande riz.bmp",NULL);
+    BITMAP * bouf2_1=load_bitmap("../images/commande sushi saumon.bmp",NULL);
+    BITMAP * bouf3_1=load_bitmap("../images/commande sushi thon.bmp",NULL);
 
 
 
@@ -295,10 +319,10 @@ int jeu(int nivchoisi){
 
     BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
 
-    while (!key[KEY_ESC]) {
+    while (!key[KEY_ESC] && !fin) {
         time(&actuel);
         seconde = difftime(actuel, debut);
-        textprintf_ex(screen,font,100,100, makecol(0,0,0),-1,"%.1f", seconde);
+
         fflush(stdout);
         if(nivchoisi==1){
 
@@ -380,9 +404,12 @@ int jeu(int nivchoisi){
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
         //textprintf_ex(buffer, font, 60, 140, makecol(0, 255, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
-
+        textprintf_ex(buffer,font,700,700, makecol(255,255,255),-1,"%.1f / 180", seconde);
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
+        if (seconde >= 180) {
+            fin = 1;
+        }
     }
     destroy_bitmap(buffer);
     destroy_bitmap(bouf1_1);
@@ -391,6 +418,8 @@ int jeu(int nivchoisi){
     destroy_bitmap(NIV1);
     //destroy_bitmap(NIV2);
     //destroy_bitmap(NIV3);
+    imagefin();
+    return 0;
 }
 
 void tuto(){

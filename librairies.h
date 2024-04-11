@@ -19,5 +19,6 @@ int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
+void imagefin();
 int ajout_commande(BITMAP * buffer,int nivchoisi, int recettes, BITMAP * recette1, BITMAP* recette2,BITMAP * recette3,int recette[MAX_COMMANDES]);
 
