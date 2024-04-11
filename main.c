@@ -15,6 +15,7 @@ int main() {
     int select = 0;
     int nivchoisi = 0;
     int infinite=1;
+    srand(time(NULL));
 
     do {
         select = menu();
@@ -33,12 +34,11 @@ int main() {
             continue;
             break;
         }
-
-
     } while (infinite=1);
 
     allegro_exit();
     return 0;
 }
 END_OF_MAIN();
-//
+
+//buofegfouzbgofgzopfbz

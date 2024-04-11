@@ -12,9 +12,10 @@ void affichagechargement(){
     while (!key[KEY_SPACE]) {
         rest(100);
     }
+    destroy_bitmap(imagechargement);
 }
 
-void load_player_images() {//
+void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {//
 
     // Chargement des images pour joueur 1
     PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);
@@ -31,7 +32,7 @@ void load_player_images() {//
 
 
 // Ajout de la fonction image_joueur
-void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
     // Dessin du joueur 1 avec l'orientation appropriée
     if (orienJ1 >= 1 && orienJ1 <= 4) {
         draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
@@ -41,6 +42,31 @@ void image_joueur( int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
+
+// Supposons que MAX_COMMANDES est défini comme le nombre maximum de commandes
+#define MAX_COMMANDES 4
+
+int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES]) {
+    int random = rand() % 200; // Génération d'un nombre aléatoire entre 0 et 199
+    BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3}; // Tableau des recettes
+
+    // Condition pour ajouter une nouvelle commande si le nombre aléatoire est 1
+    if (random == 1 && recettes < MAX_COMMANDES) {
+        // Sélectionne une recette aléatoire pour la nouvelle commande
+        recette[recettes] = rand() % 3;
+        recettes++;
+    }
+
+    // Boucle sur le nombre actuel de recettes pour les afficher
+    for (int i = 0; i < recettes; i++) {
+        // Dessine la commande avec un décalage de 200 pixels sur l'axe des x pour chaque recette
+        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
+    }
+
+    return recettes;
+}
+
+
 int menu(){
     install_mouse();
     show_mouse(screen);
@@ -85,6 +111,7 @@ int menu(){
         }
 
     }
+
     return selection;
 
 }
@@ -220,19 +247,41 @@ int selectniv(int fini){
     return choixniv;
 
 }
-
 int jeu(int nivchoisi){
+    volatile EtatJeu etat_jeu = {0};
     int j1posx, j1posy;
     int j2posx, j2posy;
-    int alimposx;
-    int alimposy;
+    int nbrecette=0;
+    int deplacement = 10;
+    int orienJ1=1;//
+    int orienJ2=1;
+    int recette[MAX_COMMANDES];
+
+    time_t debut,actuel;
+    double seconde;
+
+    time(&debut);
+
+    BITMAP * buffer;
+    BITMAP * PERSO1_O[4];
+    BITMAP * PERSO2_O[4];
+
+    BITMAP * bouf1_1=load_bitmap("commande riz.bmp",NULL);
+    BITMAP * bouf2_1=load_bitmap("commande sushi saumon.bmp",NULL);
+    BITMAP * bouf3_1=load_bitmap("commande sushi thon.bmp",NULL);
+
+
+
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
         j2posx = 555, j2posy = 370;
+
     }
     if(nivchoisi==2){
         j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
         j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+
+
     }
     if(nivchoisi==3){
         j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
@@ -240,19 +289,18 @@ int jeu(int nivchoisi){
     }
     //install_mouse();
     //show_mouse(screen);
-    int deplacement = 10;
-    int orienJ1=1;//
-    int orienJ2=1;
 
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     affichagechargement();
-    load_player_images();
+    load_player_images(PERSO1_O,PERSO2_O);
 
     BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
-
-
+        time(&actuel);
+        seconde = difftime(actuel, debut);
+        textprintf_ex(screen,font,100,100, makecol(0,0,0),-1,"%.1f", seconde);
+        fflush(stdout);
         if(nivchoisi==1){
 
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
@@ -327,7 +375,8 @@ int jeu(int nivchoisi){
         if (key[KEY_D]) {j2posx += deplacement; orienJ2=2;}
 
 
-        image_joueur(j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        image_joueur(buffer,PERSO1_O,PERSO2_O,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
+        nbrecette=ajout_commande(buffer,nivchoisi, nbrecette,bouf1_1,bouf2_1,bouf3_1,recette);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
@@ -338,6 +387,12 @@ int jeu(int nivchoisi){
         timer();
     }
     destroy_bitmap(buffer);
+    destroy_bitmap(bouf1_1);
+    destroy_bitmap(bouf2_1);
+    destroy_bitmap(bouf3_1);
+    destroy_bitmap(NIV1);
+    //destroy_bitmap(NIV2);
+    //destroy_bitmap(NIV3);
 }
 
 void tuto(){
