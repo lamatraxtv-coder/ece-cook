@@ -1,3 +1,0 @@
-C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece-cook-main/cmake-build-debug/CMakeFiles/allegro.dir
-C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece-cook-main/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Arthur Portalier/OneDrive - Groupe INSEEC (POCE)/Bureau/ece-cook-main/cmake-build-debug/CMakeFiles/rebuild_cache.dir

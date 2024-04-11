@@ -2,7 +2,7 @@
 
 void affichagechargement(){
     set_trans_blender(0,255,0,0);
-    BITMAP *imagechargement = load_bitmap("ece cook chargement.bmp", NULL);
+    BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);
     if (!imagechargement) {
         allegro_message("Erreur de chargement de l'image");
         return;
@@ -18,16 +18,16 @@ void affichagechargement(){
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {//
 
     // Chargement des images pour joueur 1
-    PERSO1_O[0] = load_bitmap("perso1O1.bmp", NULL);
-    PERSO1_O[1] = load_bitmap("perso1O2.bmp", NULL);
-    PERSO1_O[2] = load_bitmap("perso1O3.bmp", NULL);
-    PERSO1_O[3] = load_bitmap("perso1O4.bmp", NULL);
+    PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);
+    PERSO1_O[1] = load_bitmap("../images/perso1O2.bmp", NULL);
+    PERSO1_O[2] = load_bitmap("../images/perso1O3.bmp", NULL);
+    PERSO1_O[3] = load_bitmap("../images/perso1O4.bmp", NULL);
 
     // Chargement des images pour joueur 2
-    PERSO2_O[0] = load_bitmap("perso2O1.bmp", NULL);
-    PERSO2_O[1] = load_bitmap("perso2O2.bmp", NULL);
-    PERSO2_O[2] = load_bitmap("perso2O3.bmp", NULL);
-    PERSO2_O[3] = load_bitmap("perso2O4.bmp", NULL);
+    PERSO2_O[0] = load_bitmap("../images/perso2O1.bmp", NULL);
+    PERSO2_O[1] = load_bitmap("../images/perso2O2.bmp", NULL);
+    PERSO2_O[2] = load_bitmap("../images/perso2O3.bmp", NULL);
+    PERSO2_O[3] = load_bitmap("../images/perso2O4.bmp", NULL);
 }
 
 
@@ -70,10 +70,10 @@ int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1
 int menu(){
     install_mouse();
     show_mouse(screen);
-    BITMAP *menuneutre= load_bitmap("menuneutre.bmp",NULL);
-    BITMAP *menu1= load_bitmap("menu1.bmp",NULL);
-    BITMAP *menu2= load_bitmap("menu2.bmp",NULL);
-    BITMAP *menu3= load_bitmap("menu3.bmp",NULL);
+    BITMAP *menuneutre= load_bitmap("../images/menuneutre.bmp",NULL);
+    BITMAP *menu1= load_bitmap("../images/menu1.bmp",NULL);
+    BITMAP *menu2= load_bitmap("../images/menu2.bmp",NULL);
+    BITMAP *menu3= load_bitmap("../images/menu3.bmp",NULL);
     int a=0;
     int selection;
     blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
@@ -120,18 +120,18 @@ int selectniv(int fini){
     show_mouse(screen);
     int a=0;
     int choixniv;
-    BITMAP *choix1= load_bitmap("choix_niv_1U.bmp",NULL);
-    BITMAP *choix1_1= load_bitmap("choix_niv_1U_niv1.bmp",NULL);
-    BITMAP *choix2= load_bitmap("choix_niv_2U.bmp",NULL);
-    BITMAP *choix2_1= load_bitmap("choix_niv_2U_niv1.bmp",NULL);
-    BITMAP *choix2_2= load_bitmap("choix_niv_2U_niv2.bmp",NULL);
-    BITMAP *choix3= load_bitmap("choix_niv_3U.bmp",NULL);
-    BITMAP *choix3_1= load_bitmap("choix_niv_3U_niv1.bmp",NULL);
-    BITMAP *choix3_2= load_bitmap("choix_niv_3U_niv2.bmp",NULL);
-    BITMAP *choix3_3= load_bitmap("choix_niv_3U_niv3.bmp",NULL);
-    BITMAP *choix1_M= load_bitmap("choix_niv_1U_M.bmp",NULL);
-    BITMAP *choix2_M= load_bitmap("choix_niv_2U_M.bmp",NULL);
-    BITMAP *choix3_M= load_bitmap("choix_niv_3U_M.bmp",NULL);
+    BITMAP *choix1= load_bitmap("../images/choix_niv_1U.bmp",NULL);
+    BITMAP *choix1_1= load_bitmap("../images/choix_niv_1U_niv1.bmp",NULL);
+    BITMAP *choix2= load_bitmap("../images/choix_niv_2U.bmp",NULL);
+    BITMAP *choix2_1= load_bitmap("../images/choix_niv_2U_niv1.bmp",NULL);
+    BITMAP *choix2_2= load_bitmap("../images/choix_niv_2U_niv2.bmp",NULL);
+    BITMAP *choix3= load_bitmap("../images/choix_niv_3U.bmp",NULL);
+    BITMAP *choix3_1= load_bitmap("../images/choix_niv_3U_niv1.bmp",NULL);
+    BITMAP *choix3_2= load_bitmap("../images/choix_niv_3U_niv2.bmp",NULL);
+    BITMAP *choix3_3= load_bitmap("../images/choix_niv_3U_niv3.bmp",NULL);
+    BITMAP *choix1_M= load_bitmap("../images/choix_niv_1U_M.bmp",NULL);
+    BITMAP *choix2_M= load_bitmap("../images/choix_niv_2U_M.bmp",NULL);
+    BITMAP *choix3_M= load_bitmap("../images/choix_niv_3U_M.bmp",NULL);
     while(a==0){
         if(fini==0){
             if(mouse_x>38 && mouse_x<292 && mouse_y>237 && mouse_y<739){
@@ -248,7 +248,6 @@ int selectniv(int fini){
 
 }
 int jeu(int nivchoisi){
-    volatile EtatJeu etat_jeu = {0};
     int j1posx, j1posy;
     int j2posx, j2posy;
     int nbrecette=0;
@@ -294,7 +293,7 @@ int jeu(int nivchoisi){
     affichagechargement();
     load_player_images(PERSO1_O,PERSO2_O);
 
-    BITMAP * NIV1 = load_bitmap("niv1.BMP",NULL);
+    BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
 
     while (!key[KEY_ESC]) {
         time(&actuel);
@@ -393,11 +392,12 @@ int jeu(int nivchoisi){
     //destroy_bitmap(NIV2);
     //destroy_bitmap(NIV3);
 }
+
 void tuto(){
-    BITMAP *tutoP1= load_bitmap("tuto1.bmp",NULL);
-    BITMAP *tutoP2= load_bitmap("tuto2.bmp",NULL);
-    BITMAP *tutoP3= load_bitmap("tuto3.bmp",NULL);
-    BITMAP *tutoP4= load_bitmap("tuto4.bmp",NULL);
+    BITMAP *tutoP1= load_bitmap("../images/tuto1.bmp",NULL);
+    BITMAP *tutoP2= load_bitmap("../images/tuto2.bmp",NULL);
+    BITMAP *tutoP3= load_bitmap("../images/tuto3.bmp",NULL);
+    BITMAP *tutoP4= load_bitmap("../images/tuto4.bmp",NULL);
     int compteur_page_tuto=1;
     install_keyboard();
     while(compteur_page_tuto<=5){
