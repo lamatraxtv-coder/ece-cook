@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 // Prototypes des fonctions
 void affichagechargement();
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]);
