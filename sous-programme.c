@@ -248,7 +248,6 @@ int selectniv(int fini){
 
 }
 int jeu(int nivchoisi){
-    volatile EtatJeu etat_jeu = {0};
     int j1posx, j1posy;
     int j2posx, j2posy;
     int nbrecette=0;
@@ -384,7 +383,6 @@ int jeu(int nivchoisi){
 
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
-        timer();
     }
     destroy_bitmap(buffer);
     destroy_bitmap(bouf1_1);
@@ -443,23 +441,4 @@ void tuto(){
                 break;
         }
     }
-}
-
-// fonction timer de 90s, qui donne le decompte du temps restant et réaffiche le temps restant chaque seconde
-void timer() {
-    int seconds = 90;
-
-    while (seconds > 0) {
-        clear_keybuf(); // Efface le tampon du clavier pour éviter les saisies en attente
-        rest(1000); // Attend une seconde
-
-        if (keypressed()) {
-            clear_keybuf(); // Efface le tampon du clavier pour éviter les saisies en attente
-        }
-
-        seconds--;
-        printf("%d seconds remaining\n", seconds);
-    }
-
-    printf("Countdown finished!\n");
 }

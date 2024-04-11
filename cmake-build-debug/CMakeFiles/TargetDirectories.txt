@@ -1,3 +1,0 @@
-C:/Users/gillo/Desktop/ece-cook/cmake-build-debug/CMakeFiles/allegro.dir
-C:/Users/gillo/Desktop/ece-cook/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/gillo/Desktop/ece-cook/cmake-build-debug/CMakeFiles/rebuild_cache.dir
