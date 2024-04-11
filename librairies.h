@@ -21,4 +21,5 @@ int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
+void timer();
 
