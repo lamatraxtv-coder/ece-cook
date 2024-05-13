@@ -39,22 +39,42 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
-int ajout_commande(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES]) {
-    int random = rand() % 200;
+int gerer_commandes(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index) {
     BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};
+    int random;
 
+    // Ajout de commande
+
+    random = rand() % 200;
     if (random == 1 && recettes < MAX_COMMANDES) {
         recette[recettes] = rand() % 3;
         recettes++;
     }
 
+
+    // Suppression de commande
+    if (key[KEY_U]) {  // Supposons que l'action 1 soit pour supprimer
+        if (index < 0 || index >= recettes) {
+            allegro_message("Index invalide pour la suppression : %d\n", index);
+            return recettes;
+        }
+
+        for (int i = index; i < recettes - 1; i++) {
+            recette[i] = recette[i + 1];
+        }
+        recettes--;
+    }
+
+
     for (int i = 0; i < recettes; i++) {
-        // Dessine la commande avec un décalage de 200 pixels sur l'axe des x pour chaque recette
         draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
     }
 
-    return recettes;
+    return recettes; // Retourner le nombre de recettes après modification
 }
+
+
+
 int menu(){
     install_mouse();
     show_mouse(screen);
@@ -278,16 +298,24 @@ int jeu(int nivchoisi){
     double seconde;
 
     time(&debut);
+    BITMAP * bouf1comm=load_bitmap("../images/commande riz.bmp",NULL);
+    BITMAP * bouf2comm=load_bitmap("../images/commande sushi saumon.bmp",NULL);
+    BITMAP * bouf3comm=load_bitmap("../images/commande sushi thon.bmp",NULL);
 
     BITMAP * buffer;
     BITMAP * PERSO1_O[4];
     BITMAP * PERSO2_O[4];
+    if(nivchoisi==1){
+        BITMAP * bouf1comm=load_bitmap("../images/commande riz.bmp",NULL);
+        BITMAP * bouf2comm=load_bitmap("../images/commande sushi saumon.bmp",NULL);
+        BITMAP * bouf3comm=load_bitmap("../images/commande sushi thon.bmp",NULL);
+    }
+    if(nivchoisi==2){
 
-    BITMAP * bouf1_1=load_bitmap("../images/commande riz.bmp",NULL);
-    BITMAP * bouf2_1=load_bitmap("../images/commande sushi saumon.bmp",NULL);
-    BITMAP * bouf3_1=load_bitmap("../images/commande sushi thon.bmp",NULL);
+    }
+    if(nivchoisi==3){
 
-
+    }
 
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
@@ -396,11 +424,11 @@ int jeu(int nivchoisi){
 
 
         image_joueur(buffer,PERSO1_O,PERSO2_O,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
-        nbrecette=ajout_commande(buffer,nivchoisi, nbrecette,bouf1_1,bouf2_1,bouf3_1,recette);
+        nbrecette=gerer_commandes(buffer,nivchoisi,nbrecette,bouf1comm,bouf2comm,bouf3comm,recette,0);
 
         //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
         //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
-        textprintf_ex(buffer, font, 60, 140, makecol(0, 255, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
+        textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "p2 : %4d %4d", mouse_x, mouse_y);
         textprintf_ex(buffer,font,700,700, makecol(255,255,255),-1,"%.1f / 180", seconde);
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
@@ -408,11 +436,12 @@ int jeu(int nivchoisi){
 
             fin = 1;
         }
+
     }
     destroy_bitmap(buffer);
-    destroy_bitmap(bouf1_1);
-    destroy_bitmap(bouf2_1);
-    destroy_bitmap(bouf3_1);
+    //destroy_bitmap(bouf1_1);
+    //destroy_bitmap(bouf2_1);
+    //destroy_bitmap(bouf3_1);
     destroy_bitmap(NIV1);
     destroy_bitmap(NIV2);
     //destroy_bitmap(NIV3);
