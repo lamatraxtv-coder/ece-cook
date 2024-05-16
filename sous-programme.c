@@ -328,8 +328,6 @@ int jeu(int nivchoisi){
         j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
     }
     //install_mouse();
-
-
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     show_mouse(screen);
     affichagechargement();
@@ -395,7 +393,7 @@ int jeu(int nivchoisi){
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
 
-            putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
+            //putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
 
             if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
                 j1posx = 270;
@@ -409,6 +407,18 @@ int jeu(int nivchoisi){
                 j1posx = 530;
             }
         }
+        if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
+            j2posx = 270;
+        }
+
+        if (j2posx >= 200 && j2posx <= 420 && j2posy >= 100 && j2posy <= 372) {
+            j2posy = 372;
+        }
+
+        if (j2posx >= 530 && j2posx <= 800 && j2posy >= 320 && j2posy <= 480) {
+            j2posx = 530;
+        }
+
         if(nivchoisi==3){
             //blit et load du niveau associé
             if (j1posx <= 60) j1posx = 60;
@@ -421,7 +431,7 @@ int jeu(int nivchoisi){
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
         }
-        //génération(buffer,j1posx,j1posy,j2posx,j2posy,orienJ1,orienJ2,nivchoisi);
+
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
@@ -442,9 +452,6 @@ int jeu(int nivchoisi){
             nbrecette=gerer_commandes(buffer,nbrecette,bouf1_2comm,bouf2_2comm,bouf3_2comm,recette,0);
         }
 
-
-        //textprintf_ex(buffer, font, 60, 100, makecol(0, 255, 0), -1, "p1 : %4d %4d", j1posx, j1posy);
-        //textprintf_ex(buffer, font, 60, 120, makecol(0, 255, 0), -1, "p2 : %4d %4d", j2posx, j2posy);
         textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "mouse : %4d %4d", mouse_x, mouse_y);
         textprintf_ex(buffer,font,700,700, makecol(255,255,255),-1,"%.1f / 180", seconde);
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
