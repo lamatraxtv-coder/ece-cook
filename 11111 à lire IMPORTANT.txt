@@ -3,4 +3,5 @@ Bonjour il existe des "HOTKEYS" pour facilité l'accès a des niveaux :
 - flèche du haut pour débloquer des niveaux bloqué
 - espace pour lancer des parties 
 - U pour enlever des commandes 
--le bouton quitter sur le menu d'accueil marche 
+- le bouton quitter sur le menu d'accueil marche 
+- SUPPR pour quitter le jeu à tout moment

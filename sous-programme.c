@@ -338,7 +338,7 @@ int jeu(int nivchoisi){
     BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
     BITMAP * NIV2 = load_bitmap("../images/niv2.BMP",NULL);
 
-    while (!key[KEY_ESC] && !fin) {
+    while (!key[KEY_DEL] && !fin) {
 
         time(&actuel);
         seconde = difftime(actuel, debut);
