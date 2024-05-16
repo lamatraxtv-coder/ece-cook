@@ -305,12 +305,7 @@ int jeu(int nivchoisi){
     BITMAP * PERSO1_O[4];
     BITMAP * PERSO2_O[4];
 
-    if(nivchoisi==2){
 
-    }
-    if(nivchoisi==3){
-
-    }
 
     if(nivchoisi==1){
         j1posx = 255, j1posy = 370;
@@ -335,6 +330,7 @@ int jeu(int nivchoisi){
 
     BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
     BITMAP * NIV2 = load_bitmap("../images/niv2.BMP",NULL);
+    BITMAP * NIV3 = load_bitmap("../images/niv3.BMP",NULL);
 
     while (!key[KEY_DEL] && !fin) {
 
@@ -393,7 +389,7 @@ int jeu(int nivchoisi){
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
 
-            //putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
+            putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
 
             if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
                 j1posx = 270;
@@ -420,7 +416,7 @@ int jeu(int nivchoisi){
         }
 
         if(nivchoisi==3){
-            //blit et load du niveau associé
+            blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w,NIV3->h);
             if (j1posx <= 60) j1posx = 60;
             if (j1posx >= 705) j1posx = 705;        // collision tour de cuisine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
@@ -431,7 +427,6 @@ int jeu(int nivchoisi){
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
         }
-
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
