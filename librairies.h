@@ -22,4 +22,4 @@ int selectniv(int niv_fini);
 int jeu(int nivchoisi);
 void tuto();
 void imagefin();
-int gerer_commandes(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index);
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index);

@@ -39,7 +39,7 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int 
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
-int gerer_commandes(BITMAP *buffer, int nivchoisi, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index) {
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index) {
     BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};
     int random;
 
@@ -299,7 +299,7 @@ int jeu(int nivchoisi){
     BITMAP * bouf3_1comm=load_bitmap("../images/commande sushi thon.bmp",NULL);
     BITMAP * bouf1_2comm=load_bitmap("../images/commande PTOMATE.bmp",NULL);
     BITMAP * bouf2_2comm=load_bitmap("../images/commande soupe.bmp",NULL);
-    BITMAP * bouf3_2comm=load_bitmap("../images/commande commande stkfrt.bmp",NULL);
+    BITMAP * bouf3_2comm=load_bitmap("../images/commande stkfrt.bmp",NULL);
 
     BITMAP * buffer;
     BITMAP * PERSO1_O[4];
@@ -339,12 +339,13 @@ int jeu(int nivchoisi){
     BITMAP * NIV2 = load_bitmap("../images/niv2.BMP",NULL);
 
     while (!key[KEY_ESC] && !fin) {
+
         time(&actuel);
         seconde = difftime(actuel, debut);
 
         fflush(stdout);
-        if(nivchoisi==1){
 
+        if(nivchoisi==1){
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
             if (j1posx <= 60) j1posx = 60;
             if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
@@ -381,6 +382,7 @@ int jeu(int nivchoisi){
                 j2posx = 610;
             }
         }
+
         if(nivchoisi==2){
             blit(NIV2, buffer, 0, 0, (SCREEN_W - NIV2->w) / 2, (SCREEN_H - NIV2->h) / 2, NIV2->w,NIV2 ->h);
             if (j1posx <= 20) j1posx = 20;
@@ -392,6 +394,20 @@ int jeu(int nivchoisi){
             if (j2posx >= 705) j2posx = 705;
             if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
             if (j2posy >=625) j2posy = 625;
+
+            putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
+
+            if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
+                j1posx = 270;
+            }
+
+            if (j1posx >= 200 && j1posx <= 420 && j1posy >= 100 && j1posy <= 372) {
+                j1posy = 372;
+            }
+
+            if (j1posx >= 530 && j1posx <= 800 && j1posy >= 320 && j1posy <= 480) {
+                j1posx = 530;
+            }
         }
         if(nivchoisi==3){
             //blit et load du niveau associé
@@ -420,10 +436,10 @@ int jeu(int nivchoisi){
 
         image_joueur(buffer,PERSO1_O,PERSO2_O,j1posx, j1posy, j2posx, j2posy,orienJ1,orienJ2);
         if(nivchoisi==1){
-            nbrecette=gerer_commandes(buffer,nivchoisi,nbrecette,bouf1_1comm,bouf2_1comm,bouf3_1comm,recette,0);
+            nbrecette=gerer_commandes(buffer,nbrecette,bouf1_1comm,bouf2_1comm,bouf3_1comm,recette,0);
         }
         if(nivchoisi==2){
-            nbrecette=gerer_commandes(buffer,nivchoisi,nbrecette,bouf1_2comm,bouf2_2comm,bouf3_2comm,recette,0);
+            nbrecette=gerer_commandes(buffer,nbrecette,bouf1_2comm,bouf2_2comm,bouf3_2comm,recette,0);
         }
 
 
