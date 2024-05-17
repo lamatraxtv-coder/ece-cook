@@ -290,6 +290,7 @@ int jeu(int nivchoisi){
     int orienJ2=1;
     int recette[MAX_COMMANDES];
     int fin=0;
+    int fonction;
 
     time_t debut,actuel;
     double seconde;
@@ -353,28 +354,54 @@ int jeu(int nivchoisi){
 
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
+                if(key[KEY_L] && orienJ1==4){
+                    allegro_message("prise");
+                }
             }
-            putpixel(buffer, j2posx,j2posy, makecol(255,0,0));
+
+            putpixel(buffer, j1posx,j1posy, makecol(0,0,0));
+
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
+                if(key[KEY_L] && orienJ1==3){
+                    allegro_message("prise");
+                }
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
                 j1posx = 315;
+                if(key[KEY_L] && orienJ1==2){
+                    allegro_message("prise");
+                }
             }
             if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
                 j1posy = 240;
+                if(key[KEY_L] && orienJ1==1){
+                    allegro_message("prise");
+                }
             }
             if (j2posx >= 160 && j2posx <= 450 && j2posy >= 530 && j2posy <= 700) {
-                j2posy = 500;
+                j2posy = 470;
+                if(key[KEY_C]){
+                    allegro_message("prise");
+                }
             }
             if (j2posx >= 315 && j2posx <= 470 && j2posy >= 180 && j2posy <= 600) {
                 j2posx = 470;
+                if(key[KEY_C]){
+                    allegro_message("prise");
+                }
             }
             if (j2posx >= 160 && j2posx <= 780 && j2posy >= 188 && j2posy <= 260) {
                 j2posy = 260;
+                if(key[KEY_C] && orienJ2==1){
+                    allegro_message("prise");
+                }
             }
             if (j2posx >= 610 && j2posx <= 705 && j2posy >= 340 && j2posy <= 550) {
                 j2posx = 610;
+                if(key[KEY_C]){
+                    allegro_message("prise");
+                }
             }
         }
 
@@ -479,7 +506,6 @@ int jeu(int nivchoisi){
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
         if (seconde >= 180) {
-
             fin = 1;
         }
     }
