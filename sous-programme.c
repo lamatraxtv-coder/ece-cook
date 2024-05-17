@@ -435,11 +435,23 @@ int jeu(int nivchoisi){
             if (j1posx <= 170){
                 j1posx = 170;
             }
-            if (j1posy >= 275){
+            if (j1posy <= 275){
                 j1posy = 275;
             }
-            if (j1posy <= 575){
+            if (j1posy >= 575){
                 j1posy = 575;
+            }
+            if (j2posx >= 640){
+                j2posx = 640;
+            }
+            if (j2posx <= 170){
+                j2posx = 170;
+            }
+            if (j2posy <= 275){
+                j2posy = 275;
+            }
+            if (j2posy >= 575){
+                j2posy = 575;
             }
         }
 
