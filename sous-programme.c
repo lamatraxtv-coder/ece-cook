@@ -694,17 +694,17 @@ void tuto(){
             compteur_page_tuto-=1;
         }
         if(key[KEY_SPACE] || key[KEY_ESC]){
-            destroy_bitmap(tutoP1);
-            destroy_bitmap(tutoP2);
-            destroy_bitmap(tutoP3);
-            destroy_bitmap(tutoP4);
+            destroy_bitmap(tutoP1);//on détruit les bitmaps
+            destroy_bitmap(tutoP2);//on détruit les bitmaps
+            destroy_bitmap(tutoP3);//on détruit les bitmaps
+            destroy_bitmap(tutoP4);//on détruit les bitmaps
             return;
         }
         if(compteur_page_tuto>MAX_PAGE_TUTO){
-            compteur_page_tuto=MAX_PAGE_TUTO;
+            compteur_page_tuto=MAX_PAGE_TUTO;//on ne peut pas aller au dessus de 4
         }
         if(compteur_page_tuto<0){
-            compteur_page_tuto=0;
+            compteur_page_tuto=0;//on ne peut pas aller en dessous de 0
         }
 
         switch(compteur_page_tuto){
