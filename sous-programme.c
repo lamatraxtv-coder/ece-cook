@@ -63,14 +63,40 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
     return recettes;
 }
 int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
+    BITMAP * A0=  load_bitmap("../images/menucru niv1.bmp", NULL);
+    BITMAP * A1=load_bitmap("../images/menucru niv1_1.bmp", NULL);
+    BITMAP * A2=load_bitmap("../images/menucru niv1_2.bmp", NULL);
+    BITMAP * A3=load_bitmap("../images/menucru niv1_3.bmp", NULL);
   //  load_bitmap("../images/menucru niv2.bmp", NULL);
   //  load_bitmap("../images/menucru niv3.bmp", NULL);
     if (nivchoisi==1){
-        draw_sprite(buffer, load_bitmap("../images/menucru niv1.bmp", NULL), 450, 400);//affichage de l'image
-
-        if(mouse_b & 1){//verification du clic
+        draw_sprite(buffer, A0, 450, 400);//affichage de l'image
+        if(mouse_y>=480 && mouse_y<=513 )
+        {
+            draw_sprite(buffer, A1, 450, 400);//affichage de l'image
+            if(mouse_b & 1){//verification du clic
+                combinaison1=1;
+                allegro_message("vous avez pris un thon");
+            }
 
         }
+        if(mouse_y>=513 && mouse_y<=600)
+        {
+            draw_sprite(buffer, A2, 450, 400);//affichage de l'image
+            if(mouse_b & 1){//verification du clic
+                combinaison1=2;
+                allegro_message("vous avez pris un saumon");
+            }
+        }
+        if(mouse_y>=600 && mouse_y<=700)
+        {
+            draw_sprite(buffer, A3, 450, 400);//affichage de l'image
+            if(mouse_b & 1){//verification du clic
+                combinaison1=3;
+                allegro_message("vous avez pris du riz cru");
+            }
+        }
+
     }
 
 }
@@ -297,7 +323,6 @@ void imagefin(){
 
 
 }
-
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
