@@ -346,6 +346,8 @@ int jeu(int nivchoisi){
     BITMAP * NIV1B2 = load_bitmap("../images/niv1B2.BMP",NULL);
     BITMAP * NIV2B1 = load_bitmap("../images/niv2B1.BMP",NULL);
     BITMAP * NIV2B2 = load_bitmap("../images/niv2B2.BMP",NULL);
+    BITMAP * NIV3B1 = load_bitmap("../images/niv3B1.BMP",NULL);
+    BITMAP * NIV3B2 = load_bitmap("../images/niv3B2.BMP",NULL);
 
     while (!key[KEY_DEL] && !fin) {
 
@@ -463,6 +465,7 @@ int jeu(int nivchoisi){
                 j1posy = 372;
                 if(key[KEY_L]){
                     allegro_message("prise");
+
                 }
             }
 
@@ -470,6 +473,7 @@ int jeu(int nivchoisi){
                 j1posx = 530;
                 if(key[KEY_L]){
                     allegro_message("prise");
+                    occupation++;
                 }
             }
             if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
@@ -496,7 +500,18 @@ int jeu(int nivchoisi){
 
 
         if(nivchoisi==3){
-            blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w,NIV3->h);
+            if(occupation == 0){
+                blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w, NIV3->h);
+            }
+            if(occupation == 1){
+                blit(NIV3B1, buffer, 0, 0, (SCREEN_W - NIV3B1->w) / 2, (SCREEN_H - NIV3B1->h) / 2, NIV3B1->w, NIV3B1->h);
+            }
+            if(occupation == 2){
+                blit(NIV3B2, buffer, 0, 0, (SCREEN_W - NIV3B2->w) / 2, (SCREEN_H - NIV3B2->h) / 2, NIV3B2->w, NIV3B2->h);
+            }
+            textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, "j1 : %4d %4d", j1posx, j1posy);
+            textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "j2 : %4d %4d", j2posx, j2posy);
+
             if (j1posx <= 60) j1posx = 60;
             if (j1posx >= 705) j1posx = 705; // collision tour de cuisine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
@@ -515,21 +530,27 @@ int jeu(int nivchoisi){
             }
             if (j1posx <= 170){
                 j1posx = 170;
-                if(key[KEY_L] && orienJ1==3){
-                    allegro_message("prise");
-                }
-            }
-            //migo
-            if (j1posy <= 275){
-                j1posy = 275;
                 if(key[KEY_L] && orienJ1==4){
                     allegro_message("prise");
+                }
+
+            }
+            if (j1posy <= 275){
+                j1posy = 275;
+                if(key[KEY_L] && orienJ1==1){
+                    allegro_message("prise");
+                    if(j1posx>=230 && j1posx<=260){
+                        occupation++;
+                    }
                 }
             }
             if (j1posy >= 575){
                 j1posy = 575;
-                if(key[KEY_L] && orienJ1==1){
+                if(key[KEY_L] && orienJ1==3){
                     allegro_message("prise");
+                    if(j1posx>=230 && j1posx<=260){
+                        occupation++;
+                    }
                 }
             }
             if (j2posx >= 640){
@@ -540,25 +561,28 @@ int jeu(int nivchoisi){
             }
             if (j2posx <= 170){
                 j2posx = 170;
-                if(key[KEY_C] && orienJ2 == 3){
+                if(key[KEY_C] && orienJ2 == 4){
                     allegro_message("prise");
                 }
             }
             if (j2posy <= 275){
                 j2posy = 275;
-                if(key[KEY_C] && orienJ2 == 4){
+                if(key[KEY_C] && orienJ2 == 1){
                     allegro_message("prise");
                 }
             }
             if (j2posy >= 575){
                 j2posy = 575;
-                if(key[KEY_C] && orienJ2 == 1){
+                if(key[KEY_C] && orienJ2 == 3){
                     allegro_message("prise");
                 }
             }
         }
         if(key[KEY_E]){
             occupation--;
+            if(occupation<0){
+                occupation=0;
+            }
         }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
@@ -597,7 +621,7 @@ int jeu(int nivchoisi){
     destroy_bitmap(bouf2_2comm);
     destroy_bitmap(bouf3_2comm);
     destroy_bitmap(NIV1);destroy_bitmap(NIV1B1);destroy_bitmap(NIV1B2);
-    destroy_bitmap(NIV2);
+    destroy_bitmap(NIV2);destroy_bitmap(NIV2B1);destroy_bitmap(NIV2B2);
     destroy_bitmap(NIV3);
     imagefin();
     return 0;
