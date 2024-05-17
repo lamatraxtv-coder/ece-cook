@@ -62,8 +62,7 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
     }
     return recettes;
 }
-int menu_cru(BITMAP *buffer,int nivchoisi){
-    int a=0;
+int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
   //  load_bitmap("../images/menucru niv2.bmp", NULL);
   //  load_bitmap("../images/menucru niv3.bmp", NULL);
     if (nivchoisi==1){
@@ -75,8 +74,6 @@ int menu_cru(BITMAP *buffer,int nivchoisi){
     }
 
 }
-
-
 
 int menu(){
     install_mouse();//installation de la souris
@@ -312,8 +309,8 @@ int jeu(int nivchoisi){
     int fin=0;
     int occupation=0;
     int fonction;
-    int combinaison1;
-    int combinaison2;
+    int combinaison1=0;
+    int combinaison2=0;
 
     time_t debut,actuel;
     double seconde;
@@ -395,7 +392,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
                 if(key[KEY_L] && orienJ1==4){
-                    menu_cru(buffer,nivchoisi);
+                    menu_cru(buffer,nivchoisi, combinaison1, combinaison2);
                 }
             }
 
