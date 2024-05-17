@@ -62,7 +62,7 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
     }
     return recettes;
 }
-int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
+int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1,int capte){
     BITMAP * A0=  load_bitmap("../images/menucru niv1.bmp", NULL);
     BITMAP * A1=load_bitmap("../images/menucru niv1_1.bmp", NULL);
     BITMAP * A2=load_bitmap("../images/menucru niv1_2.bmp", NULL);
@@ -78,7 +78,6 @@ int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
                 combinaison1=1;
                 allegro_message("vous avez pris un thon");
             }
-
         }
         if(mouse_y>=513 && mouse_y<=600)
         {
@@ -96,9 +95,8 @@ int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
                 allegro_message("vous avez pris du riz cru");
             }
         }
-
     }
-//
+    return combinaison1;
 }
 
 int menu(){
@@ -334,8 +332,9 @@ int jeu(int nivchoisi){
     int fin=0;
     int occupation=0;
     int fonction;
-    int combinaison1=0;
-    int combinaison2=0;
+    int combinaison=0;
+    int capte=1;
+    int table;
 
     time_t debut,actuel;
     double seconde;
@@ -417,7 +416,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
                 if(key[KEY_L] && orienJ1==4){
-                    menu_cru(buffer,nivchoisi, combinaison1, combinaison2);
+                    combinaison=menu_cru(buffer,nivchoisi, combinaison, capte);
                 }
             }
 
@@ -426,20 +425,36 @@ int jeu(int nivchoisi){
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
                 if(key[KEY_L] && orienJ1==3){
+                    if(combinaison==3){
+                        occupation++;
+                        if(occupation<0){
+                            occupation=0;
+                        }
+                        if (occupation>2){
+                            occupation=2;
+                        }
+                        combinaison=0;
+                    }
 
-                    occupation++;
-                    if(occupation<0){
-                        occupation=0;
-                    }
-                    if (occupation>2){
-                        occupation=2;
-                    }
                 }
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
                 j1posx = 315;
                 if(key[KEY_L] && orienJ1==2){
-                    allegro_message("prise");
+                   table=combinaison;
+                   combinaison=0;
+                   if(combinaison!=table){
+                       if(table==1 || table==2 && combinaison==4 ||combinaison==1 || combinaison==2 &&table==4){
+                           combinaison=combinaison+table;
+                           if(combinaison==5){
+                               allegro_message("vous avez combiné un sushi thon");
+                           }
+                           if(combinaison==6){
+                               allegro_message("vous avez combiné un sushi saumon");
+                           }
+                       }
+                       else(allegro_message("element non accepté"));
+                   }
                 }
             }
             if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
@@ -673,6 +688,8 @@ int jeu(int nivchoisi){
             if (occupation>2){
                 occupation=2;
             }
+            combinaison=4;
+            allegro_message("vous avez fait du riz cuit");
         }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
