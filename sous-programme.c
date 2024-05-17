@@ -621,7 +621,7 @@ void affiche_score(){
     while(key[KEY_SPACE]==0){//tant que la touche espace n'est pas appuyé
         blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w,Score->h);
     }
-//comms
+//commsss
 }
 
 
