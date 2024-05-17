@@ -289,6 +289,7 @@ void imagefin(){
 
 
 }
+
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
@@ -298,6 +299,7 @@ int jeu(int nivchoisi){
     int orienJ2=1;
     int recette[MAX_COMMANDES];
     int fin=0;
+    int occupation=0;
     int fonction;
 
     time_t debut,actuel;
@@ -340,6 +342,10 @@ int jeu(int nivchoisi){
     BITMAP * NIV1 = load_bitmap("../images/niv1.BMP",NULL);
     BITMAP * NIV2 = load_bitmap("../images/niv2.BMP",NULL);
     BITMAP * NIV3 = load_bitmap("../images/niv3.BMP",NULL);
+    BITMAP * NIV1B1 = load_bitmap("../images/niv1B1.BMP",NULL);
+    BITMAP * NIV1B2 = load_bitmap("../images/niv1B2.BMP",NULL);
+    BITMAP * NIV2B1 = load_bitmap("../images/niv2B1.BMP",NULL);
+    BITMAP * NIV2B2 = load_bitmap("../images/niv2B2.BMP",NULL);
 
     while (!key[KEY_DEL] && !fin) {
 
@@ -349,7 +355,15 @@ int jeu(int nivchoisi){
         fflush(stdout);
 
         if(nivchoisi==1){
-            blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
+            if(occupation==0){
+                blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
+            }
+            if(occupation==1){
+                blit(NIV1B1, buffer, 0, 0, (SCREEN_W - NIV1B1->w) / 2, (SCREEN_H - NIV1B1->h) / 2, NIV1B1->w,NIV1B1->h);
+            }
+            if(occupation==2){
+                blit(NIV1B2, buffer, 0, 0, (SCREEN_W - NIV1B2->w) / 2, (SCREEN_H - NIV1B2->h) / 2, NIV1B2->w,NIV1B2->h);
+            }
             if (j1posx <= 60) j1posx = 60;
             if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
@@ -373,6 +387,7 @@ int jeu(int nivchoisi){
                 j1posy = 530;
                 if(key[KEY_L] && orienJ1==3){
                     allegro_message("prise");
+                    occupation++;
                 }
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
@@ -411,10 +426,20 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                 }
             }
+
         }
 
         if(nivchoisi==2){
-            blit(NIV2, buffer, 0, 0, (SCREEN_W - NIV2->w) / 2, (SCREEN_H - NIV2->h) / 2, NIV2->w,NIV2 ->h);
+            if(occupation == 0){
+                blit(NIV2, buffer, 0, 0, (SCREEN_W - NIV2->w) / 2, (SCREEN_H - NIV2->h) / 2, NIV2->w, NIV2->h);
+            }
+            if(occupation == 1){
+                blit(NIV2B1, buffer, 0, 0, (SCREEN_W - NIV2B1->w) / 2, (SCREEN_H - NIV2B1->h) / 2, NIV2B1->w, NIV2B1->h);
+            }
+            if(occupation == 2){
+                blit(NIV2B2, buffer, 0, 0, (SCREEN_W - NIV2B2->w) / 2, (SCREEN_H - NIV2B2->h) / 2, NIV2B2->w, NIV2B2->h);
+            }
+
             if (j1posx <= 20) j1posx = 20;
             if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
             if (j1posy <= 175) j1posy = 175;
@@ -532,6 +557,9 @@ int jeu(int nivchoisi){
                 }
             }
         }
+        if(key[KEY_E]){
+            occupation--;
+        }
 
         if (key[KEY_UP]) {j1posy -= deplacement; orienJ1=1; }
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
@@ -568,7 +596,7 @@ int jeu(int nivchoisi){
     destroy_bitmap(bouf1_2comm);
     destroy_bitmap(bouf2_2comm);
     destroy_bitmap(bouf3_2comm);
-    destroy_bitmap(NIV1);
+    destroy_bitmap(NIV1);destroy_bitmap(NIV1B1);destroy_bitmap(NIV1B2);
     destroy_bitmap(NIV2);
     destroy_bitmap(NIV3);
     imagefin();
@@ -625,11 +653,10 @@ void tuto(){
 }
 void affiche_score(){
     BITMAP *Score= load_bitmap("../images/Score.bmp",NULL);//on charge l'image du score
-
     while(key[KEY_SPACE]==0){//tant que la touche espace n'est pas appuyé
         blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w,Score->h);
     }
-//commsss
+    //commsss
 }
 
 
