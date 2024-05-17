@@ -535,7 +535,7 @@ void tuto(){
     }
 }
 /*void score();
-BITMAP *pagescore= load_bitmap("../images/Score.bmp",NULL);
+BITMAP *pagescore= load_bitmap("../images/Score.bmp",NULL);//on charge l'image du score
 */
 
 
