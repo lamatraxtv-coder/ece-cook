@@ -354,6 +354,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
             }
+            putpixel(buffer, j2posx,j2posy, makecol(255,0,0));
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
             }
@@ -389,7 +390,7 @@ int jeu(int nivchoisi){
             if (j2posy <= 175) j2posy = 175;        // pour le j2
             if (j2posy >=625) j2posy = 625;
 
-            putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
+
 
             if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
                 j1posx = 270;
@@ -402,18 +403,19 @@ int jeu(int nivchoisi){
             if (j1posx >= 530 && j1posx <= 800 && j1posy >= 320 && j1posy <= 480) {
                 j1posx = 530;
             }
-        }
-        if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
-            j2posx = 270;
+            if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
+                j2posx = 270;
+            }
+
+            if (j2posx >= 200 && j2posx <= 420 && j2posy >= 100 && j2posy <= 372) {
+                j2posy = 372;
+            }
+
+            if (j2posx >= 530 && j2posx <= 800 && j2posy >= 320 && j2posy <= 480) {
+                j2posx = 530;
+            }
         }
 
-        if (j2posx >= 200 && j2posx <= 420 && j2posy >= 100 && j2posy <= 372) {
-            j2posy = 372;
-        }
-
-        if (j2posx >= 530 && j2posx <= 800 && j2posy >= 320 && j2posy <= 480) {
-            j2posx = 530;
-        }
 
         if(nivchoisi==3){
             blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w,NIV3->h);
