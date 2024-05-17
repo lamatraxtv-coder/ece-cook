@@ -757,3 +757,1764 @@ void affiche_score(){
         }
     }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
 }*/
+/*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*//*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*/
