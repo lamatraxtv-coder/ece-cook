@@ -340,7 +340,6 @@ int jeu(int nivchoisi){
         fflush(stdout);
 
         if(nivchoisi==1){
-            textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "j1 : %4d %4d", j1posx, j1posy);
             blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w,NIV1->h);
             if (j1posx <= 60) j1posx = 60;
             if (j1posx >= 705) j1posx = 705;        // collision tour de cuissine (commun a tous les niveaux)
@@ -356,7 +355,6 @@ int jeu(int nivchoisi){
                 j1posx = 150;
             }
             putpixel(buffer, j2posx,j2posy, makecol(255,0,0));
-
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
             }
@@ -499,89 +497,63 @@ int jeu(int nivchoisi){
     imagefin();
     return 0;
 }
-void tuto() {
-    BITMAP *tutoP1 = load_bitmap("../images/tuto1.bmp", NULL);
-    BITMAP *tutoP2 = load_bitmap("../images/tuto2.bmp", NULL);
-    BITMAP *tutoP3 = load_bitmap("../images/tuto3.bmp", NULL);
-    BITMAP *tutoP4 = load_bitmap("../images/tuto4.bmp", NULL);
-    int compteur_page_tuto = 1;
+void tuto(){
+    BITMAP *tutoP1= load_bitmap("../images/tuto1.bmp",NULL);
+    BITMAP *tutoP2= load_bitmap("../images/tuto2.bmp",NULL);
+    BITMAP *tutoP3= load_bitmap("../images/tuto3.bmp",NULL);
+    BITMAP *tutoP4= load_bitmap("../images/tuto4.bmp",NULL);
+    int compteur_page_tuto=1;
     install_keyboard();
-    while (compteur_page_tuto <= MAX_PAGE_TUTO + 1) {
+    while(compteur_page_tuto<=MAX_PAGE_TUTO+1){
         rest(100);
-        if (key[KEY_RIGHT]) {
-            compteur_page_tuto += 1;
+        if(key[KEY_RIGHT]){
+            compteur_page_tuto+=1;
         }
-        if (key[KEY_LEFT]) {
-            compteur_page_tuto -= 1;
+        if(key[KEY_LEFT]){
+            compteur_page_tuto-=1;
         }
-        if (key[KEY_SPACE] || key[KEY_ESC]) {
+        if(key[KEY_SPACE] || key[KEY_ESC]){
             destroy_bitmap(tutoP1);
             destroy_bitmap(tutoP2);
             destroy_bitmap(tutoP3);
             destroy_bitmap(tutoP4);
             return;
         }
-        if (compteur_page_tuto > MAX_PAGE_TUTO) {
-            compteur_page_tuto = MAX_PAGE_TUTO;
+        if(compteur_page_tuto>MAX_PAGE_TUTO){
+            compteur_page_tuto=MAX_PAGE_TUTO;
         }
-        if (compteur_page_tuto < 0) {
-            compteur_page_tuto = 0;
+        if(compteur_page_tuto<0){
+            compteur_page_tuto=0;
         }
 
-        switch (compteur_page_tuto) {
+        switch(compteur_page_tuto){
             case 1:
-                blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w,
-                     tutoP1->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1,
-                              "espace pour revenir au menu");
+                blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w,tutoP1->h);
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 2:
-                blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w,
-                     tutoP2->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1,
-                              "espace pour revenir au menu");
+                blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w, tutoP2->h);
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 3:
-                blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w,
-                     tutoP3->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1,
-                              "espace pour revenir au menu");
+                blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w, tutoP3->h);
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
             case 4:
-                blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w,
-                     tutoP4->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1,
-                              "espace pour revenir au menu");
+                blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
+                textprintf_ex(screen, font, SCREEN_W/2 -90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
                 break;
         }
     }
+}
+void affiche_score(){
+    BITMAP *Score= load_bitmap("../images/Score.bmp",NULL);//on charge l'image du score
+    while(key[KEY_SPACE]==0){//tant que la touche espace n'est pas appuyé
+        blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w,Score->h);
+    }
+
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -604,5 +576,4 @@ void tuto() {
             }
         }
     }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
-}
- */
+}*/

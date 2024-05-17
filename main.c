@@ -26,7 +26,8 @@ int main() {
             }
 
         } else if (select == 2) {
-            allegro_exit();
+            affiche_score();
+            continue;
             break;
         }
         else if(select == 3){
