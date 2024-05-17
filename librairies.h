@@ -3,6 +3,7 @@
 
 #endif //ALLEGRO_LIBRAIRIES_H
 #define MAX_COMMANDES 4
+#define MAX_PAGE_TUTO 4
 // Path: librairies.h
 #include <allegro.h>
 #include <stdio.h>

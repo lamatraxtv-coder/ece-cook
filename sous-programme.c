@@ -386,7 +386,7 @@ int jeu(int nivchoisi){
 
             if (j2posx <= 20) j2posx = 20;
             if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;        // collision tour de cuisine (commun a tous les niveaux)
+            if (j2posy <= 175) j2posy = 175;        // pour le j2
             if (j2posy >=625) j2posy = 625;
 
             putpixel(buffer, j1posx,j1posy, makecol(255,0,0));
@@ -432,7 +432,7 @@ int jeu(int nivchoisi){
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
         if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=4;}
         if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=2;}
-
+                                                                // déplacement des joueurs sur la bord
         if (key[KEY_W]) {j2posy -= deplacement; orienJ2=1;}
         if (key[KEY_S]) {j2posy += deplacement; orienJ2=3;}
         if (key[KEY_A]) {j2posx -= deplacement; orienJ2=4;}
@@ -456,14 +456,17 @@ int jeu(int nivchoisi){
             fin = 1;
         }
     }
-
+    // Destruction des bitmaps chargés
     destroy_bitmap(buffer);
-    //destroy_bitmap(bouf1_1);
-    //destroy_bitmap(bouf2_1);
-    //destroy_bitmap(bouf3_1);
+    destroy_bitmap(bouf1_1comm);
+    destroy_bitmap(bouf2_1comm);
+    destroy_bitmap(bouf3_1comm);
+    destroy_bitmap(bouf1_2comm);
+    destroy_bitmap(bouf2_2comm);
+    destroy_bitmap(bouf3_2comm);
     destroy_bitmap(NIV1);
     destroy_bitmap(NIV2);
-    //destroy_bitmap(NIV3);
+    destroy_bitmap(NIV3);
     imagefin();
     return 0;
 }
@@ -474,7 +477,7 @@ void tuto(){
     BITMAP *tutoP4= load_bitmap("../images/tuto4.bmp",NULL);
     int compteur_page_tuto=1;
     install_keyboard();
-    while(compteur_page_tuto<=5){
+    while(compteur_page_tuto<=MAX_PAGE_TUTO+1){
         rest(100);
         if(key[KEY_RIGHT]){
             compteur_page_tuto+=1;
@@ -489,8 +492,8 @@ void tuto(){
             destroy_bitmap(tutoP4);
             return;
         }
-        if(compteur_page_tuto>4){
-            compteur_page_tuto=4;
+        if(compteur_page_tuto>MAX_PAGE_TUTO){
+            compteur_page_tuto=MAX_PAGE_TUTO;
         }
         if(compteur_page_tuto<0){
             compteur_page_tuto=0;
