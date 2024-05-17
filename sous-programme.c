@@ -101,23 +101,21 @@ int menu(){
                 allegro_exit();
             }
         }
-        if(!(mouse_x>=155 && mouse_x<=313 && mouse_y>=572 && mouse_y<=658) &&
+        if(!(mouse_x>=155 && mouse_x<=313 && mouse_y>=572 && mouse_y<=658) &&//verification de la position de la souris
            !(mouse_x>=368 && mouse_x<=538 && mouse_y>=572 && mouse_y<=658) &&
            !(mouse_x>=585 && mouse_x<=752 && mouse_y>=572 && mouse_y<=658) &&
            !(mouse_x>=487 && mouse_x<=634 && mouse_y>=715 && mouse_y <=762)) {
-            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);//affichage de l'image
         }
     }
-
     return selection;
 }
-
-int selectniv(int fini){
-    install_mouse();
-    show_mouse(screen);
-    int a = 0;
+int selectniv(int fini){//selection du niveau
+    install_mouse();//installation de la souris
+    show_mouse(screen);//affichage de la souris
+    int a=0;//initialisation de la variable
     int choixniv;
-    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);
+    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);//chargement de l'image
     BITMAP *choix1_1 = load_bitmap("../images/choix_niv_1U_niv1.bmp", NULL);
     BITMAP *choix2 = load_bitmap("../images/choix_niv_2U.bmp", NULL);
     BITMAP *choix2_1 = load_bitmap("../images/choix_niv_2U_niv1.bmp", NULL);
@@ -129,55 +127,52 @@ int selectniv(int fini){
     BITMAP *choix1_M = load_bitmap("../images/choix_niv_1U_M.bmp", NULL);
     BITMAP *choix2_M = load_bitmap("../images/choix_niv_2U_M.bmp", NULL);
     BITMAP *choix3_M = load_bitmap("../images/choix_niv_3U_M.bmp", NULL);
-    while (a == 0){
-        if (fini == 0){
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w,
-                     choix1_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+    while (a == 0){//boucle pour la selection du niveau
+        if (fini == 0){//verification de la variable
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//verification de la position de la souris
+                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w,//affichage de l'image
+                     choix1_1->h);//affichage de l'image
+                if (mouse_b & 1){//verification du clic
+                    choixniv=1;//selection du niveau
+                    a=1;//sortie de la boucle
+                }
+            }
+            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112){//verification de la position de la souris
+                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w,//affichage de l'image
+                     choix1_M->h);//affichage de l'image
+                if (mouse_b & 1){//verification du clic
+                    choixniv=0;//selection du niveau
+                    a=1;//sortie de la boucle
 
                 }
             }
-            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
-                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w,
-                     choix1_M->h);
-                if (mouse_b & 1) {
-                    choixniv = 0;
-                    a = 1;
-
-                }
-            }
-            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 ||
-                  mouse_y > 27 && mouse_y < 112)) {
-                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w,
-                     choix1->h);
+            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 ||//verification de la position de la souris
+                  mouse_y > 27 && mouse_y < 112)){//verification de la position de la souris
+                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w,//affichage de l'image
+                     choix1->h);//affichage de l'image
             }
 
             if (key[KEY_UP]) {//verification de l'appui sur la touche
                 fini = fini + 1;//incrementation de la variable
-                sleep(1);
+                sleep(1);//pause de 1 seconde
             }
 
         }
-        if (fini == 1) {
-
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w,
-                     choix2_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
-
+        if (fini == 1){//verification de la variable
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//verification de la position de la souris
+                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w,//affichage de l'image
+                     choix2_1->h);//affichage de l'image
+                if (mouse_b & 1){//verification du clic
+                    choixniv=1;//selection du niveau
+                    a=1;//sortie de la boucle
                 }
             }
-            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w,
-                     choix2_2->h);
-                if (mouse_b & 1) {
-                    choixniv = 2;
-                    a = 1;
+            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739){//verification de la position de la souris
+                blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w,//affichage de l'image
+                     choix2_2->h);//affichage de l'image
+                if (mouse_b & 1){//verification du clic
+                    choixniv =2;//selection du niveau
+                    a=1;//sortie de la boucle
 
                 }
             }
@@ -301,6 +296,8 @@ int jeu(int nivchoisi){
     int fin=0;
     int occupation=0;
     int fonction;
+    int combinaison1;
+    int combinaison2;
 
     time_t debut,actuel;
     double seconde;
