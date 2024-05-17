@@ -311,6 +311,9 @@ int jeu(int nivchoisi){
     BITMAP * bouf1_2comm=load_bitmap("../images/commande PTOMATE.bmp",NULL);
     BITMAP * bouf2_2comm=load_bitmap("../images/commande soupe.bmp",NULL);
     BITMAP * bouf3_2comm=load_bitmap("../images/commande stkfrt.bmp",NULL);
+    BITMAP * bouf1_3comm=load_bitmap("../images/commande crepe nutella.bmp",NULL);
+    BITMAP * bouf2_3comm=load_bitmap("../images/commande crepe au sucre.bmp",NULL);
+    BITMAP * bouf3_3comm=load_bitmap("../images/commande crepe.bmp",NULL);
 
     BITMAP * buffer;
     BITMAP * PERSO1_O[4];
@@ -654,6 +657,9 @@ int jeu(int nivchoisi){
         }
         if(nivchoisi==2){
             nbrecette=gerer_commandes(buffer,nbrecette,bouf1_2comm,bouf2_2comm,bouf3_2comm,recette,0);
+        }
+        if (nivchoisi==3){
+            nbrecette=gerer_commandes(buffer,nbrecette,bouf1_3comm,bouf2_3comm,bouf3_3comm,recette,0);
         }
 
         textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "mouse : %4d %4d", mouse_x, mouse_y);
