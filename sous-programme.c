@@ -69,12 +69,9 @@ int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
         draw_sprite(buffer, load_bitmap("../images/menucru niv1.bmp", NULL), 450, 400);//affichage de l'image
 
         if(mouse_b & 1){//verification du clic
-
         }
     }
-
 }
-
 int menu(){
     install_mouse();//installation de la souris
     show_mouse(screen);//affichage de la souris
