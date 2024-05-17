@@ -486,6 +486,7 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                 }
             }
+            //migo
             if (j1posy <= 275){
                 j1posy = 275;
                 if(key[KEY_L] && orienJ1==4){
