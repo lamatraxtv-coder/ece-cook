@@ -98,7 +98,7 @@ int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison1, int combinaison2){
         }
 
     }
-
+//
 }
 
 int menu(){
