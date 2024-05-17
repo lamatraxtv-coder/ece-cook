@@ -743,7 +743,7 @@ void affiche_score(){
 
     //commsss
 
-void score(){
+/*void score(){
     FILE *saveScore = NULL;
     saveScore = fopen("SauvegardeScore.txt", "r");
     int score;

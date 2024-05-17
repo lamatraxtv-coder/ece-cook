@@ -26,3 +26,7 @@ void tuto();
 void affiche_score();
 void imagefin();
 int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index);
+void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recette1, BITMAP *recette2, BITMAP *recette3);
+void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);
+void affiche_score();
+void score();
