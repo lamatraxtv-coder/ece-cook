@@ -738,7 +738,25 @@ void affiche_score(){
     while(key[KEY_SPACE]==0){//tant que la touche espace n'est pas appuyé
         blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w,Score->h);
     }
+    destroy_bitmap(Score);//on détruit l'image du score
+}
+
     //commsss
+
+void score(){
+    FILE *saveScore = NULL;
+    saveScore = fopen("SauvegardeScore.txt", "r");
+    int score;
+    int niveau;
+    if (saveScore != NULL) {
+        while (!feof(saveScore)) {
+            fscanf(saveScore, "%d\n%d\n", &niveau, &score);
+            printf("niveau : %d score : %d\n", niveau, score);
+        }
+        fclose(saveScore);
+    } else {
+        printf("impossible de lire le fichier");
+    }
 }
 
 
