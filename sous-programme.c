@@ -62,6 +62,22 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
     }
     return recettes;
 }
+int menu_cru(BITMAP *buffer,int nivchoisi){
+    int a=0;
+  //  load_bitmap("../images/menucru niv2.bmp", NULL);
+  //  load_bitmap("../images/menucru niv3.bmp", NULL);
+    if (nivchoisi==1){
+        draw_sprite(buffer, load_bitmap("../images/menucru niv1.bmp", NULL), 450, 400);//affichage de l'image
+
+        if(mouse_b & 1){//verification du clic
+
+        }
+    }
+
+}
+
+
+
 int menu(){
     install_mouse();//installation de la souris
     show_mouse(screen);//affichage de la souris
@@ -379,7 +395,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
                 if(key[KEY_L] && orienJ1==4){
-                    allegro_message("prise");
+                    menu_cru(buffer,nivchoisi);
                 }
             }
 
