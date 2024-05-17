@@ -111,6 +111,7 @@ int menu(){
 
     return selection;
 }
+
 int selectniv(int fini){
     install_mouse();
     show_mouse(screen);
@@ -128,8 +129,8 @@ int selectniv(int fini){
     BITMAP *choix1_M = load_bitmap("../images/choix_niv_1U_M.bmp", NULL);
     BITMAP *choix2_M = load_bitmap("../images/choix_niv_2U_M.bmp", NULL);
     BITMAP *choix3_M = load_bitmap("../images/choix_niv_3U_M.bmp", NULL);
-    while (a == 0) {
-        if (fini == 0) {
+    while (a == 0){
+        if (fini == 0){
             if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
                 blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w,
                      choix1_1->h);
@@ -288,6 +289,7 @@ void imagefin(){
 
 
 }
+
 int jeu(int nivchoisi){
     int j1posx, j1posy;
     int j2posx, j2posy;
@@ -388,6 +390,12 @@ int jeu(int nivchoisi){
                 if(key[KEY_L] && orienJ1==3){
                     allegro_message("prise");
                     occupation++;
+                    if(occupation<0){
+                        occupation=0;
+                    }
+                    if (occupation>2){
+                        occupation=2;
+                    }
                 }
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
@@ -472,6 +480,12 @@ int jeu(int nivchoisi){
                 if(key[KEY_L]){
                     allegro_message("prise");
                     occupation++;
+                    if(occupation<0){
+                        occupation=0;
+                    }
+                    if (occupation>2){
+                        occupation=2;
+                    }
                 }
             }
             if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
@@ -493,6 +507,12 @@ int jeu(int nivchoisi){
                 if(key[KEY_C]){
                     allegro_message("prise");
                     occupation++;
+                    if(occupation<0){
+                        occupation=0;
+                    }
+                    if (occupation>2){
+                        occupation=2;
+                    }
                 }
             }
         }
@@ -540,6 +560,12 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                     if(j1posx>=230 && j1posx<=260){
                         occupation++;
+                        if(occupation<0){
+                            occupation=0;
+                        }
+                        if (occupation>2){
+                            occupation=2;
+                        }
                     }
                 }
             }
@@ -549,6 +575,12 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                     if(j1posx>=230 && j1posx<=260){
                         occupation++;
+                        if(occupation<0){
+                            occupation=0;
+                        }
+                        if (occupation>2){
+                            occupation=2;
+                        }
                     }
                 }
             }
@@ -570,6 +602,12 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                     if(j2posx>=230 && j2posx<=260){
                         occupation++;
+                        if(occupation<0){
+                            occupation=0;
+                        }
+                        if (occupation>2){
+                            occupation=2;
+                        }
                     }
                 }
             }
@@ -579,6 +617,12 @@ int jeu(int nivchoisi){
                     allegro_message("prise");
                     if(j2posx>=230 && j2posx<=260){
                         occupation++;
+                        if(occupation<0){
+                            occupation=0;
+                        }
+                        if (occupation>2){
+                            occupation=2;
+                        }
                     }
                 }
             }
@@ -588,7 +632,7 @@ int jeu(int nivchoisi){
             if(occupation<0){
                 occupation=0;
             }
-            if(occupation>2){
+            if (occupation>2){
                 occupation=2;
             }
         }
@@ -597,7 +641,7 @@ int jeu(int nivchoisi){
         if (key[KEY_DOWN]) {j1posy += deplacement; orienJ1=3;}
         if (key[KEY_LEFT]) {j1posx -= deplacement; orienJ1=4;}
         if (key[KEY_RIGHT]) {j1posx += deplacement; orienJ1=2;}
-                                                                // déplacement des joueurs sur la bord
+        // déplacement des joueurs sur la bord
         if (key[KEY_W]) {j2posy -= deplacement; orienJ2=1;}
         if (key[KEY_S]) {j2posy += deplacement; orienJ2=3;}
         if (key[KEY_A]) {j2posx -= deplacement; orienJ2=4;}
@@ -616,7 +660,7 @@ int jeu(int nivchoisi){
         textprintf_ex(buffer,font,700,700, makecol(255,255,255),-1,"%.1f / 180", seconde);
         blit(buffer, screen,0,0,0,0,SCREEN_W,SCREEN_H);
         rest(40);
-        if (seconde >= 180) {
+        if (seconde >= 180){
             fin = 1;
         }
     }
@@ -688,4 +732,28 @@ void affiche_score(){
     while(key[KEY_SPACE]==0){//tant que la touche espace n'est pas appuyé
         blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w,Score->h);
     }
+    //commsss
 }
+
+
+/*
+    // on affiche un menu pour demande si le joueur veut enregistrer son score
+    printf("enregistrer Score :");
+    locate(3,14);
+    printf("oui(o) ou non(n)");
+    int reponse;        // on initialise un entier 'reponse'
+    do {                // on execute la boucle une première fois même si la condition n'est pas respecté
+        reponse = getch();      // on la touche appuyé dans la variable 'reponse'
+        if (reponse == 111) {   // si la touche appuyé est 'o'
+            FILE *saveScore = NULL; // on inititalise un pointeur sur NULL
+            saveScore = fopen("SauvegardeScore.txt", "a"); //on ouvre le ficher de sauvegarde des scores sur ce pointeur en mode ajout
+            if (saveScore != NULL) {
+                fprintf(saveScore, "%d\n%d\n", niveau, score);      // on écrit à la suite du fichier le niveau et le score sur 2 lignes différentes
+                fclose(saveScore);                                            // on referme ensuite le fichier
+            } else {                //sinon c'est que le fichier n'a pas réussi à être ouvert
+                locate(0, 18);
+                printf("impossible de sauvegarder le score");       // on affcihe donc un message d'erreur
+            }
+        }
+    }while(reponse != 111 && reponse != 110);       //boucle que l'on répète tant que la touche appuyé est autre que 'n' ou 'o'
+}*/
