@@ -391,7 +391,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
                 if(key[KEY_L] && orienJ1==3){
-                    allegro_message("prise");
+
                     occupation++;
                     if(occupation<0){
                         occupation=0;
@@ -481,7 +481,7 @@ int jeu(int nivchoisi){
             if (j1posx >= 530 && j1posx <= 800 && j1posy >= 320 && j1posy <= 480) {
                 j1posx = 530;
                 if(key[KEY_L]){
-                    allegro_message("prise");
+
                     occupation++;
                     if(occupation<0){
                         occupation=0;
@@ -508,7 +508,7 @@ int jeu(int nivchoisi){
             if (j2posx >= 530 && j2posx <= 800 && j2posy >= 320 && j2posy <= 480) {
                 j2posx = 530;
                 if(key[KEY_C]){
-                    allegro_message("prise");
+
                     occupation++;
                     if(occupation<0){
                         occupation=0;
@@ -560,7 +560,7 @@ int jeu(int nivchoisi){
             if (j1posy <= 275){
                 j1posy = 275;
                 if(key[KEY_L] && orienJ1==1){
-                    allegro_message("prise");
+
                     if(j1posx>=230 && j1posx<=260){
                         occupation++;
                         if(occupation<0){
@@ -575,7 +575,7 @@ int jeu(int nivchoisi){
             if (j1posy >= 575){
                 j1posy = 575;
                 if(key[KEY_L] && orienJ1==3){
-                    allegro_message("prise");
+
                     if(j1posx>=230 && j1posx<=260){
                         occupation++;
                         if(occupation<0){
@@ -602,7 +602,7 @@ int jeu(int nivchoisi){
             if (j2posy <= 275){
                 j2posy = 275;
                 if(key[KEY_C] && orienJ2 == 1){
-                    allegro_message("prise");
+
                     if(j2posx>=230 && j2posx<=260){
                         occupation++;
                         if(occupation<0){
@@ -617,7 +617,7 @@ int jeu(int nivchoisi){
             if (j2posy >= 575){
                 j2posy = 575;
                 if(key[KEY_C] && orienJ2 == 3){
-                    allegro_message("prise");
+
                     if(j2posx>=230 && j2posx<=260){
                         occupation++;
                         if(occupation<0){
