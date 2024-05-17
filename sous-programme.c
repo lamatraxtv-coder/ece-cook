@@ -476,27 +476,51 @@ int jeu(int nivchoisi){
 
             if (j1posx >= 640){
                 j1posx = 640;
+                if(key[KEY_L] && orienJ1==2){
+                    allegro_message("prise");
+                }
             }
             if (j1posx <= 170){
                 j1posx = 170;
+                if(key[KEY_L] && orienJ1==3){
+                    allegro_message("prise");
+                }
             }
             if (j1posy <= 275){
                 j1posy = 275;
+                if(key[KEY_L] && orienJ1==4){
+                    allegro_message("prise");
+                }
             }
             if (j1posy >= 575){
                 j1posy = 575;
+                if(key[KEY_L] && orienJ1==1){
+                    allegro_message("prise");
+                }
             }
             if (j2posx >= 640){
                 j2posx = 640;
+                if(key[KEY_C] && orienJ2 == 2){
+                    allegro_message("prise");
+                }
             }
             if (j2posx <= 170){
                 j2posx = 170;
+                if(key[KEY_C] && orienJ2 == 3){
+                    allegro_message("prise");
+                }
             }
             if (j2posy <= 275){
                 j2posy = 275;
+                if(key[KEY_C] && orienJ2 == 4){
+                    allegro_message("prise");
+                }
             }
             if (j2posy >= 575){
                 j2posy = 575;
+                if(key[KEY_C] && orienJ2 == 1){
+                    allegro_message("prise");
+                }
             }
         }
 
