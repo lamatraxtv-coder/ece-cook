@@ -699,28 +699,27 @@ int jeu(int nivchoisi) {
         if (key[KEY_A]) { joueur2.posx -= deplacement; joueur2.orientation=4;}//si la touche A est appuyée
         if (key[KEY_D]) { joueur2.posx += deplacement; joueur2.orientation =2;}//si la touche D est appuyée
 
-        image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);
-        if (nivchoisi == 1) {
-            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0);
+        image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);//appel de la fonction image_joueur
+        if (nivchoisi==1){//si le niveau choisi est le niveau 1
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0);//appel de la fonction gerer_commandes
         }
-        if (nivchoisi == 2) {
-            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0);
+        if (nivchoisi==2){//si le niveau choisi est le niveau 2
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0);
         }
-        if (nivchoisi == 3) {
+        if (nivchoisi==3){//si le niveau choisi est le niveau 3
             nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0);
         }
-        textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);
+        textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);//affichage du texte
         textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, " j2 : %4d %4d", joueur2.posx, joueur2.posy);
         textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "mouse : %4d %4d", mouse_x, mouse_y);
         textprintf_ex(buffer, font, 700, 700, makecol(255, 255, 255), -1, "%.1f / 180", seconde);
-        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-        rest(40);
-        if (seconde >= 180) {
-            fin = 1;
+        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);//affichage de l'image
+        rest(40);//pause
+        if (seconde>=180){//si la variable seconde est supérieure ou égale à 180
+            fin=1;//définition de la variable
         }
     }
-
-    destroy_bitmap(buffer);
+    destroy_bitmap(buffer);//libération de la mémoire
     destroy_bitmap(bouf1_1comm);
     destroy_bitmap(bouf2_1comm);
     destroy_bitmap(bouf3_1comm);
@@ -738,81 +737,81 @@ int jeu(int nivchoisi) {
     return 0;
 }
 
-void imagefin() {
-    install_mouse();
-    show_mouse(screen);
-    int verif = 0;
-    BITMAP *imagefin = load_bitmap("../images/imagefin.bmp", NULL);
-    BITMAP *imagefinselect = load_bitmap("../images/imagefinselect.bmp", NULL);
-    while (!verif) {
-        if (mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715) {
-            blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w, imagefinselect->h);
-            if (mouse_b & 1) {
-                verif = 1;
+void imagefin(){//fonction imagefin
+    install_mouse();//initialisation de la souris
+    show_mouse(screen);//affichage de la souris
+    int verif=0;//définition de la variable
+    BITMAP *imagefin=load_bitmap("../images/imagefin.bmp", NULL);//chargement des images
+    BITMAP *imagefinselect=load_bitmap("../images/imagefinselect.bmp", NULL);//chargement des images
+    while (!verif){//tant que la variable verif est fausse
+        if (mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715){//si la position de la souris est comprise entre 390 et 530 et entre 650 et 715
+            blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w, imagefinselect->h);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                verif=1;//définition de la variable
             }
         }
-        if (!(mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715)) {
-            blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w, imagefin->h);
+        if (!(mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715)){//si la position de la souris n'est pas comprise entre 390 et 530 et entre 650 et 715
+            blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w, imagefin->h);//affichage de l'image
         }
     }
-    destroy_bitmap(imagefinselect);
+    destroy_bitmap(imagefinselect);//libération de la mémoire
     destroy_bitmap(imagefin);
 }
 
-void tuto() {
-    BITMAP *tutoP1 = load_bitmap("../images/tuto1.bmp", NULL);
-    BITMAP *tutoP2 = load_bitmap("../images/tuto2.bmp", NULL);
-    BITMAP *tutoP3 = load_bitmap("../images/tuto3.bmp", NULL);
-    BITMAP *tutoP4 = load_bitmap("../images/tuto4.bmp", NULL);
-    int compteur_page_tuto = 1;
-    install_keyboard();
-    while (compteur_page_tuto <= MAX_PAGE_TUTO + 1) {
-        rest(100);
-        if (key[KEY_RIGHT]) {
-            compteur_page_tuto += 1;
+void tuto(){//fonction tuto
+    BITMAP *tutoP1=load_bitmap("../images/tuto1.bmp", NULL);//chargement des images
+    BITMAP *tutoP2=load_bitmap("../images/tuto2.bmp", NULL);
+    BITMAP *tutoP3=load_bitmap("../images/tuto3.bmp", NULL);
+    BITMAP *tutoP4=load_bitmap("../images/tuto4.bmp", NULL);
+    int compteur_page_tuto=1;//définition de la variable
+    install_keyboard();//initialisation du clavier
+    while (compteur_page_tuto<=MAX_PAGE_TUTO+1){//tant que le compteur est inférieur ou égal à MAX_PAGE_TUTO + 1
+        rest(100);//pause
+        if (key[KEY_RIGHT]){//si la touche DROITE est appuyée
+            compteur_page_tuto +=1;//incrémentation de la variable
         }
-        if (key[KEY_LEFT]) {
-            compteur_page_tuto -= 1;
+        if (key[KEY_LEFT]){//si la touche GAUCHE est appuyée
+            compteur_page_tuto -= 1;//décrémentation de la variable
         }
-        if (key[KEY_SPACE] || key[KEY_ESC]) {
-            destroy_bitmap(tutoP1);
+        if (key[KEY_SPACE] || key[KEY_ESC]){//si la touche ESPACE ou ECHAP est appuyée
+            destroy_bitmap(tutoP1);//libération de la mémoire
             destroy_bitmap(tutoP2);
             destroy_bitmap(tutoP3);
             destroy_bitmap(tutoP4);
             return;
         }
-        if (compteur_page_tuto > MAX_PAGE_TUTO) {
-            compteur_page_tuto = MAX_PAGE_TUTO;
+        if (compteur_page_tuto>MAX_PAGE_TUTO){//si le compteur est supérieur à MAX_PAGE_TUTO
+            compteur_page_tuto=MAX_PAGE_TUTO;//définition de la variable
         }
-        if (compteur_page_tuto < 0) {
-            compteur_page_tuto = 0;
+        if (compteur_page_tuto<0){//si le compteur est inférieur à 0
+            compteur_page_tuto=0;//définition de la variable
         }
 
-        switch (compteur_page_tuto) {
+        switch (compteur_page_tuto){//selon la variable
             case 1:
-                blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w, tutoP1->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
-                break;
+                blit(tutoP1, screen, 0, 0, (SCREEN_W - tutoP1->w) / 2, (SCREEN_H - tutoP1->h) / 2, tutoP1->w, tutoP1->h);//affichage de l'image
+                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");//affichage du texte
+                break;//sortie de la boucle
             case 2:
-                blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w, tutoP2->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                blit(tutoP2, screen, 0, 0, (SCREEN_W - tutoP2->w) / 2, (SCREEN_H - tutoP2->h) / 2, tutoP2->w, tutoP2->h);//affichage de l'image
+                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");//affichage du texte
                 break;
             case 3:
-                blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w, tutoP3->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                blit(tutoP3, screen, 0, 0, (SCREEN_W - tutoP3->w) / 2, (SCREEN_H - tutoP3->h) / 2, tutoP3->w, tutoP3->h);//affichage de l'image
+                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");//affichage du texte
                 break;
             case 4:
-                blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);
-                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");
+                blit(tutoP4, screen, 0, 0, (SCREEN_W - tutoP4->w) / 2, (SCREEN_H - tutoP4->h) / 2, tutoP4->w, tutoP4->h);//affichage de l'image
+                textprintf_ex(screen, font, SCREEN_W / 2 - 90, 100, makecol(0, 0, 0), -1, "espace pour revenir au menu");//affichage du texte
                 break;
         }
     }
 }
 
-void affiche_score() {
-    BITMAP *Score = load_bitmap("../images/Score.bmp", NULL);
-    while (key[KEY_SPACE] == 0) {
-        blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w, Score->h);
+void affiche_score(){//fonction affiche_score
+    BITMAP *Score=load_bitmap("../images/Score.bmp", NULL);//chargement de l'image
+    while (key[KEY_SPACE]==0){//tant que la touche ESPACE n'est pas appuyée
+        blit(Score, screen, 0, 0, (SCREEN_W - Score->w) / 2, (SCREEN_H - Score->h) / 2, Score->w, Score->h);//affichage de l'image
     }
-    destroy_bitmap(Score);
+    destroy_bitmap(Score);//libération de la mémoire
 }
