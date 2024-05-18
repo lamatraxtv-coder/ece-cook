@@ -472,13 +472,19 @@ int jeu(int nivchoisi) {
             }
             if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700) {
                 joueur2.posy = 470;
+                if (key[KEY_A]) {
+                    tables(&joueur2, &table, nivchoisi);
+                }
             }
+
+
             if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600) {
                 joueur2.posx = 470;
                 if (key[KEY_A]) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
+
             if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260) {
                 joueur2.posy = 260;
                 if (key[KEY_A] && joueur2.orientation == 1) {
@@ -491,6 +497,7 @@ int jeu(int nivchoisi) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
+
         }
 
         if (nivchoisi == 2) {
