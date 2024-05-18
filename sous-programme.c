@@ -1,5 +1,7 @@
 #include "librairies.h"
 
+
+
 void affichagechargement() {
     set_trans_blender(0, 255, 0, 0);
     BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);
@@ -27,12 +29,12 @@ void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {
     PERSO2_O[3] = load_bitmap("../images/perso2O4.bmp", NULL);
 }
 
-void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
-    if (orienJ1 >= 1 && orienJ1 <= 4) {
-        draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joueur joueur1, Joueur joueur2) {
+    if (joueur1.orientation >= 1 && joueur1.orientation <= 4) {
+        draw_sprite(buffer, PERSO1_O[joueur1.orientation - 1], joueur1.posx, joueur1.posy);
     }
-    if (orienJ2 >= 1 && orienJ2 <= 4) {
-        draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
+    if (joueur2.orientation >= 1 && joueur2.orientation <= 4) {
+        draw_sprite(buffer, PERSO2_O[joueur2.orientation - 1], joueur2.posx, joueur2.posy);
     }
 }
 
@@ -284,86 +286,70 @@ int selectniv(int fini) {
     return choixniv;
 }
 
-void imagefin() {
-    install_mouse();
-    show_mouse(screen);
-    int verif = 0;
-    BITMAP *imagefin = load_bitmap("../images/imagefin.bmp", NULL);
-    BITMAP *imagefinselect = load_bitmap("../images/imagefinselect.bmp", NULL);
-    while (!verif) {
-        if (mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715) {
-            blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w, imagefinselect->h);
-            if (mouse_b & 1) {
-                verif = 1;
-            }
+// Fonction tables modifiée avec le paramètre nivchoisi
+void tables(Joueur *joueur, int *table, int nivchoisi) {
+    if (joueur->combinaison == 0 && *table != 0) {
+        joueur->combinaison = *table;
+        *table = 0;
+        if (joueur->combinaison == 1) {
+            allegro_message("thon pris");
+        } else if (joueur->combinaison == 2) {
+            allegro_message("saumon pris");
+        } else if (joueur->combinaison == 4) {
+            allegro_message("riz cuit pris");
+        } else if (joueur->combinaison == 5) {
+            allegro_message("sushi thon pris");
+        } else if (joueur->combinaison == 6) {
+            allegro_message("sushi saumon pris");
         }
-        if (!(mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715)) {
-            blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w, imagefin->h);
-        }
-    }
-    destroy_bitmap(imagefinselect);
-    destroy_bitmap(imagefin);
-}
-
-void tables(int combinaison, int *table, int nivchoisi) {
-    if (*table == 0 && combinaison != 3) {
-        *table = combinaison;
-
+    } else if (*table == 0 && joueur->combinaison != 3) {
+        *table = joueur->combinaison;
         if (*table == 1) {
             allegro_message("vous avez posé du thon");
-            combinaison = 0;
+            joueur->combinaison = 0;
         } else if (*table == 2) {
             allegro_message("vous avez posé du saumon");
-            combinaison = 0;
+            joueur->combinaison = 0;
         } else if (*table == 4) {
             allegro_message("vous avez posé du riz cuit");
-            combinaison = 0;
+            joueur->combinaison = 0;
         }
-    } else if ((*table == 1 || *table == 2) && combinaison == 4) {
-        combinaison += *table;
-
-        if (combinaison == 5) {
+    } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4) {
+        joueur->combinaison += *table;
+        if (joueur->combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
             *table = 0;
-            combinaison = 0;
-        } else if (combinaison == 6) {
+            joueur->combinaison = 0;
+        } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
             *table = 0;
-            combinaison = 0;
+            joueur->combinaison = 0;
         }
-    } else if ((combinaison == 1 || combinaison == 2) && *table == 4) {
-        combinaison += *table;
-
-        if (combinaison == 5) {
+    } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4) {
+        joueur->combinaison += *table;
+        if (joueur->combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
             *table = 0;
-            combinaison = 0;
-        } else if (combinaison == 6) {
+            joueur->combinaison = 0;
+        } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
             *table = 0;
-            combinaison = 0;
+            joueur->combinaison = 0;
         }
     } else if (*table == 3) {
         allegro_message("vous ne pouvez pas poser du riz cru");
         *table = 0;
-        combinaison = 3;
+        joueur->combinaison = 3;
     }
 }
 
 int jeu(int nivchoisi) {
-    int j1posx, j1posy;
-    int j2posx, j2posy;
+    Joueur joueur1, joueur2;
     int nbrecette = 0;
     int deplacement = 10;
-    int orienJ1 = 1;
-    int orienJ2 = 1;
     int recette[MAX_COMMANDES];
     int fin = 0;
     int occupation = 0;
-    int fonction;
-    int combinaisonJ1 = 0;
-    int combinaisonJ2 = 0;
-    int capte = 1;
     int table = 0;
 
     time_t debut, actuel;
@@ -384,17 +370,28 @@ int jeu(int nivchoisi) {
     BITMAP *PERSO2_O[4];
 
     if (nivchoisi == 1) {
-        j1posx = 255, j1posy = 370;
-        j2posx = 555, j2posy = 370;
+        joueur1.posx = 255;
+        joueur1.posy = 370;
+        joueur2.posx = 555;
+        joueur2.posy = 370;
     }
     if (nivchoisi == 2) {
-        j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
-        j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+        joueur1.posx = SCREEN_W / 2;
+        joueur1.posy = SCREEN_H / 2;
+        joueur2.posx = SCREEN_W / 2;
+        joueur2.posy = SCREEN_H / 2;
     }
     if (nivchoisi == 3) {
-        j1posx = SCREEN_W / 2, j1posy = SCREEN_H / 2;
-        j2posx = SCREEN_W / 2, j2posy = SCREEN_H / 2;
+        joueur1.posx = SCREEN_W / 2;
+        joueur1.posy = SCREEN_H / 2;
+        joueur2.posx = SCREEN_W / 2;
+        joueur2.posy = SCREEN_H / 2;
     }
+
+    joueur1.combinaison = 0;
+    joueur2.combinaison = 0;
+    joueur1.orientation = 1;
+    joueur2.orientation = 1;
 
     buffer = create_bitmap(SCREEN_W, SCREEN_H);
     show_mouse(screen);
@@ -427,29 +424,29 @@ int jeu(int nivchoisi) {
             if (occupation == 2) {
                 blit(NIV1B2, buffer, 0, 0, (SCREEN_W - NIV1B2->w) / 2, (SCREEN_H - NIV1B2->h) / 2, NIV1B2->w, NIV1B2->h);
             }
-            if (j1posx <= 60) j1posx = 60;
-            if (j1posx >= 705) j1posx = 705;
-            if (j1posy <= 175) j1posy = 175;
-            if (j1posy >= 625) j1posy = 625;
+            if (joueur1.posx <= 60) joueur1.posx = 60;
+            if (joueur1.posx >= 705) joueur1.posx = 705;
+            if (joueur1.posy <= 175) joueur1.posy = 175;
+            if (joueur1.posy >= 625) joueur1.posy = 625;
 
-            if (j2posx <= 60) j2posx = 60;
-            if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;
-            if (j2posy >= 625) j2posy = 625;
+            if (joueur2.posx <= 60) joueur2.posx = 60;
+            if (joueur2.posx >= 705) joueur2.posx = 705;
+            if (joueur2.posy <= 175) joueur2.posy = 175;
+            if (joueur2.posy >= 625) joueur2.posy = 625;
 
-            if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
-                j1posx = 150;
-                if (key[KEY_L] && orienJ1 == 4) {
-                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
+            if (joueur1.posx >= 60 && joueur1.posx <= 150 && joueur1.posy >= 205 && joueur1.posy <= 520) {
+                joueur1.posx = 150;
+                if (key[KEY_L] && joueur1.orientation == 4) {
+                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
                 }
             }
 
-            putpixel(buffer, j1posx, j1posy, makecol(0, 0, 0));
+            putpixel(buffer, joueur1.posx, joueur1.posy, makecol(0, 0, 0));
 
-            if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
-                j1posy = 530;
-                if (key[KEY_L] && orienJ1 == 3) {
-                    if (combinaisonJ1 == 3) {
+            if (joueur1.posx >= 140 && joueur1.posx <= 500 && joueur1.posy >= 530 && joueur1.posy <= 700) {
+                joueur1.posy = 530;
+                if (key[KEY_L] && joueur1.orientation == 3) {
+                    if (joueur1.combinaison == 3) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -457,45 +454,41 @@ int jeu(int nivchoisi) {
                         if (occupation > 2) {
                             occupation = 2;
                         }
-                        combinaisonJ1 = 0;
+                        joueur1.combinaison = 0;
                     }
                 }
             }
-            if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
-                j1posx = 315;
-                if (key[KEY_L] && orienJ1 == 2) {
-                    tables(combinaisonJ1, &table, nivchoisi);
+            if (joueur1.posx >= 315 && joueur1.posx <= 500 && joueur1.posy >= 180 && joueur1.posy <= 600) {
+                joueur1.posx = 315;
+                if (key[KEY_L] && joueur1.orientation == 2) {
+                    tables(&joueur1, &table, nivchoisi);
                 }
             }
-            if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
-                j1posy = 240;
-                if (key[KEY_L] && orienJ1 == 1) {
+            if (joueur1.posx >= 160 && joueur1.posx <= 780 && joueur1.posy >= 188 && joueur1.posy <= 240) {
+                joueur1.posy = 240;
+                if (key[KEY_L] && joueur1.orientation == 1) {
                     allegro_message("prise");
                 }
             }
-            if (j2posx >= 160 && j2posx <= 450 && j2posy >= 530 && j2posy <= 700) {
-                j2posy = 470;
-                if (key[KEY_C]) {
-                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
+            if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700) {
+                joueur2.posy = 470;
+            }
+            if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600) {
+                joueur2.posx = 470;
+                if (key[KEY_C] && joueur2.orientation == 2) {
+                    tables(&joueur2, &table, nivchoisi);
                 }
             }
-            if (j2posx >= 315 && j2posx <= 470 && j2posy >= 180 && j2posy <= 600) {
-                j2posx = 470;
-                if (key[KEY_C]) {
-                    tables(combinaisonJ2, &table, nivchoisi);
+            if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260) {
+                joueur2.posy = 260;
+                if (key[KEY_C] && joueur2.orientation == 1) {
+                    allegro_message("prise3");
                 }
             }
-            if (j2posx >= 160 && j2posx <= 780 && j2posy >= 188 && j2posy <= 260) {
-                j2posy = 260;
-                if (key[KEY_C] && orienJ2 == 1) {
-                    allegro_message("prise");
-                }
-
-            }
-            if (j2posx >= 610 && j2posx <= 705 && j2posy >= 340 && j2posy <= 550) {
-                j2posx = 610;
-                if (key[KEY_C]) {
-                    allegro_message("prise 7");
+            if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550) {
+                joueur2.posx = 610;
+                if (key[KEY_C] && joueur2.orientation == 2) {
+                    tables(&joueur2, &table, nivchoisi);
                 }
             }
         }
@@ -511,32 +504,32 @@ int jeu(int nivchoisi) {
                 blit(NIV2B2, buffer, 0, 0, (SCREEN_W - NIV2B2->w) / 2, (SCREEN_H - NIV2B2->h) / 2, NIV2B2->w, NIV2B2->h);
             }
 
-            if (j1posx <= 20) j1posx = 20;
-            if (j1posx >= 705) j1posx = 705;
-            if (j1posy <= 175) j1posy = 175;
-            if (j1posy >= 625) j1posy = 625;
+            if (joueur1.posx <= 20) joueur1.posx = 20;
+            if (joueur1.posx >= 705) joueur1.posx = 705;
+            if (joueur1.posy <= 175) joueur1.posy = 175;
+            if (joueur1.posy >= 625) joueur1.posy = 625;
 
-            if (j2posx <= 20) j2posx = 20;
-            if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;
-            if (j2posy >= 625) j2posy = 625;
+            if (joueur2.posx <= 20) joueur2.posx = 20;
+            if (joueur2.posx >= 705) joueur2.posx = 705;
+            if (joueur2.posy <= 175) joueur2.posy = 175;
+            if (joueur2.posy >= 625) joueur2.posy = 625;
 
-            if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
-                j1posx = 270;
+            if (joueur1.posx >= 0 && joueur1.posx <= 270 && joueur1.posy >= 400 && joueur1.posy <= 600) {
+                joueur1.posx = 270;
                 if (key[KEY_L]) {
-                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
+                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
                 }
             }
 
-            if (j1posx >= 200 && j1posx <= 420 && j1posy >= 100 && j1posy <= 372) {
-                j1posy = 372;
+            if (joueur1.posx >= 200 && joueur1.posx <= 420 && joueur1.posy >= 100 && joueur1.posy <= 372) {
+                joueur1.posy = 372;
                 if (key[KEY_L]) {
-                    tables(combinaisonJ1, &table, nivchoisi);
+                    tables(&joueur1, &table, nivchoisi);
                 }
             }
 
-            if (j1posx >= 530 && j1posx <= 800 && j1posy >= 320 && j1posy <= 480) {
-                j1posx = 530;
+            if (joueur1.posx >= 530 && joueur1.posx <= 800 && joueur1.posy >= 320 && joueur1.posy <= 480) {
+                joueur1.posx = 530;
                 if (key[KEY_L]) {
                     occupation++;
                     if (occupation < 0) {
@@ -547,22 +540,22 @@ int jeu(int nivchoisi) {
                     }
                 }
             }
-            if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
-                j2posx = 270;
+            if (joueur2.posx >= 0 && joueur2.posx <= 270 && joueur2.posy >= 400 && joueur2.posy <= 600) {
+                joueur2.posx = 270;
                 if (key[KEY_C]) {
-                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
+                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
                 }
             }
 
-            if (j2posx >= 200 && j2posx <= 420 && j2posy >= 100 && j2posy <= 372) {
-                j2posy = 372;
+            if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372) {
+                joueur2.posy = 372;
                 if (key[KEY_C]) {
-                    tables(combinaisonJ2, &table, nivchoisi);
+                    tables(&joueur2, &table, nivchoisi);
                 }
             }
 
-            if (j2posx >= 530 && j2posx <= 800 && j2posy >= 320 && j2posy <= 480) {
-                j2posx = 530;
+            if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480) {
+                joueur2.posx = 530;
                 if (key[KEY_C]) {
                     occupation++;
                     if (occupation < 0) {
@@ -585,35 +578,35 @@ int jeu(int nivchoisi) {
             if (occupation == 2) {
                 blit(NIV3B2, buffer, 0, 0, (SCREEN_W - NIV3B2->w) / 2, (SCREEN_H - NIV3B2->h) / 2, NIV3B2->w, NIV3B2->h);
             }
-            textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, "j1 : %4d %4d", j1posx, j1posy);
-            textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "j2 : %4d %4d", j2posx, j2posy);
+            textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, "j1 : %4d %4d", joueur1.posx, joueur1.posy);
+            textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "j2 : %4d %4d", joueur2.posx, joueur2.posy);
 
-            if (j1posx <= 60) j1posx = 60;
-            if (j1posx >= 705) j1posx = 705;
-            if (j1posy <= 175) j1posy = 175;
-            if (j1posy >= 625) j1posy = 625;
+            if (joueur1.posx <= 60) joueur1.posx = 60;
+            if (joueur1.posx >= 705) joueur1.posx = 705;
+            if (joueur1.posy <= 175) joueur1.posy = 175;
+            if (joueur1.posy >= 625) joueur1.posy = 625;
 
-            if (j2posx <= 60) j2posx = 60;
-            if (j2posx >= 705) j2posx = 705;
-            if (j2posy <= 175) j2posy = 175;
-            if (j2posy >= 625) j2posy = 625;
+            if (joueur2.posx <= 60) joueur2.posx = 60;
+            if (joueur2.posx >= 705) joueur2.posx = 705;
+            if (joueur2.posy <= 175) joueur2.posy = 175;
+            if (joueur2.posy >= 625) joueur2.posy = 625;
 
-            if (j1posx >= 640) {
-                j1posx = 640;
-                if (key[KEY_L] && orienJ1 == 2) {
-                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
+            if (joueur1.posx >= 640) {
+                joueur1.posx = 640;
+                if (key[KEY_L] && joueur1.orientation == 2) {
+                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
                 }
             }
-            if (j1posx <= 170) {
-                j1posx = 170;
-                if (key[KEY_L] && orienJ1 == 4) {
-                    tables(combinaisonJ1, &table, nivchoisi);
+            if (joueur1.posx <= 170) {
+                joueur1.posx = 170;
+                if (key[KEY_L] && joueur1.orientation == 4) {
+                    tables(&joueur1, &table, nivchoisi);
                 }
             }
-            if (j1posy <= 275) {
-                j1posy = 275;
-                if (key[KEY_L] && orienJ1 == 1) {
-                    if (j1posx >= 230 && j1posx <= 260) {
+            if (joueur1.posy <= 275) {
+                joueur1.posy = 275;
+                if (key[KEY_L] && joueur1.orientation == 1) {
+                    if (joueur1.posx >= 230 && joueur1.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -624,10 +617,10 @@ int jeu(int nivchoisi) {
                     }
                 }
             }
-            if (j1posy >= 575) {
-                j1posy = 575;
-                if (key[KEY_L] && orienJ1 == 3) {
-                    if (j1posx >= 230 && j1posx <= 260) {
+            if (joueur1.posy >= 575) {
+                joueur1.posy = 575;
+                if (key[KEY_L] && joueur1.orientation == 3) {
+                    if (joueur1.posx >= 230 && joueur1.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -638,22 +631,22 @@ int jeu(int nivchoisi) {
                     }
                 }
             }
-            if (j2posx >= 640) {
-                j2posx = 640;
-                if (key[KEY_C] && orienJ2 == 2) {
-                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
+            if (joueur2.posx >= 640) {
+                joueur2.posx = 640;
+                if (key[KEY_C] && joueur2.orientation == 2) {
+                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
                 }
             }
-            if (j2posx <= 170) {
-                j2posx = 170;
-                if (key[KEY_C] && orienJ2 == 4) {
-                    tables(combinaisonJ2, &table, nivchoisi);
+            if (joueur2.posx <= 170) {
+                joueur2.posx = 170;
+                if (key[KEY_C] && joueur2.orientation == 4) {
+                    tables(&joueur2, &table, nivchoisi);
                 }
             }
-            if (j2posy <= 275) {
-                j2posy = 275;
-                if (key[KEY_C] && orienJ2 == 1) {
-                    if (j2posx >= 230 && j2posx <= 260) {
+            if (joueur2.posy <= 275) {
+                joueur2.posy = 275;
+                if (key[KEY_C] && joueur2.orientation == 1) {
+                    if (joueur2.posx >= 230 && joueur2.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -664,10 +657,10 @@ int jeu(int nivchoisi) {
                     }
                 }
             }
-            if (j2posy >= 575) {
-                j2posy = 575;
-                if (key[KEY_C] && orienJ2 == 3) {
-                    if (j2posx >= 230 && j2posx <= 260) {
+            if (joueur2.posy >= 575) {
+                joueur2.posy = 575;
+                if (key[KEY_C] && joueur2.orientation == 3) {
+                    if (joueur2.posx >= 230 && joueur2.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -687,20 +680,20 @@ int jeu(int nivchoisi) {
             if (occupation > 2) {
                 occupation = 2;
             }
-            combinaisonJ1 = 4;
+            joueur1.combinaison = 4;
             allegro_message("vous avez fait du riz cuit");
         }
 
-        if (key[KEY_UP]) { j1posy -= deplacement; orienJ1 = 1; }
-        if (key[KEY_DOWN]) { j1posy += deplacement; orienJ1 = 3; }
-        if (key[KEY_LEFT]) { j1posx -= deplacement; orienJ1 = 4; }
-        if (key[KEY_RIGHT]) { j1posx += deplacement; orienJ1 = 2; }
-        if (key[KEY_W]) { j2posy -= deplacement; orienJ2 = 1; }
-        if (key[KEY_S]) { j2posy += deplacement; orienJ2 = 3; }
-        if (key[KEY_A]) { j2posx -= deplacement; orienJ2 = 4; }
-        if (key[KEY_D]) { j2posx += deplacement; orienJ2 = 2; }
+        if (key[KEY_UP]) { joueur1.posy -= deplacement; joueur1.orientation = 1; }
+        if (key[KEY_DOWN]) { joueur1.posy += deplacement; joueur1.orientation = 3; }
+        if (key[KEY_LEFT]) { joueur1.posx -= deplacement; joueur1.orientation = 4; }
+        if (key[KEY_RIGHT]) { joueur1.posx += deplacement; joueur1.orientation = 2; }
+        if (key[KEY_W]) { joueur2.posy -= deplacement; joueur2.orientation = 1; }
+        if (key[KEY_S]) { joueur2.posy += deplacement; joueur2.orientation = 3; }
+        if (key[KEY_A]) { joueur2.posx -= deplacement; joueur2.orientation = 4; }
+        if (key[KEY_D]) { joueur2.posx += deplacement; joueur2.orientation = 2; }
 
-        image_joueur(buffer, PERSO1_O, PERSO2_O, j1posx, j1posy, j2posx, j2posy, orienJ1, orienJ2);
+        image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);
         if (nivchoisi == 1) {
             nbrecette = gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0);
         }
@@ -736,6 +729,27 @@ int jeu(int nivchoisi) {
     destroy_bitmap(NIV3);
     imagefin();
     return 0;
+}
+
+void imagefin() {
+    install_mouse();
+    show_mouse(screen);
+    int verif = 0;
+    BITMAP *imagefin = load_bitmap("../images/imagefin.bmp", NULL);
+    BITMAP *imagefinselect = load_bitmap("../images/imagefinselect.bmp", NULL);
+    while (!verif) {
+        if (mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715) {
+            blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w, imagefinselect->h);
+            if (mouse_b & 1) {
+                verif = 1;
+            }
+        }
+        if (!(mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715)) {
+            blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w, imagefin->h);
+        }
+    }
+    destroy_bitmap(imagefinselect);
+    destroy_bitmap(imagefin);
 }
 
 void tuto() {

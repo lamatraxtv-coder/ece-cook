@@ -12,13 +12,17 @@
 #include <time.h>
 
 
-
+typedef struct {
+    int posx, posy;
+    int combinaison;
+    int orientation;
+} Joueur;
 
 // Prototypes des fonctions
 void affichagechargement();
 void animation_bouil(int nivchoisi, BITMAP * buffer,int occupation);
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]);
-void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2);
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joueur joueur1, Joueur joueur2);
 int menu();
 int selectniv(int niv_fini);
 int jeu(int nivchoisi);
@@ -31,4 +35,4 @@ void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recet
 void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);
 void affiche_score();
 void score();
-void tables(int combinaison, int *table,int nivchoisi);
+void tables(Joueur *joueur, int *table, int nivchoisi);
