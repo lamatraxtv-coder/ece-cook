@@ -2,23 +2,23 @@
 
 
 
-void affichagechargement() {
-    set_trans_blender(0, 255, 0, 0);
-    BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);
-    if (!imagechargement) {
-        allegro_message("Erreur de chargement de l'image");
-        return;
+void affichagechargement(){//fonction qui affiche l'image de charg
+    set_trans_blender(0, 255, 0, 0);//définition de la couleur de transparence
+    BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);//chargement de l'image
+    if (!imagechargement){//si l'image n'est pas chargée
+        allegro_message("Erreur de chargement de l'image");//affichage d'un message d'erreur
+        return;//sortie de la fonction
     }
-    blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);
-    textprintf_ex(screen, font, 320, 750, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
-    while (!key[KEY_SPACE]) {
-        rest(100);
+    blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);//affichage de l'image
+    textprintf_ex(screen, font, 320, 750, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");//affichage d'un message
+    while (!key[KEY_SPACE]){//tant que la touche ESPACE n'est pas appuyée
+        rest(100);//pause de 100 ms
     }
-    destroy_bitmap(imagechargement);
+    destroy_bitmap(imagechargement);//libération de la mémoire
 }
 
-void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {
-    PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);
+void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]){//fonction qui charge les images des joueurs
+    PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);//chargement de l'image
     PERSO1_O[1] = load_bitmap("../images/perso1O2.bmp", NULL);
     PERSO1_O[2] = load_bitmap("../images/perso1O3.bmp", NULL);
     PERSO1_O[3] = load_bitmap("../images/perso1O4.bmp", NULL);
@@ -29,139 +29,135 @@ void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {
     PERSO2_O[3] = load_bitmap("../images/perso2O4.bmp", NULL);
 }
 
-void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joueur joueur1, Joueur joueur2) {
-    if (joueur1.orientation >= 1 && joueur1.orientation <= 4) {
-        draw_sprite(buffer, PERSO1_O[joueur1.orientation - 1], joueur1.posx, joueur1.posy);
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joueur joueur1, Joueur joueur2){//fonction qui affiche les images des joueurs
+    if (joueur1.orientation >= 1 && joueur1.orientation <= 4){//si l'orientation du joueur est valide
+        draw_sprite(buffer, PERSO1_O[joueur1.orientation - 1], joueur1.posx, joueur1.posy);//affichage de l'image du joueur
     }
-    if (joueur2.orientation >= 1 && joueur2.orientation <= 4) {
-        draw_sprite(buffer, PERSO2_O[joueur2.orientation - 1], joueur2.posx, joueur2.posy);
+    if (joueur2.orientation >= 1 && joueur2.orientation <= 4){//si l'orientation du joueur est valide
+        draw_sprite(buffer, PERSO2_O[joueur2.orientation - 1], joueur2.posx, joueur2.posy);//affichage de l'image du joueur
     }
 }
 
-int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index) {
-    BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};
-    int random = rand() % 200;
-    if (random == 1 && recettes < MAX_COMMANDES) {
-        recette[recettes] = rand() % 3;
-        recettes++;
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index){//fonction qui gère les commandes
+    BITMAP *recettesDisponibles[3]={recette1, recette2, recette3};//tableau des recettes
+    int random=rand()%200;//génération d'un nombre aléatoire
+    if (random==1 && recettes < MAX_COMMANDES){//si le nombre aléatoire est égal à 1 et qu'il y a moins de commandes que le nombre maximal de commandes
+        recette[recettes]=rand() % 3;//génération d'un nombre aléatoire
+        recettes++;//incrémentation du nombre de commandes
     }
 
-    if (key[KEY_U]) {
-        if (index < 0 || index >= recettes) {
-            allegro_message("Index invalide pour la suppression: %d\n", index);
-            return recettes;
+    if (key[KEY_U]){//si la touche U est appuyée
+        if (index < 0 || index >= recettes){//si l'index est invalide
+            allegro_message("Index invalide pour la suppression: %d\n", index);//affichage d'un message d'erreur
+            return recettes;//retourne le nombre de commandes
         }
-        for (int i = index; i < recettes - 1; i++) {
-            recette[i] = recette[i + 1];
+        for (int i = index; i < recettes - 1; i++){//pour chaque commande
+            recette[i] = recette[i + 1];//décalage des commandes
         }
-        recettes--;
+        recettes--;//décrémentation du nombre de commandes
     }
-    for (int i = 0; i < recettes; i++) {
-        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
+    for (int i = 0; i < recettes; i++){//pour chaque commande
+        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);//affichage de la commande
     }
     return recettes;
 }
 
-int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte) {
-    BITMAP *A0 = load_bitmap("../images/menucru niv1.bmp", NULL);
+int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte){//fonction qui gère le menu des ingrédients crus
+    BITMAP *A0 = load_bitmap("../images/menucru niv1.bmp", NULL);//chargement de l'image
     BITMAP *A1 = load_bitmap("../images/menucru niv1_1.bmp", NULL);
     BITMAP *A2 = load_bitmap("../images/menucru niv1_2.bmp", NULL);
     BITMAP *A3 = load_bitmap("../images/menucru niv1_3.bmp", NULL);
 
-    if (nivchoisi == 1) {
-        draw_sprite(buffer, A0, 450, 400);
-        if (mouse_y >= 480 && mouse_y <= 513) {
-            draw_sprite(buffer, A1, 450, 400);
-            if (mouse_b & 1) {
-                combinaison = 1;
-                allegro_message("vous avez pris un thon");
+    if (nivchoisi==1){//si le niveau choisi est le niveau 1
+        draw_sprite(buffer, A0, 450, 400);//affichage de l'image
+        if (mouse_y >= 480 && mouse_y <= 513){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, A1, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=1;//définition de la combinaison
+                allegro_message("vous avez pris un thon");//affichage d'un message
             }
         }
-        if (mouse_y >= 513 && mouse_y <= 600) {
-            draw_sprite(buffer, A2, 450, 400);
-            if (mouse_b & 1) {
-                combinaison = 2;
-                allegro_message("vous avez pris un saumon");
+        if (mouse_y >= 513 && mouse_y <= 600){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, A2, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=2;//définition de la combinaison
+                allegro_message("vous avez pris un saumon");//affichage d'un message
             }
         }
-        if (mouse_y >= 600 && mouse_y <= 700) {
-            draw_sprite(buffer, A3, 450, 400);
-            if (mouse_b & 1) {
-                combinaison = 3;
-                allegro_message("vous avez pris du riz cru");
+        if (mouse_y >= 600 && mouse_y <= 700){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, A3, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=3;//définition de la combinaison
+                allegro_message("vous avez pris du riz cru");//affichage d'un message
             }
         }
     }
-
-    destroy_bitmap(A0);
+    destroy_bitmap(A0);//libération de la mémoire
     destroy_bitmap(A1);
     destroy_bitmap(A2);
     destroy_bitmap(A3);
 
-    return combinaison;
+    return combinaison;//retourne la combinaison
 }
 
-int menu() {
-    install_mouse();
-    show_mouse(screen);
-    BITMAP *menuneutre = load_bitmap("../images/menuneutre.bmp", NULL);
+int menu(){//fonction qui affiche le menu
+    install_mouse();//initialisation de la souris
+    show_mouse(screen);//affichage de la souris
+    BITMAP *menuneutre = load_bitmap("../images/menuneutre.bmp", NULL);//chargement de l'image
     BITMAP *menu1 = load_bitmap("../images/menu1.bmp", NULL);
     BITMAP *menu2 = load_bitmap("../images/menu2.bmp", NULL);
     BITMAP *menu3 = load_bitmap("../images/menu3.bmp", NULL);
-    int a = 0;
-    int selection;
-    blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+    int a=0;//initialisation de la variable
+    int selection;//initialisation de la variable
+    blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);//affichage de l'image
 
-    while (a == 0) {
-        if (mouse_x >= 155 && mouse_x <= 313 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 1;
+    while (a==0){//tant que a est égal à 0
+        if (mouse_x >= 155 && mouse_x <= 313 && mouse_y >= 572 && mouse_y <= 658){//si la souris est sur la zone de l'image
+            blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//définition de la variable
+                selection=1;//définition de la variable
             }
         }
-        if (mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 2;
+        if (mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658){//si la souris est sur la zone de l'image
+            blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//définition de la variable
+                selection=2;//définition de la variable
             }
         }
-
-        if (mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 3;
+        if (mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658){//si la souris est sur la zone de l'image
+            blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//définition de la variable
+                selection=3;//définition de la variable
             }
         }
-        if (mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762) {
-            if (mouse_b & 1) {
-                allegro_exit();
+        if (mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762){//si la souris est sur la zone de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                allegro_exit();//sortie de allegro
             }
         }
         if (!(mouse_x >= 155 && mouse_x <= 313 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762)) {
-            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);//affichage de l'image
         }
     }
-
-    destroy_bitmap(menuneutre);
+    destroy_bitmap(menuneutre);//libération de la mémoire
     destroy_bitmap(menu1);
     destroy_bitmap(menu2);
     destroy_bitmap(menu3);
-
     return selection;
 }
 
-int selectniv(int fini) {
-    install_mouse();
-    show_mouse(screen);
-    int a = 0;
-    int choixniv;
-    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);
+int selectniv(int fini){//fonction qui affiche les niveaux
+    install_mouse();//initialisation de la souris
+    show_mouse(screen);//affichage de la souris
+    int a=0;//initialisation de la variable
+    int choixniv;//initialisation de la variable
+    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);//chargement de l'image
     BITMAP *choix1_1 = load_bitmap("../images/choix_niv_1U_niv1.bmp", NULL);
     BITMAP *choix2 = load_bitmap("../images/choix_niv_2U.bmp", NULL);
     BITMAP *choix2_1 = load_bitmap("../images/choix_niv_2U_niv1.bmp", NULL);
@@ -174,37 +170,37 @@ int selectniv(int fini) {
     BITMAP *choix2_M = load_bitmap("../images/choix_niv_2U_M.bmp", NULL);
     BITMAP *choix3_M = load_bitmap("../images/choix_niv_3U_M.bmp", NULL);
 
-    while (a == 0) {
-        if (fini == 0) {
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w, choix1_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+    while (a == 0){//tant que a est égal à 0
+        if (fini == 0){//si fini est égal à 0
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
+                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w, choix1_1->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=1;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
-                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w, choix1_M->h);
-                if (mouse_b & 1) {
-                    choixniv = 0;
-                    a = 1;
+            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112){//si la souris est sur la zone de l'image
+                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w, choix1_M->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=0;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)) {
-                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
+            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)){//si la souris n'est pas sur la zone de l'image
+                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);//affichage de l'image
             }
 
-            if (key[KEY_UP]) {
-                fini = fini + 1;
-                sleep(1);
+            if (key[KEY_UP]){//si la touche HAUT est appuyée
+                fini=fini+1;//incrémentation de la variable
+                sleep(1);//pause de 1 seconde
             }
         }
-        if (fini == 1) {
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
+        if (fini == 1){//si fini est égal à 1
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
                 blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=1;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
             if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739) {
