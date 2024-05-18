@@ -352,7 +352,7 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
         *table = 0;
     }
 }
-
+//
 int jeu(int nivchoisi) {
     Joueur joueur1, joueur2;
     int nbrecette = 0;
