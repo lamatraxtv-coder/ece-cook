@@ -288,20 +288,25 @@ int selectniv(int fini) {
 
 
 void tables(Joueur *joueur, int *table, int nivchoisi) {
-    printf("rentrez");
+
     if (joueur->combinaison == 0 && *table != 0) {
+        printf("rentrez");
         joueur->combinaison = *table;
-        *table = 0;
         if (joueur->combinaison == 1) {
             allegro_message("thon pris");
+            *table = 0;
         } else if (joueur->combinaison == 2) {
             allegro_message("saumon pris");
+            *table = 0;
         } else if (joueur->combinaison == 4) {
             allegro_message("riz cuit pris");
+            *table = 0;
         } else if (joueur->combinaison == 5) {
             allegro_message("sushi thon pris");
+            *table = 0;
         } else if (joueur->combinaison == 6) {
             allegro_message("sushi saumon pris");
+            *table = 0;
         }
     } else if (*table == 0 && joueur->combinaison != 3) {
         *table = joueur->combinaison;
@@ -341,6 +346,10 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
         allegro_message("vous ne pouvez pas poser du riz cru");
         *table = 0;
         joueur->combinaison = 3;
+    }
+    if(key[KEY_H]){
+        joueur->combinaison = 0;
+        *table = 0;
     }
 }
 
