@@ -40,7 +40,7 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joue
 
 int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index){//fonction qui gère les commandes
     BITMAP *recettesDisponibles[3]={recette1, recette2, recette3};//tableau des recettes
-    int random=rand()%200;//génération d'un nombre aléatoire
+    int random=rand()%500;//génération d'un nombre aléatoire
     if (random==1 && recettes < MAX_COMMANDES){//si le nombre aléatoire est égal à 1 et qu'il y a moins de commandes que le nombre maximal de commandes
         recette[recettes]=rand() % 3;//génération d'un nombre aléatoire
         recettes++;//incrémentation du nombre de commandes
