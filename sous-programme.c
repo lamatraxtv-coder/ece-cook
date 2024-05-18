@@ -320,23 +320,23 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
         joueur->combinaison += *table;
         if (joueur->combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
-            *table = 0;
             joueur->combinaison = 0;
+            *table=5;
         } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
-            *table = 0;
             joueur->combinaison = 0;
+            *table=6;
         }
     } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4) {
         joueur->combinaison += *table;
         if (joueur->combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
-            *table = 0;
             joueur->combinaison = 0;
+            *table=5;
         } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
-            *table = 0;
             joueur->combinaison = 0;
+            *table= 6;
         }
     } else if (*table == 3) {
         allegro_message("vous ne pouvez pas poser du riz cru");
