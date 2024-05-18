@@ -449,10 +449,10 @@ int jeu(int nivchoisi) {
 
             putpixel(buffer, joueur2.posx, joueur2.posy, makecol(0, 0, 0));
 
-            if (joueur1.posx >= 140 && joueur1.posx <= 500 && joueur1.posy >= 530 && joueur1.posy <= 700) {
-                joueur1.posy = 530;
-                if (key[KEY_1_PAD] && joueur1.orientation == 3) {
-                    if (joueur1.combinaison == 3) {
+            if (joueur1.posx >= 140 && joueur1.posx <= 500 && joueur1.posy >= 530 && joueur1.posy <= 700){//si la position du joueur est comprise entre 140 et 500 et entre 530 et 700
+                joueur1.posy = 530;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==3){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 3
+                    if (joueur1.combinaison==3){//si la combinaison du joueur est égale à 3
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
