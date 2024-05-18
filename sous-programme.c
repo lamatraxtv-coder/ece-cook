@@ -452,262 +452,252 @@ int jeu(int nivchoisi) {
                 joueur1.posy = 530;//définition de la position du joueur
                 if (key[KEY_1_PAD] && joueur1.orientation==3){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 3
                     if (joueur1.combinaison==3){//si la combinaison du joueur est égale à 3
-                        occupation++;
-                        if (occupation < 0) {
-                            occupation = 0;
+                        occupation++;//incrémentation de la variable
+                        if (occupation<0){//si l'occupation est inférieure à 0
+                            occupation=0;//définition de la variable
                         }
-                        if (occupation > 2) {
-                            occupation = 2;
+                        if (occupation>2){//si l'occupation est supérieure à 2
+                            occupation=2;//définition de la variable
                         }
-                        joueur1.combinaison = 0;
+                        joueur1.combinaison=0;//définition de la combinaison du joueur
                     }
                 }
             }
-            if (joueur1.posx >= 315 && joueur1.posx <= 500 && joueur1.posy >= 180 && joueur1.posy <= 600) {
-                joueur1.posx = 315;
-                if (key[KEY_1_PAD] && joueur1.orientation == 2) {
-                    tables(&joueur1, &table, nivchoisi);
+            if (joueur1.posx>=315 && joueur1.posx <= 500 && joueur1.posy >= 180 && joueur1.posy <= 600){//si la position du joueur est comprise entre 315 et 500 et entre 180 et 600
+                joueur1.posx=315;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==2){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 2
+                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-            if (joueur1.posx >= 160 && joueur1.posx <= 780 && joueur1.posy >= 188 && joueur1.posy <= 240) {
-                joueur1.posy = 240;
-                if (key[KEY_1_PAD] && joueur1.orientation == 1) {
-                    allegro_message("prise");
+            if (joueur1.posx >= 160 && joueur1.posx <= 780 && joueur1.posy >= 188 && joueur1.posy <= 240){//si la position du joueur est comprise entre 160 et 780 et entre 188 et 240
+                joueur1.posy = 240;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==1){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 1
+                    allegro_message("prise");//affichage d'un message
                 }
             }
-            if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700) {
-                joueur2.posy = 470;
-                if (key[KEY_C]) {
-                    tables(&joueur2, &table, nivchoisi);
+            if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700){//si la position du joueur est comprise entre 160 et 450 et entre 530 et 700
+                joueur2.posy=470;
+                if (key[KEY_C]){//si la touche C est appuyée
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-            if (joueur2.posy >= 400 && joueur2.posy <= 600 && joueur2.posx == 470) {
-                if (key[KEY_C]) {
-                    tables(&joueur2, &table, nivchoisi);
+            if (joueur2.posy >= 400 && joueur2.posy <= 600 && joueur2.posx==470){//si la position du joueur est comprise entre 400 et 600 et que la position du joueur est égale à 470
+                if (key[KEY_C]){//si la touche C est appuyée
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-
-            if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600) {
-                joueur2.posx = 470;
-                if (key[KEY_C]) {
-                    tables(&joueur2, &table, nivchoisi);
+            if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600){//si la position du joueur est comprise entre 315 et 470 et entre 180 et 600
+                joueur2.posx=470;//définition de la position du joueur
+                if (key[KEY_C]){//si la touche C est appuyée
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-
-            if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260) {
-                joueur2.posy = 260;
-                if (key[KEY_C] && joueur2.orientation == 1) {
+            if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260){//si la position du joueur est comprise entre 160 et 780 et entre 188 et 260
+                joueur2.posy = 260;//définition de la position du joueur
+                if (key[KEY_C] && joueur2.orientation==1){//si la touche C est appuyée et que l'orientation du joueur est égale à 1
                     allegro_message("prise3");
                 }
             }
-            if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550) {
-                joueur2.posx = 610;
-                if (key[KEY_C]) {
-                    tables(&joueur2, &table, nivchoisi);
+            if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550){//si la position du joueur est comprise entre 610 et 705 et entre 340 et 550
+                joueur2.posx = 610;//définition de la position du joueur
+                if (key[KEY_C]){//si la touche C est appuyée
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
                 }
             }
         }
-
-        if (nivchoisi == 2) {
-            if (occupation == 0) {
-                blit(NIV2, buffer, 0, 0, (SCREEN_W - NIV2->w) / 2, (SCREEN_H - NIV2->h) / 2, NIV2->w, NIV2->h);
+        if (nivchoisi==2){//si le niveau choisi est le niveau 2
+            if (occupation==0){//si l'occupation est égale à 0
+                blit(NIV2, buffer, 0, 0, (SCREEN_W - NIV2->w) / 2, (SCREEN_H - NIV2->h) / 2, NIV2->w, NIV2->h);//affichage de l'image
             }
-            if (occupation == 1) {
-                blit(NIV2B1, buffer, 0, 0, (SCREEN_W - NIV2B1->w) / 2, (SCREEN_H - NIV2B1->h) / 2, NIV2B1->w, NIV2B1->h);
+            if (occupation==1){//si l'occupation est égale à 1
+                blit(NIV2B1, buffer, 0, 0, (SCREEN_W - NIV2B1->w) / 2, (SCREEN_H - NIV2B1->h) / 2, NIV2B1->w, NIV2B1->h);//affichage de l'image
             }
-            if (occupation == 2) {
-                blit(NIV2B2, buffer, 0, 0, (SCREEN_W - NIV2B2->w) / 2, (SCREEN_H - NIV2B2->h) / 2, NIV2B2->w, NIV2B2->h);
+            if (occupation==2){//si l'occupation est égale à 2
+                blit(NIV2B2, buffer, 0, 0, (SCREEN_W - NIV2B2->w) / 2, (SCREEN_H - NIV2B2->h) / 2, NIV2B2->w, NIV2B2->h);//affichage de l'image
             }
+            if (joueur1.posx <= 20) joueur1.posx = 20;//si la position du joueur est inférieure à 20
+            if (joueur1.posx >= 705) joueur1.posx = 705;//si la position du joueur est supérieure à 705
+            if (joueur1.posy <= 175) joueur1.posy = 175;//si la position du joueur est inférieure à 175
+            if (joueur1.posy >= 625) joueur1.posy = 625;//si la position du joueur est supérieure à 625
 
-            if (joueur1.posx <= 20) joueur1.posx = 20;
-            if (joueur1.posx >= 705) joueur1.posx = 705;
-            if (joueur1.posy <= 175) joueur1.posy = 175;
-            if (joueur1.posy >= 625) joueur1.posy = 625;
+            if (joueur2.posx <= 20) joueur2.posx = 20;//si la position du joueur est inférieure à 20
+            if (joueur2.posx >= 705) joueur2.posx = 705;//si la position du joueur est supérieure à 705
+            if (joueur2.posy <= 175) joueur2.posy = 175;//si la position du joueur est inférieure à 175
+            if (joueur2.posy >= 625) joueur2.posy = 625;//si la position du joueur est supérieure à 625
 
-            if (joueur2.posx <= 20) joueur2.posx = 20;
-            if (joueur2.posx >= 705) joueur2.posx = 705;
-            if (joueur2.posy <= 175) joueur2.posy = 175;
-            if (joueur2.posy >= 625) joueur2.posy = 625;
-
-            if (joueur1.posx >= 0 && joueur1.posx <= 270 && joueur1.posy >= 400 && joueur1.posy <= 600) {
-                joueur1.posx = 270;
-                if (key[KEY_1_PAD]) {
-                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
+            if (joueur1.posx >= 0 && joueur1.posx <= 270 && joueur1.posy >= 400 && joueur1.posy <= 600){//si la position du joueur est comprise entre 0 et 270 et entre 400 et 600
+                joueur1.posx = 270;//définition de la position du joueur
+                if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
+                    joueur1.combinaison=menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);//définition de la combinaison du joueur
                 }
             }
-
-            if (joueur1.posx >= 200 && joueur1.posx <= 420 && joueur1.posy >= 100 && joueur1.posy <= 372) {
-                joueur1.posy = 372;
-                if (key[KEY_1_PAD]) {
-                    tables(&joueur1, &table, nivchoisi);
+            if (joueur1.posx >= 200 && joueur1.posx <= 420 && joueur1.posy >= 100 && joueur1.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
+                joueur1.posy = 372;//définition de la position du joueur
+                if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
+                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-
-            if (joueur1.posx >= 530 && joueur1.posx <= 800 && joueur1.posy >= 320 && joueur1.posy <= 480) {
-                joueur1.posx = 530;
-                if (key[KEY_1_PAD]) {
-                    occupation++;
-                    if (occupation < 0) {
-                        occupation = 0;
+            if (joueur1.posx >= 530 && joueur1.posx <= 800 && joueur1.posy >= 320 && joueur1.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
+                joueur1.posx = 530;//définition de la position du joueur
+                if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
+                    occupation++;//incrémentation de la variable
+                    if (occupation < 0){//si l'occupation est inférieure à 0
+                        occupation = 0;//définition de la variable
                     }
-                    if (occupation > 2) {
-                        occupation = 2;
+                    if (occupation > 2){//si l'occupation est supérieure à 2
+                        occupation = 2;//définition de la variable
                     }
                 }
             }
-            if (joueur2.posx >= 0 && joueur2.posx <= 270 && joueur2.posy >= 400 && joueur2.posy <= 600) {
-                joueur2.posx = 270;
-                if (key[KEY_C]) {
-                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
+            if (joueur2.posx >= 0 && joueur2.posx <= 270 && joueur2.posy >= 400 && joueur2.posy <= 600){//si la position du joueur est comprise entre 0 et 270 et entre 400 et 600
+                joueur2.posx = 270;//définition de la position du joueur
+                if (key[KEY_C]){//si la touche C est appuyée
+                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);//définition de la combinaison du joueur
                 }
             }
-
-            if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372) {
-                joueur2.posy = 372;
-                if (key[KEY_C]) {
-                    tables(&joueur2, &table, nivchoisi);
+            if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
+                joueur2.posy = 372;//définition de la position du joueur
+                if (key[KEY_C]){//si la touche C est appuyée
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-
-            if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480) {
-                joueur2.posx = 530;
-                if (key[KEY_C]) {
-                    occupation++;
-                    if (occupation < 0) {
-                        occupation = 0;
+            if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
+                joueur2.posx = 530;//définition de la position du joueur
+                if (key[KEY_C]){//si la touche C est appuyée
+                    occupation++;//incrémentation de la variable
+                    if (occupation < 0){//si l'occupation est inférieure à 0
+                        occupation = 0;//définition de la variable
                     }
-                    if (occupation > 2) {
-                        occupation = 2;
+                    if (occupation > 2){//si l'occupation est supérieure à 2
+                        occupation = 2;//définition de la variable
                     }
                 }
             }
         }
-
-        if (nivchoisi == 3) {
-            if (occupation == 0) {
-                blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w, NIV3->h);
+        if (nivchoisi==3){//si le niveau choisi est le niveau 3
+            if (occupation==0){//si l'occupation est égale à 0
+                blit(NIV3, buffer, 0, 0, (SCREEN_W - NIV3->w) / 2, (SCREEN_H - NIV3->h) / 2, NIV3->w, NIV3->h);//affichage de l'image
             }
-            if (occupation == 1) {
-                blit(NIV3B1, buffer, 0, 0, (SCREEN_W - NIV3B1->w) / 2, (SCREEN_H - NIV3B1->h) / 2, NIV3B1->w, NIV3B1->h);
+            if (occupation==1){//si l'occupation est égale à 1
+                blit(NIV3B1, buffer, 0, 0, (SCREEN_W - NIV3B1->w) / 2, (SCREEN_H - NIV3B1->h) / 2, NIV3B1->w, NIV3B1->h);//affichage de l'image
             }
-            if (occupation == 2) {
-                blit(NIV3B2, buffer, 0, 0, (SCREEN_W - NIV3B2->w) / 2, (SCREEN_H - NIV3B2->h) / 2, NIV3B2->w, NIV3B2->h);
+            if (occupation==2){//si l'occupation est égale à 2
+                blit(NIV3B2, buffer, 0, 0, (SCREEN_W - NIV3B2->w) / 2, (SCREEN_H - NIV3B2->h) / 2, NIV3B2->w, NIV3B2->h);//affichage de l'image
             }
-            textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, "j1 : %4d %4d", joueur1.posx, joueur1.posy);
+            textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, "j1 : %4d %4d", joueur1.posx, joueur1.posy);//affichage du texte
             textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "j2 : %4d %4d", joueur2.posx, joueur2.posy);
 
-            if (joueur1.posx <= 60) joueur1.posx = 60;
-            if (joueur1.posx >= 705) joueur1.posx = 705;
-            if (joueur1.posy <= 175) joueur1.posy = 175;
-            if (joueur1.posy >= 625) joueur1.posy = 625;
+            if (joueur1.posx <= 60) joueur1.posx = 60;//si la position du joueur est inférieure à 60
+            if (joueur1.posx >= 705) joueur1.posx = 705;//si la position du joueur est supérieure à 705
+            if (joueur1.posy <= 175) joueur1.posy = 175;//si la position du joueur est inférieure à 175
+            if (joueur1.posy >= 625) joueur1.posy = 625;//si la position du joueur est supérieure à 625
 
-            if (joueur2.posx <= 60) joueur2.posx = 60;
-            if (joueur2.posx >= 705) joueur2.posx = 705;
-            if (joueur2.posy <= 175) joueur2.posy = 175;
-            if (joueur2.posy >= 625) joueur2.posy = 625;
+            if (joueur2.posx <= 60) joueur2.posx = 60;//si la position du joueur est inférieure à 60
+            if (joueur2.posx >= 705) joueur2.posx = 705;//si la position du joueur est supérieure à 705
+            if (joueur2.posy <= 175) joueur2.posy = 175;//si la position du joueur est inférieure à 175
+            if (joueur2.posy >= 625) joueur2.posy = 625;//si la position du joueur est supérieure à 625
 
-            if (joueur1.posx >= 640) {
-                joueur1.posx = 640;
-                if (key[KEY_1_PAD] && joueur1.orientation == 2) {
-                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
+            if (joueur1.posx >= 640){//si la position du joueur est supérieure à 640
+                joueur1.posx = 640;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation == 2){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 2
+                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);//définition de la combinaison du joueur
                 }
             }
-            if (joueur1.posx <= 170) {
-                joueur1.posx = 170;
-                if (key[KEY_1_PAD] && joueur1.orientation == 4) {
-                    tables(&joueur1, &table, nivchoisi);
+            if (joueur1.posx <= 170){//si la position du joueur est inférieure à 170
+                joueur1.posx = 170;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==4){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 4
+                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
                 }
             }
-            if (joueur1.posy <= 275) {
-                joueur1.posy = 275;
-                if (key[KEY_1_PAD] && joueur1.orientation == 1) {
-                    if (joueur1.posx >= 230 && joueur1.posx <= 260) {
-                        occupation++;
-                        if (occupation < 0) {
-                            occupation = 0;
+            if (joueur1.posy <= 275){//si la position du joueur est inférieure à 275
+                joueur1.posy = 275;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==1){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 1
+                    if (joueur1.posx >= 230 && joueur1.posx <= 260){//si la position du joueur est comprise entre 230 et 260
+                        occupation++;//incrémentation de la variable
+                        if (occupation<0){//si l'occupation est inférieure à 0
+                            occupation=0;//définition de la variable
                         }
-                        if (occupation > 2) {
-                            occupation = 2;
-                        }
-                    }
-                }
-            }
-            if (joueur1.posy >= 575) {
-                joueur1.posy = 575;
-                if (key[KEY_1_PAD] && joueur1.orientation == 3) {
-                    if (joueur1.posx >= 230 && joueur1.posx <= 260) {
-                        occupation++;
-                        if (occupation < 0) {
-                            occupation = 0;
-                        }
-                        if (occupation > 2) {
-                            occupation = 2;
+                        if (occupation>2){//si l'occupation est supérieure à 2
+                            occupation=2;//définition de la variable
                         }
                     }
                 }
             }
-            if (joueur2.posx >= 640) {
-                joueur2.posx = 640;
-                if (key[KEY_V] && joueur2.orientation == 2) {
-                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
-                }
-            }
-            if (joueur2.posx <= 170) {
-                joueur2.posx = 170;
-                if (key[KEY_V] && joueur2.orientation == 4) {
-                    tables(&joueur2, &table, nivchoisi);
-                }
-            }
-            if (joueur2.posy <= 275) {
-                joueur2.posy = 275;
-                if (key[KEY_V] && joueur2.orientation == 1) {
-                    if (joueur2.posx >= 230 && joueur2.posx <= 260) {
-                        occupation++;
-                        if (occupation < 0) {
-                            occupation = 0;
+            if (joueur1.posy>=575){//si la position du joueur est supérieure à 575
+                joueur1.posy=575;//définition de la position du joueur
+                if (key[KEY_1_PAD] && joueur1.orientation==3){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 3
+                    if (joueur1.posx >= 230 && joueur1.posx<=260){//si la position du joueur est comprise entre 230 et 260
+                        occupation++;//incrémentation de la variable
+                        if (occupation<0){//si l'occupation est inférieure à 0
+                            occupation=0;//définition de la variable
                         }
-                        if (occupation > 2) {
-                            occupation = 2;
+                        if (occupation>2){//si l'occupation est supérieure à 2
+                            occupation=2;//définition de la variable
                         }
                     }
                 }
             }
-            if (joueur2.posy >= 575) {
-                joueur2.posy = 575;
-                if (key[KEY_V] && joueur2.orientation == 3) {
-                    if (joueur2.posx >= 230 && joueur2.posx <= 260) {
-                        occupation++;
-                        if (occupation < 0) {
-                            occupation = 0;
+            if (joueur2.posx>=640){//si la position du joueur est supérieure à 640
+                joueur2.posx=640;//définition de la position du joueur
+                if (key[KEY_V] && joueur2.orientation==2){//si la touche V est appuyée et que l'orientation du joueur est égale à 2
+                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);//définition de la combinaison du joueur
+                }
+            }
+            if (joueur2.posx<=170){//si la position du joueur est inférieure à 170
+                joueur2.posx=170;//définition de la position du joueur
+                if (key[KEY_V] && joueur2.orientation==4){//si la touche V est appuyée et que l'orientation du joueur est égale à 4
+                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                }
+            }
+            if (joueur2.posy<=275){//si la position du joueur est inférieure à 275
+                joueur2.posy=275;//définition de la position du joueur
+                if (key[KEY_V] && joueur2.orientation==1){//si la touche V est appuyée et que l'orientation du joueur est égale à 1
+                    if (joueur2.posx>=230 && joueur2.posx<=260){//si la position du joueur est comprise entre 230 et 260
+                        occupation++;//incrémentation de la variable
+                        if (occupation<0){//si l'occupation est inférieure à 0
+                            occupation=0;//définition de la variable
                         }
-                        if (occupation > 2) {
-                            occupation = 2;
+                        if (occupation>2){//si l'occupation est supérieure à 2
+                            occupation=2;//définition de la variable
+                        }
+                    }
+                }
+            }
+            if (joueur2.posy>=575){//si la position du joueur est supérieure à 575
+                joueur2.posy=575;//définition de la position du joueur
+                if (key[KEY_V] && joueur2.orientation==3){//si la touche V est appuyée et que l'orientation du joueur est égale à 3
+                    if (joueur2.posx >= 230 && joueur2.posx<=260){//si la position du joueur est comprise entre 230 et 260
+                        occupation++;//incrémentation de la variable
+                        if (occupation<0){//si l'occupation est inférieure à 0
+                            occupation=0;//définition de la variable
+                        }
+                        if (occupation>2){//si l'occupation est supérieure à 2
+                            occupation=2;//définition de la variable
                         }
                     }
                 }
             }
         }
-
-        if (key[KEY_E]) {
-            occupation--;
-            if (occupation < 0) {
-                occupation = 0;
+        if (key[KEY_E]){//si la touche E est appuyée
+            occupation--;//décrémentation de la variable
+            if (occupation<0){//si l'occupation est inférieure à 0
+                occupation=0;//définition de la variable
             }
-            if (occupation > 2) {
-                occupation = 2;
+            if (occupation>2){//si l'occupation est supérieure à 2
+                occupation=2;//définition de la variable
             }
-            joueur1.combinaison = 4;
-            allegro_message("vous avez fait du riz cuit");
+            joueur1.combinaison=4;//définition de la combinaison du joueur
+            allegro_message("vous avez fait du riz cuit");//affichage d'un message
         }
 
-        if (key[KEY_UP]) { joueur1.posy -= deplacement; joueur1.orientation = 1; }
-        if (key[KEY_DOWN]) { joueur1.posy += deplacement; joueur1.orientation = 3; }
-        if (key[KEY_LEFT]) { joueur1.posx -= deplacement; joueur1.orientation = 4; }
-        if (key[KEY_RIGHT]) { joueur1.posx += deplacement; joueur1.orientation = 2; }
-        if (key[KEY_W]) { joueur2.posy -= deplacement; joueur2.orientation = 1; }
-        if (key[KEY_S]) { joueur2.posy += deplacement; joueur2.orientation = 3; }
-        if (key[KEY_A]) { joueur2.posx -= deplacement; joueur2.orientation = 4; }
-        if (key[KEY_D]) { joueur2.posx += deplacement; joueur2.orientation = 2; }
+        if (key[KEY_UP]) { joueur1.posy -= deplacement; joueur1.orientation=1;}//si la touche HAUT est appuyée
+        if (key[KEY_DOWN]) { joueur1.posy += deplacement; joueur1.orientation=3;}//si la touche BAS est appuyée
+        if (key[KEY_LEFT]) { joueur1.posx -= deplacement; joueur1.orientation=4;}//si la touche GAUCHE est appuyée
+        if (key[KEY_RIGHT]) { joueur1.posx += deplacement; joueur1.orientation=2;}//si la touche DROITE est appuyée
+        if (key[KEY_W]) { joueur2.posy -= deplacement; joueur2.orientation=1;}//si la touche W est appuyée
+        if (key[KEY_S]) { joueur2.posy += deplacement; joueur2.orientation=3;}//si la touche S est appuyée
+        if (key[KEY_A]) { joueur2.posx -= deplacement; joueur2.orientation=4;}//si la touche A est appuyée
+        if (key[KEY_D]) { joueur2.posx += deplacement; joueur2.orientation =2;}//si la touche D est appuyée
 
         image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);
         if (nivchoisi == 1) {
