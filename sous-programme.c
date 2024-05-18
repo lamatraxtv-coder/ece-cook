@@ -97,54 +97,52 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte){//fonct
     return combinaison1;//retourne la combinaison
 }
 
-int menu(){
-    install_mouse();
-    show_mouse(screen);
-    BITMAP *menuneutre = load_bitmap("../images/menuneutre.bmp", NULL);
-    BITMAP *menu1 = load_bitmap("../images/menu1.bmp", NULL);
-    BITMAP *menu2 = load_bitmap("../images/menu2.bmp", NULL);
-    BITMAP *menu3 = load_bitmap("../images/menu3.bmp", NULL);
-    int a = 0;
-    int selection;
-    blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+int menu(){//fonction qui affiche le menu
+    install_mouse();//initialisation de la souris
+    show_mouse(screen);//affichage de la souris
+    BITMAP *menuneutre = load_bitmap("../images/menuneutre.bmp", NULL);//chargement de l'image de base
+    BITMAP *menu1 = load_bitmap("../images/menu1.bmp", NULL);//chargement de l'image du bouton 1
+    BITMAP *menu2 = load_bitmap("../images/menu2.bmp", NULL);//chargement de l'image du bouton 2
+    BITMAP *menu3 = load_bitmap("../images/menu3.bmp", NULL);//chargement de l'image du bouton 3
+    int a=0;//variable de sortie
+    int selection;//variable de sélection
+    blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);//affichage de l'image de base
 
-    while (a == 0) {
-        if (mouse_x >= 155 && mouse_x <= 313 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 1;
+    while (a==0){
+        if (mouse_x >= 155 && mouse_x <= 313 && mouse_y >=572 && mouse_y <= 658){//si la souris est sur le bouton 1
+            blit(menu1, screen, 0, 0, (SCREEN_W - menu1->w) / 2, (SCREEN_H - menu1->h) / 2, menu1->w, menu1->h);//affichage de l'image du bouton 1
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//la variable de sortie est égale à 1
+                selection=1;//la sélection est égale à 1
             }
         }
-        if (mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 2;
+        if (mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658){//si la souris est sur le bouton 2
+            blit(menu2, screen, 0, 0, (SCREEN_W - menu2->w) / 2, (SCREEN_H - menu2->h) / 2, menu2->w, menu2->h);//affichage de l'image du bouton 2
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//la variable de sortie est égale à 1
+                selection=2;//la sélection est égale à 2
             }
         }
-
-        if (mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658) {
-            blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);
-            if (mouse_b & 1) {
-                a = 1;
-                selection = 3;
+        if (mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658){//si la souris est sur le bouton 3
+            blit(menu3, screen, 0, 0, (SCREEN_W - menu3->w) / 2, (SCREEN_H - menu3->h) / 2, menu3->w, menu3->h);//affichage de l'image du bouton 3
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                a=1;//la variable de sortie est égale à 1
+                selection=3;//la sélection est égale à 3
             }
         }
-        if (mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762) {
-            if (mouse_b & 1) {
-                allegro_exit();
+        if (mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762){//si la souris est sur le bouton quitter
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                allegro_exit();//sortie de allegro
             }
         }
         if (!(mouse_x >= 155 && mouse_x <= 313 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 368 && mouse_x <= 538 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 585 && mouse_x <= 752 && mouse_y >= 572 && mouse_y <= 658) &&
             !(mouse_x >= 487 && mouse_x <= 634 && mouse_y >= 715 && mouse_y <= 762)) {
-            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);
+            blit(menuneutre, screen, 0, 0, (SCREEN_W - menuneutre->w) / 2, (SCREEN_H - menuneutre->h) / 2, menuneutre->w, menuneutre->h);//affichage de l'image de base
         }
     }
-
-    destroy_bitmap(menuneutre);
+    destroy_bitmap(menuneutre);//libération de la mémoire
     destroy_bitmap(menu1);
     destroy_bitmap(menu2);
     destroy_bitmap(menu3);
@@ -152,62 +150,61 @@ int menu(){
     return selection;
 }
 
-int selectniv(int fini) {
-    install_mouse();
-    show_mouse(screen);
-    int a = 0;
-    int choixniv;
-    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);
-    BITMAP *choix1_1 = load_bitmap("../images/choix_niv_1U_niv1.bmp", NULL);
+int selectniv(int fini){//fonction qui affiche les niveaux
+    install_mouse();//initialisation de la souris
+    show_mouse(screen);//affichage de la souris
+    int a=0;//variable de sortie
+    int choixniv;//variable de choix du niveau
+    BITMAP *choix1 = load_bitmap("../images/choix_niv_1U.bmp", NULL);//chargement de l'image de base
+    BITMAP *choix1_1 = load_bitmap("../images/choix_niv_1U_niv1.bmp", NULL);//chargement de l'image du bouton 1
     BITMAP *choix2 = load_bitmap("../images/choix_niv_2U.bmp", NULL);
     BITMAP *choix2_1 = load_bitmap("../images/choix_niv_2U_niv1.bmp", NULL);
-    BITMAP *choix2_2 = load_bitmap("../images/choix_niv_2U_niv2.bmp", NULL);
+    BITMAP *choix2_2 = load_bitmap("../images/choix_niv_2U_niv2.bmp", NULL);//chargement de l'image du bouton 2
     BITMAP *choix3 = load_bitmap("../images/choix_niv_3U.bmp", NULL);
     BITMAP *choix3_1 = load_bitmap("../images/choix_niv_3U_niv1.bmp", NULL);
     BITMAP *choix3_2 = load_bitmap("../images/choix_niv_3U_niv2.bmp", NULL);
-    BITMAP *choix3_3 = load_bitmap("../images/choix_niv_3U_niv3.bmp", NULL);
-    BITMAP *choix1_M = load_bitmap("../images/choix_niv_1U_M.bmp", NULL);
+    BITMAP *choix3_3 = load_bitmap("../images/choix_niv_3U_niv3.bmp", NULL);//chargement de l'image du bouton 3
+    BITMAP *choix1_M = load_bitmap("../images/choix_niv_1U_M.bmp", NULL);//chargement de l'image du bouton retour
     BITMAP *choix2_M = load_bitmap("../images/choix_niv_2U_M.bmp", NULL);
     BITMAP *choix3_M = load_bitmap("../images/choix_niv_3U_M.bmp", NULL);
 
-    while (a == 0) {
-        if (fini == 0) {
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w, choix1_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+    while (a==0){//tant que la variable de sortie est égale à 0
+        if (fini==0){//si le niveau n'est pas sélectionné
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//si la souris est sur le bouton 1
+                blit(choix1_1, screen, 0, 0, (SCREEN_W - choix1_1->w) / 2, (SCREEN_H - choix1_1->h) / 2, choix1_1->w, choix1_1->h);//affichage de l'image du bouton 1
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=1;//le choix du niveau est égal à 1
+                    a=1;//la variable de sortie est égale à 1
                 }
             }
-            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
-                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w, choix1_M->h);
-                if (mouse_b & 1) {
-                    choixniv = 0;
-                    a = 1;
+            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112){//si la souris est sur le bouton retour
+                blit(choix1_M, screen, 0, 0, (SCREEN_W - choix1_M->w) / 2, (SCREEN_H - choix1_M->h) / 2, choix1_M->w, choix1_M->h);//affichage de l'image du bouton retour
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=0;//le choix du niveau est égal à 0
+                    a=1;//la variable de sortie est égale à 1
                 }
             }
-            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)) {
-                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);
+            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)){//si la souris n'est pas sur les boutons
+                blit(choix1, screen, 0, 0, (SCREEN_W - choix1->w) / 2, (SCREEN_H - choix1->h) / 2, choix1->w, choix1->h);//affichage de l'image de base
             }
-
-            if (key[KEY_UP]) {
-                fini = fini + 1;
-                sleep(1);
+            if (key[KEY_UP]){//si la touche HAUT est appuyée
+                fini=fini+1;//incrémentation de la variable de sélection
+                sleep(1);//pause de 1 seconde
             }
         }
-        if (fini == 1) {
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+        if (fini==1){//si le niveau 1 est sélectionné
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//
+                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);//affichage de l'image du bouton 1
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=1;//le choix du niveau est égal à 1
+                    a=1;//la variable de sortie est égale à 1
                 }
             }
             if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739) {
                 blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);
-                if (mouse_b & 1) {
-                    choixniv = 2;
-                    a = 1;
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=2;//le choix du niveau est égal à 2
+                    a=1;//la variable de sortie est égale à 1
                 }
             }
             if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
