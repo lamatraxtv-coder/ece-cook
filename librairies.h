@@ -31,3 +31,4 @@ void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recet
 void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);
 void affiche_score();
 void score();
+void tables(int combinaison, int *table);
