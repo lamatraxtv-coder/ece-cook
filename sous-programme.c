@@ -60,7 +60,7 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
     return recettes;
 }
 
-int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte) {
+int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte) {
     BITMAP *A0 = load_bitmap("../images/menucru niv1.bmp", NULL);
     BITMAP *A1 = load_bitmap("../images/menucru niv1_1.bmp", NULL);
     BITMAP *A2 = load_bitmap("../images/menucru niv1_2.bmp", NULL);
@@ -71,21 +71,21 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte) {
         if (mouse_y >= 480 && mouse_y <= 513) {
             draw_sprite(buffer, A1, 450, 400);
             if (mouse_b & 1) {
-                combinaison1 = 1;
+                combinaison = 1;
                 allegro_message("vous avez pris un thon");
             }
         }
         if (mouse_y >= 513 && mouse_y <= 600) {
             draw_sprite(buffer, A2, 450, 400);
             if (mouse_b & 1) {
-                combinaison1 = 2;
+                combinaison = 2;
                 allegro_message("vous avez pris un saumon");
             }
         }
         if (mouse_y >= 600 && mouse_y <= 700) {
             draw_sprite(buffer, A3, 450, 400);
             if (mouse_b & 1) {
-                combinaison1 = 3;
+                combinaison = 3;
                 allegro_message("vous avez pris du riz cru");
             }
         }
@@ -96,7 +96,7 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte) {
     destroy_bitmap(A2);
     destroy_bitmap(A3);
 
-    return combinaison1;
+    return combinaison;
 }
 
 int menu() {
@@ -305,30 +305,22 @@ void imagefin() {
     destroy_bitmap(imagefin);
 }
 
-void tables(int combinaison, int *table) {
-    printf("combinaison : %d\n", combinaison);
-    printf("table : %d\n", *table);
+void tables(int combinaison, int *table, int nivchoisi) {
     if (*table == 0 && combinaison != 3) {
         *table = combinaison;
-        printf("bibou\n");
 
         if (*table == 1) {
-            printf("table : %d\n", *table);
             allegro_message("vous avez posé du thon");
             combinaison = 0;
         } else if (*table == 2) {
-            printf("table : %d\n", *table);
             allegro_message("vous avez posé du saumon");
             combinaison = 0;
         } else if (*table == 4) {
-            printf("table : %d\n", *table);
             allegro_message("vous avez posé du riz cuit");
             combinaison = 0;
         }
-    }
-    else if ((*table == 1 || *table == 2) && combinaison == 4) {
+    } else if ((*table == 1 || *table == 2) && combinaison == 4) {
         combinaison += *table;
-        printf("je suis là\n");
 
         if (combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
@@ -341,7 +333,6 @@ void tables(int combinaison, int *table) {
         }
     } else if ((combinaison == 1 || combinaison == 2) && *table == 4) {
         combinaison += *table;
-        printf("je suis là\n");
 
         if (combinaison == 5) {
             allegro_message("vous avez combiné un sushi thon");
@@ -370,7 +361,8 @@ int jeu(int nivchoisi) {
     int fin = 0;
     int occupation = 0;
     int fonction;
-    int combinaison = 0;
+    int combinaisonJ1 = 0;
+    int combinaisonJ2 = 0;
     int capte = 1;
     int table = 0;
 
@@ -448,7 +440,7 @@ int jeu(int nivchoisi) {
             if (j1posx >= 60 && j1posx <= 150 && j1posy >= 205 && j1posy <= 520) {
                 j1posx = 150;
                 if (key[KEY_L] && orienJ1 == 4) {
-                    combinaison = menu_cru(buffer, nivchoisi, combinaison, capte);
+                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
                 }
             }
 
@@ -457,7 +449,7 @@ int jeu(int nivchoisi) {
             if (j1posx >= 140 && j1posx <= 500 && j1posy >= 530 && j1posy <= 700) {
                 j1posy = 530;
                 if (key[KEY_L] && orienJ1 == 3) {
-                    if (combinaison == 3) {
+                    if (combinaisonJ1 == 3) {
                         occupation++;
                         if (occupation < 0) {
                             occupation = 0;
@@ -465,14 +457,14 @@ int jeu(int nivchoisi) {
                         if (occupation > 2) {
                             occupation = 2;
                         }
-                        combinaison = 0;
+                        combinaisonJ1 = 0;
                     }
                 }
             }
             if (j1posx >= 315 && j1posx <= 500 && j1posy >= 180 && j1posy <= 600) {
                 j1posx = 315;
                 if (key[KEY_L] && orienJ1 == 2) {
-                    tables(combinaison, &table);
+                    tables(combinaisonJ1, &table, nivchoisi);
                 }
             }
             if (j1posx >= 160 && j1posx <= 780 && j1posy >= 188 && j1posy <= 240) {
@@ -484,13 +476,13 @@ int jeu(int nivchoisi) {
             if (j2posx >= 160 && j2posx <= 450 && j2posy >= 530 && j2posy <= 700) {
                 j2posy = 470;
                 if (key[KEY_C]) {
-                    allegro_message("prise");
+                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
                 }
             }
             if (j2posx >= 315 && j2posx <= 470 && j2posy >= 180 && j2posy <= 600) {
                 j2posx = 470;
                 if (key[KEY_C]) {
-                    allegro_message("prise");
+                    tables(combinaisonJ2, &table, nivchoisi);
                 }
             }
             if (j2posx >= 160 && j2posx <= 780 && j2posy >= 188 && j2posy <= 260) {
@@ -498,11 +490,12 @@ int jeu(int nivchoisi) {
                 if (key[KEY_C] && orienJ2 == 1) {
                     allegro_message("prise");
                 }
+
             }
             if (j2posx >= 610 && j2posx <= 705 && j2posy >= 340 && j2posy <= 550) {
                 j2posx = 610;
                 if (key[KEY_C]) {
-                    allegro_message("prise");
+                    allegro_message("prise 7");
                 }
             }
         }
@@ -531,14 +524,14 @@ int jeu(int nivchoisi) {
             if (j1posx >= 0 && j1posx <= 270 && j1posy >= 400 && j1posy <= 600) {
                 j1posx = 270;
                 if (key[KEY_L]) {
-                    allegro_message("prise");
+                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
                 }
             }
 
             if (j1posx >= 200 && j1posx <= 420 && j1posy >= 100 && j1posy <= 372) {
                 j1posy = 372;
                 if (key[KEY_L]) {
-                    allegro_message("prise");
+                    tables(combinaisonJ1, &table, nivchoisi);
                 }
             }
 
@@ -557,14 +550,14 @@ int jeu(int nivchoisi) {
             if (j2posx >= 0 && j2posx <= 270 && j2posy >= 400 && j2posy <= 600) {
                 j2posx = 270;
                 if (key[KEY_C]) {
-                    allegro_message("prise");
+                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
                 }
             }
 
             if (j2posx >= 200 && j2posx <= 420 && j2posy >= 100 && j2posy <= 372) {
                 j2posy = 372;
                 if (key[KEY_C]) {
-                    allegro_message("prise");
+                    tables(combinaisonJ2, &table, nivchoisi);
                 }
             }
 
@@ -608,13 +601,13 @@ int jeu(int nivchoisi) {
             if (j1posx >= 640) {
                 j1posx = 640;
                 if (key[KEY_L] && orienJ1 == 2) {
-                    allegro_message("prise");
+                    combinaisonJ1 = menu_cru(buffer, nivchoisi, combinaisonJ1, capte);
                 }
             }
             if (j1posx <= 170) {
                 j1posx = 170;
                 if (key[KEY_L] && orienJ1 == 4) {
-                    allegro_message("prise");
+                    tables(combinaisonJ1, &table, nivchoisi);
                 }
             }
             if (j1posy <= 275) {
@@ -648,13 +641,13 @@ int jeu(int nivchoisi) {
             if (j2posx >= 640) {
                 j2posx = 640;
                 if (key[KEY_C] && orienJ2 == 2) {
-                    allegro_message("prise");
+                    combinaisonJ2 = menu_cru(buffer, nivchoisi, combinaisonJ2, capte);
                 }
             }
             if (j2posx <= 170) {
                 j2posx = 170;
                 if (key[KEY_C] && orienJ2 == 4) {
-                    allegro_message("prise");
+                    tables(combinaisonJ2, &table, nivchoisi);
                 }
             }
             if (j2posy <= 275) {
@@ -694,7 +687,7 @@ int jeu(int nivchoisi) {
             if (occupation > 2) {
                 occupation = 2;
             }
-            combinaison = 4;
+            combinaisonJ1 = 4;
             allegro_message("vous avez fait du riz cuit");
         }
 
