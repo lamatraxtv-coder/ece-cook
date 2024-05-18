@@ -286,8 +286,9 @@ int selectniv(int fini) {
     return choixniv;
 }
 
-// Fonction tables modifiée avec le paramètre nivchoisi
+
 void tables(Joueur *joueur, int *table, int nivchoisi) {
+    printf("rentrez");
     if (joueur->combinaison == 0 && *table != 0) {
         joueur->combinaison = *table;
         *table = 0;
@@ -441,7 +442,7 @@ int jeu(int nivchoisi) {
                 }
             }
 
-            putpixel(buffer, joueur1.posx, joueur1.posy, makecol(0, 0, 0));
+            putpixel(buffer, joueur2.posx, joueur2.posy, makecol(0, 0, 0));
 
             if (joueur1.posx >= 140 && joueur1.posx <= 500 && joueur1.posy >= 530 && joueur1.posy <= 700) {
                 joueur1.posy = 530;
@@ -472,32 +473,35 @@ int jeu(int nivchoisi) {
             }
             if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700) {
                 joueur2.posy = 470;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
+                    tables(&joueur2, &table, nivchoisi);
+                }
+            }
+            if (joueur2.posy >= 400 && joueur2.posy <= 600 && joueur2.posx == 470) {
+                if (key[KEY_Q]) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
 
-
             if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600) {
                 joueur2.posx = 470;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
 
             if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260) {
                 joueur2.posy = 260;
-                if (key[KEY_A] && joueur2.orientation == 1) {
+                if (key[KEY_Q] && joueur2.orientation == 1) {
                     allegro_message("prise3");
                 }
             }
             if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550) {
                 joueur2.posx = 610;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
-
         }
 
         if (nivchoisi == 2) {
@@ -549,21 +553,21 @@ int jeu(int nivchoisi) {
             }
             if (joueur2.posx >= 0 && joueur2.posx <= 270 && joueur2.posy >= 400 && joueur2.posy <= 600) {
                 joueur2.posx = 270;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
                     joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
                 }
             }
 
             if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372) {
                 joueur2.posy = 372;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
 
             if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480) {
                 joueur2.posx = 530;
-                if (key[KEY_A]) {
+                if (key[KEY_Q]) {
                     occupation++;
                     if (occupation < 0) {
                         occupation = 0;
@@ -640,19 +644,19 @@ int jeu(int nivchoisi) {
             }
             if (joueur2.posx >= 640) {
                 joueur2.posx = 640;
-                if (key[KEY_A] && joueur2.orientation == 2) {
+                if (key[KEY_Q] && joueur2.orientation == 2) {
                     joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);
                 }
             }
             if (joueur2.posx <= 170) {
                 joueur2.posx = 170;
-                if (key[KEY_A] && joueur2.orientation == 4) {
+                if (key[KEY_Q] && joueur2.orientation == 4) {
                     tables(&joueur2, &table, nivchoisi);
                 }
             }
             if (joueur2.posy <= 275) {
                 joueur2.posy = 275;
-                if (key[KEY_A] && joueur2.orientation == 1) {
+                if (key[KEY_Q] && joueur2.orientation == 1) {
                     if (joueur2.posx >= 230 && joueur2.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
@@ -666,7 +670,7 @@ int jeu(int nivchoisi) {
             }
             if (joueur2.posy >= 575) {
                 joueur2.posy = 575;
-                if (key[KEY_A] && joueur2.orientation == 3) {
+                if (key[KEY_Q] && joueur2.orientation == 3) {
                     if (joueur2.posx >= 230 && joueur2.posx <= 260) {
                         occupation++;
                         if (occupation < 0) {
@@ -711,7 +715,8 @@ int jeu(int nivchoisi) {
         if (nivchoisi == 3) {
             nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0);
         }
-
+        textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);
+        textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, " j2 : %4d %4d", joueur2.posx, joueur2.posy);
         textprintf_ex(buffer, font, 60, 140, makecol(0, 0, 0), -1, "mouse : %4d %4d", mouse_x, mouse_y);
         textprintf_ex(buffer, font, 700, 700, makecol(255, 255, 255), -1, "%.1f / 180", seconde);
         blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
