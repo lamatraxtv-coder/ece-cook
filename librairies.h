@@ -10,11 +10,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
-
-
-
-
-// Prototypes des fonctions
+//Fonctions
 void affichagechargement();
 void animation_bouil(int nivchoisi, BITMAP * buffer,int occupation);
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]);

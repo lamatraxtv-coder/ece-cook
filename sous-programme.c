@@ -1,105 +1,103 @@
 #include "librairies.h"
 
-void affichagechargement() {
-    set_trans_blender(0, 255, 0, 0);
-    BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);
-    if (!imagechargement) {
-        allegro_message("Erreur de chargement de l'image");
-        return;
+void affichagechargement(){//fonction qui affiche l'image de chargement
+    set_trans_blender(0, 255, 0, 0);//définition de la couleur de transparence
+    BITMAP *imagechargement=load_bitmap("../images/ece cook chargement.bmp", NULL);//chargement de l'image
+    if (!imagechargement){//si l'image n'est pas chargée
+        allegro_message("Erreur de chargement de l'image");//affichage d'un message d'erreur
+        return;//sortie de la fonction
     }
-    blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);
-    textprintf_ex(screen, font, 320, 750, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");
-    while (!key[KEY_SPACE]) {
-        rest(100);
+    blit(imagechargement, screen, 0, 0, (SCREEN_W - imagechargement->w) / 2, (SCREEN_H - imagechargement->h) / 2, imagechargement->w, imagechargement->h);//affichage de l'image
+    textprintf_ex(screen, font, 320, 750, makecol(0, 0, 0), -1, "Appuyez sur ESPACE pour continuer");//affichage d'un message
+    while (!key[KEY_SPACE]){//tant que la touche ESPACE n'est pas appuyée
+        rest(100);//pause de 100 ms
     }
-    destroy_bitmap(imagechargement);
+    destroy_bitmap(imagechargement);//libération de la mémoire
+}
+void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]){//fonction qui charge les images des joueurs
+    PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);//chargement de l'image du joueur 1 orienté vers le haut
+    PERSO1_O[1] = load_bitmap("../images/perso1O2.bmp", NULL);//chargement de l'image du joueur 1 orienté vers la droite
+    PERSO1_O[2] = load_bitmap("../images/perso1O3.bmp", NULL);//chargement de l'image du joueur 1 orienté vers le bas
+    PERSO1_O[3] = load_bitmap("../images/perso1O4.bmp", NULL);//chargement de l'image du joueur 1 orienté vers la gauche
+
+    PERSO2_O[0] = load_bitmap("../images/perso2O1.bmp", NULL);//chargement de l'image du joueur 2 orienté vers le haut
+    PERSO2_O[1] = load_bitmap("../images/perso2O2.bmp", NULL);//chargement de l'image du joueur 2 orienté vers la droite
+    PERSO2_O[2] = load_bitmap("../images/perso2O3.bmp", NULL);//chargement de l'image du joueur 2 orienté vers le bas
+    PERSO2_O[3] = load_bitmap("../images/perso2O4.bmp", NULL);//chargement de l'image du joueur 2 orienté vers la gauche
 }
 
-void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]) {
-    PERSO1_O[0] = load_bitmap("../images/perso1O1.bmp", NULL);
-    PERSO1_O[1] = load_bitmap("../images/perso1O2.bmp", NULL);
-    PERSO1_O[2] = load_bitmap("../images/perso1O3.bmp", NULL);
-    PERSO1_O[3] = load_bitmap("../images/perso1O4.bmp", NULL);
-
-    PERSO2_O[0] = load_bitmap("../images/perso2O1.bmp", NULL);
-    PERSO2_O[1] = load_bitmap("../images/perso2O2.bmp", NULL);
-    PERSO2_O[2] = load_bitmap("../images/perso2O3.bmp", NULL);
-    PERSO2_O[3] = load_bitmap("../images/perso2O4.bmp", NULL);
-}
-
-void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2) {
-    if (orienJ1 >= 1 && orienJ1 <= 4) {
+void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], int j1posx, int j1posy, int j2posx, int j2posy, int orienJ1, int orienJ2){//fonction qui affiche les images des joueurs
+    if (orienJ1>=1 && orienJ1<=4){
         draw_sprite(buffer, PERSO1_O[orienJ1 - 1], j1posx, j1posy);
     }
-    if (orienJ2 >= 1 && orienJ2 <= 4) {
+    if (orienJ2>=1 && orienJ2<=4){
         draw_sprite(buffer, PERSO2_O[orienJ2 - 1], j2posx, j2posy);
     }
 }
 
-int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index) {
-    BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};
-    int random = rand() % 200;
-    if (random == 1 && recettes < MAX_COMMANDES) {
-        recette[recettes] = rand() % 3;
-        recettes++;
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index){//fonction qui gère les commandes
+    BITMAP *recettesDisponibles[3]={recette1, recette2, recette3};//tableau des recettes disponibles
+    int random=rand()%200;//génération d'un nombre aléatoire
+    if (random==1 && recettes < MAX_COMMANDES){//si le nombre aléatoire est égal à 1 et qu'il y a moins de 3 commandes
+        recette[recettes]=rand()%3;//génération d'un nombre aléatoire entre 0 et 2
+        recettes++;//incrémentation du nombre de commandes
     }
-
-    if (key[KEY_U]) {
-        if (index < 0 || index >= recettes) {
-            allegro_message("Index invalide pour la suppression: %d\n", index);
-            return recettes;
+    if (key[KEY_U]){
+        if (index<0||index>=recettes){//si l'index est invalide
+            allegro_message("Index invalide pour la suppression: %d\n", index);//affichage d'un message d'erreur
+            return recettes;//sortie de la fonction
         }
-        for (int i = index; i < recettes - 1; i++) {
-            recette[i] = recette[i + 1];
+        for (int i=index;i<recettes-1;i++){//pour chaque commande
+            recette[i]=recette[i+1];//décalage des commandes
         }
-        recettes--;
+        recettes--;//décrémentation du nombre de commandes
     }
-    for (int i = 0; i < recettes; i++) {
-        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);
+    for (int i=0;i<recettes;i++){//pour chaque commande
+        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);//affichage de la commande
     }
-    return recettes;
+    return recettes;//retourne le nombre de commandes
 }
 
-int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte) {
-    BITMAP *A0 = load_bitmap("../images/menucru niv1.bmp", NULL);
-    BITMAP *A1 = load_bitmap("../images/menucru niv1_1.bmp", NULL);
-    BITMAP *A2 = load_bitmap("../images/menucru niv1_2.bmp", NULL);
-    BITMAP *A3 = load_bitmap("../images/menucru niv1_3.bmp", NULL);
+int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison1, int capte){//fonction qui gère le menu des ingrédients crus
+    BITMAP *A0 = load_bitmap("../images/menucru niv1.bmp", NULL);//chargement de l'image de base
+    BITMAP *A1 = load_bitmap("../images/menucru niv1_1.bmp", NULL);//chargement de l'image du thon
+    BITMAP *A2 = load_bitmap("../images/menucru niv1_2.bmp", NULL);//chargement de l'image du saumon
+    BITMAP *A3 = load_bitmap("../images/menucru niv1_3.bmp", NULL);//chargement de l'image du riz cru
 
-    if (nivchoisi == 1) {
-        draw_sprite(buffer, A0, 450, 400);
-        if (mouse_y >= 480 && mouse_y <= 513) {
+    if (nivchoisi==1){//si le niveau choisi est le niveau 1
+        draw_sprite(buffer, A0, 450, 400);//affichage de l'image de base
+        if (mouse_y >= 480 && mouse_y <= 513){//si la souris est sur le thon
             draw_sprite(buffer, A1, 450, 400);
-            if (mouse_b & 1) {
-                combinaison1 = 1;
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison1=1;//la combinaison est égale à 1
                 allegro_message("vous avez pris un thon");
             }
         }
-        if (mouse_y >= 513 && mouse_y <= 600) {
-            draw_sprite(buffer, A2, 450, 400);
-            if (mouse_b & 1) {
-                combinaison1 = 2;
-                allegro_message("vous avez pris un saumon");
+        if (mouse_y>=513 && mouse_y<=600){//si la souris est sur le saumon
+            draw_sprite(buffer, A2, 450, 400);//affichage de l'image du saumon
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison1=2;//la combinaison est égale à 2
+                allegro_message("vous avez pris un saumon");//affichage d'un message
             }
         }
-        if (mouse_y >= 600 && mouse_y <= 700) {
-            draw_sprite(buffer, A3, 450, 400);
-            if (mouse_b & 1) {
-                combinaison1 = 3;
-                allegro_message("vous avez pris du riz cru");
+        if (mouse_y>=600 && mouse_y<=700){//si la souris est sur le riz cru
+            draw_sprite(buffer, A3, 450, 400);//affichage de l'image du riz cru
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison1=3;//la combinaison est égale à 3
+                allegro_message("vous avez pris du riz cru");//affichage d'un message
             }
         }
     }
 
-    destroy_bitmap(A0);
+    destroy_bitmap(A0);//libération de la mémoire
     destroy_bitmap(A1);
     destroy_bitmap(A2);
     destroy_bitmap(A3);
 
-    return combinaison1;
+    return combinaison1;//retourne la combinaison
 }
 
-int menu() {
+int menu(){
     install_mouse();
     show_mouse(screen);
     BITMAP *menuneutre = load_bitmap("../images/menuneutre.bmp", NULL);
