@@ -284,7 +284,6 @@ int selectniv(int fini){//fonction qui affiche les niveaux
 
 
 void tables(Joueur *joueur, int *table, int nivchoisi) {
-
     if (joueur->combinaison == 0 && *table != 0) {
         printf("rentrez");
         joueur->combinaison = *table;
@@ -338,7 +337,7 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
             joueur->combinaison = 0;
             *table= 6;
         }
-    } else if (*table == 3) {
+    }else if (*table == 3) {
         allegro_message("vous ne pouvez pas poser du riz cru");
         *table = 0;
         joueur->combinaison = 3;
