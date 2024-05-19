@@ -18,6 +18,12 @@ typedef struct{//structure pour les joueurs
     int orientation;//orientation du joueur
 } Joueur;
 
+typedef struct {
+    SAMPLE *sample;
+} Son;
+
+
+void play_music(const char *filename, int fonctionson);
 void affichagechargement();//fonction qui affiche le chargement
 void animation_bouil(int nivchoisi, BITMAP * buffer,int occupation);//fonction qui affiche l'animation de la bouilloire
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]);//fonction qui charge les images des joueurs
@@ -34,4 +40,4 @@ void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recet
 void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);//fonction qui affiche les pages du tutoriel
 void affiche_score();//fonction qui affiche le score//
 void score();//fonction qui gère le score
-void tables(Joueur *joueur, int *table, int nivchoisi);//fonction qui gère les tables
+void tables(Joueur *joueur, int *table, int nivchoisi, int score);//fonction qui gère les tables

@@ -1,6 +1,20 @@
 #include "librairies.h"
 
 
+void musique(Son *son, const char *filename, int fonctionson) {
+    if (fonctionson == 1) {
+        son->sample = load_sample(filename);
+        if (!son->sample) {
+            allegro_message("Erreur de chargement de la musique : %s", filename);
+            return;
+        }
+        play_sample(son->sample, 125, 128, 1000, 1);
+    } else if (fonctionson == 2) {
+        stop_sample(son->sample);
+        destroy_sample(son->sample);
+        son->sample = NULL;
+    }
+}
 
 void affichagechargement(){//fonction qui affiche l'image de charg
     set_trans_blender(0, 255, 0, 0);//définition de la couleur de transparence
@@ -307,7 +321,7 @@ int selectniv(int fini){//fonction qui affiche les niveaux
     return choixniv;
 }
 
-void tables(Joueur *joueur, int *table, int nivchoisi) {
+void tables(Joueur *joueur, int *table, int nivchoisi, int score) {
     if (joueur->combinaison == 0 && *table != 0) {
         printf("rentrez");
         joueur->combinaison = *table;
@@ -332,12 +346,15 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
         if (*table == 1) {
             allegro_message("vous avez posé du thon");
             joueur->combinaison = 0;
+            score=+25;
         } else if (*table == 2) {
             allegro_message("vous avez posé du saumon");
             joueur->combinaison = 0;
+            score=+25;
         } else if (*table == 4) {
             allegro_message("vous avez posé du riz cuit");
             joueur->combinaison = 0;
+            score=+25;
         }
     } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4) {
         joueur->combinaison += *table;
@@ -345,10 +362,12 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
             allegro_message("vous avez combiné un sushi thon");
             joueur->combinaison = 0;
             *table=5;
+            score=+50;
         } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
             joueur->combinaison = 0;
             *table=6;
+            score=+50;
         }
     } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4) {
         joueur->combinaison += *table;
@@ -356,15 +375,18 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
             allegro_message("vous avez combiné un sushi thon");
             joueur->combinaison = 0;
             *table=5;
+            score=+50;
         } else if (joueur->combinaison == 6) {
             allegro_message("vous avez combiné un sushi saumon");
             joueur->combinaison = 0;
             *table= 6;
+            score=+50;
         }
     }else if (*table == 3) {
         allegro_message("vous ne pouvez pas poser du riz cru");
         *table = 0;
         joueur->combinaison = 3;
+        score=+50;
     }
     if(key[KEY_H]){
         joueur->combinaison = 0;
@@ -381,6 +403,9 @@ int jeu(int nivchoisi) {
     int occupation = 0;
     int table = 0;
     int score = 0;
+
+    Son son;
+    musique(&son, "../images/videoplayback-_3_.wav", 1);
 
     time_t debut, actuel;
     double seconde;
@@ -491,7 +516,7 @@ int jeu(int nivchoisi) {
             if (joueur1.posx>=315 && joueur1.posx <= 500 && joueur1.posy >= 180 && joueur1.posy <= 600){//si la position du joueur est comprise entre 315 et 500 et entre 180 et 600
                 joueur1.posx=315;//définition de la position du joueur
                 if (key[KEY_1_PAD] && joueur1.orientation==2){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 2
-                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur1, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur1.posx >= 160 && joueur1.posx <= 780 && joueur1.posy >= 188 && joueur1.posy <= 240){//si la position du joueur est comprise entre 160 et 780 et entre 188 et 240
@@ -503,18 +528,18 @@ int jeu(int nivchoisi) {
             if (joueur2.posx >= 160 && joueur2.posx <= 450 && joueur2.posy >= 530 && joueur2.posy <= 700){//si la position du joueur est comprise entre 160 et 450 et entre 530 et 700
                 joueur2.posy=470;
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posy >= 400 && joueur2.posy <= 600 && joueur2.posx==470){//si la position du joueur est comprise entre 400 et 600 et que la position du joueur est égale à 470
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posx >= 315 && joueur2.posx <= 470 && joueur2.posy >= 180 && joueur2.posy <= 600){//si la position du joueur est comprise entre 315 et 470 et entre 180 et 600
                 joueur2.posx=470;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posx >= 160 && joueur2.posx <= 780 && joueur2.posy >= 188 && joueur2.posy <= 260){//si la position du joueur est comprise entre 160 et 780 et entre 188 et 260
@@ -559,7 +584,7 @@ int jeu(int nivchoisi) {
             if (joueur1.posx >= 200 && joueur1.posx <= 420 && joueur1.posy >= 100 && joueur1.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
                 joueur1.posy = 372;//définition de la position du joueur
                 if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
-                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur1, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur1.posx >= 530 && joueur1.posx <= 800 && joueur1.posy >= 320 && joueur1.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
@@ -583,7 +608,7 @@ int jeu(int nivchoisi) {
             if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
                 joueur2.posy = 372;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
@@ -631,7 +656,7 @@ int jeu(int nivchoisi) {
             if (joueur1.posx <= 170){//si la position du joueur est inférieure à 170
                 joueur1.posx = 170;//définition de la position du joueur
                 if (key[KEY_1_PAD] && joueur1.orientation==4){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 4
-                    tables(&joueur1, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur1, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur1.posy <= 275){//si la position du joueur est inférieure à 275
@@ -671,7 +696,7 @@ int jeu(int nivchoisi) {
             if (joueur2.posx<=170){//si la position du joueur est inférieure à 170
                 joueur2.posx=170;//définition de la position du joueur
                 if (key[KEY_V] && joueur2.orientation==4){//si la touche V est appuyée et que l'orientation du joueur est égale à 4
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posy<=275){//si la position du joueur est inférieure à 275
@@ -749,6 +774,8 @@ int jeu(int nivchoisi) {
             fin=1;//définition de la variable
         }
     }
+    musique(&son, NULL, 2); // Ajouté pour arrêter la musique à la fin du jeu
+
     destroy_bitmap(buffer);//libération de la mémoire
     destroy_bitmap(bouf1_1comm);
     destroy_bitmap(bouf2_1comm);
