@@ -774,6 +774,7 @@ int jeu(int nivchoisi) {
             fin=1;//définition de la variable
         }
     }
+    //
     musique(&son, NULL, 2); // Ajouté pour arrêter la musique à la fin du jeu
 
     destroy_bitmap(buffer);//libération de la mémoire

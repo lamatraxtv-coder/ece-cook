@@ -21,7 +21,7 @@ typedef struct{//structure pour les joueurs
 typedef struct {
     SAMPLE *sample;
 } Son;
-
+//
 
 void play_music(const char *filename, int fonctionson);
 void affichagechargement();//fonction qui affiche le chargement
