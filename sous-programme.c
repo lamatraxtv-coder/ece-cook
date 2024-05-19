@@ -918,42 +918,42 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
                     occupation=2;//définition de la variable
                 }
 
-                if(nivchoisi==1){
+                if(nivchoisi==1){//si le niveau choisi est le niveau 1
                     allegro_message("vous avez fait du riz cuit");//affichage d'un message
                     joueur1.combinaison=4;//définition de la combinaison du joueur
-                    score=+25;
+                    score=+25;//incrémentation du score
                 }
-                if(nivchoisi==2){
-                    if(joueur1.combinaison==1){
+                if(nivchoisi==2){//si le niveau choisi est le niveau 2
+                    if(joueur1.combinaison==1){//si la combinaison du joueur est égale à 1
                         allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                        joueur1.combinaison=+10;
-                        score=+25;
+                        joueur1.combinaison=+10;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
                     }
-                    if(joueur2.combinaison==1){
+                    if(joueur2.combinaison==1){//si la combinaison du joueur est égale à 1
                         allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                        joueur1.combinaison=+10;
-                        score=+25;
+                        joueur1.combinaison=+10;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
                     }
-                    if(joueur1.combinaison==2){
+                    if(joueur1.combinaison==2){//si la combinaison du joueur est égale à 2
                         allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                        joueur1.combinaison=+10;
-                        score=+25;
+                        joueur1.combinaison=+10;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
                     }
-                    if(joueur2.combinaison==2){
+                    if(joueur2.combinaison==2){//si la combinaison du joueur est égale à 2
                         allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                        joueur1.combinaison=+10;
-                        score=+25;
+                        joueur1.combinaison=+10;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
 
                     }
-                    if(joueur1.combinaison==3){
+                    if(joueur1.combinaison==3){//si la combinaison du joueur est égale à 3
                         allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
-                        joueur1.combinaison=+5;
-                        score=+25;
+                        joueur1.combinaison=+5;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
                     }
-                    if(joueur2.combinaison==3){
+                    if(joueur2.combinaison==3){//si la combinaison du joueur est égale à 3
                         allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
-                        joueur1.combinaison=+5;
-                        score=+25;
+                        joueur1.combinaison=+5;//définition de la combinaison du joueur
+                        score=+25;//incrémentation du score
                     }
 
                 }
@@ -976,10 +976,10 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
             nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,1,0,0);//appel de la fonction gerer_commandes
         }
         if (nivchoisi==2){//si le niveau choisi est le niveau 2
-            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0,1,0,0);
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0,1,0,0);//appel de la fonction gerer_commandes
         }
         if (nivchoisi==3){//si le niveau choisi est le niveau 3
-            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0,1,0,0);
+            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0,1,0,0);//appel de la fonction gerer_commandes
         }
         textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);//affichage du texte
         textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, " j2 : %4d %4d", joueur2.posx, joueur2.posy);
