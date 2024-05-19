@@ -230,6 +230,11 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte){//foncti
     destroy_bitmap(A1);
     destroy_bitmap(A2);
     destroy_bitmap(A3);
+    destroy_bitmap(B0);
+    destroy_bitmap(B1);
+    destroy_bitmap(B2);
+    destroy_bitmap(B3);
+    destroy_bitmap(B4);
 
     return combinaison;//retourne la combinaison
 }
