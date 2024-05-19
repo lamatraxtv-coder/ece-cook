@@ -164,6 +164,11 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte){//foncti
     BITMAP *A1 = load_bitmap("../images/menucru niv1_1.bmp", NULL);
     BITMAP *A2 = load_bitmap("../images/menucru niv1_2.bmp", NULL);
     BITMAP *A3 = load_bitmap("../images/menucru niv1_3.bmp", NULL);
+    BITMAP *B0 = load_bitmap("../images/menucru niv2.bmp", NULL);//chargement de l'image
+    BITMAP *B1 = load_bitmap("../images/menucru niv2_1.bmp", NULL);
+    BITMAP *B2 = load_bitmap("../images/menucru niv2_2.bmp", NULL);
+    BITMAP *B3 = load_bitmap("../images/menucru niv2_3.bmp", NULL);
+    BITMAP *B4 = load_bitmap("../images/menucru niv2_4.bmp", NULL);
 
     if (nivchoisi==1){//si le niveau choisi est le niveau 1
         draw_sprite(buffer, A0, 450, 400);//affichage de l'image
@@ -186,6 +191,38 @@ int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte){//foncti
             if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
                 combinaison=3;//définition de la combinaison
                 allegro_message("vous avez pris du riz cru");//affichage d'un message
+            }
+        }
+    }
+    if (nivchoisi==2){//si le niveau choisi est le niveau 1
+        draw_sprite(buffer, B0, 450, 400);//affichage de l'image
+        if (mouse_y >= 400 && mouse_y <= 600 && mouse_x>=450 &&mouse_x<=650){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, B1, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=2;//définition de la combinaison
+                allegro_message("vous avez pris :  spaghetti");//affichage d'un message
+            }
+        }
+        if (mouse_y >= 400 && mouse_y <= 600 && mouse_x>=650 &&mouse_x<=850){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, B2, 450, 400);//affichage de l'image
+
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=1;//définition de la combinaison
+                allegro_message("vous avez pris un steak");//affichage d'un message
+            }
+        }
+        if (mouse_y >= 600 && mouse_y <= 800 && mouse_x>=450 && mouse_x<=650){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, B3, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=3;//définition de la combinaison
+                allegro_message("vous avez pris tomate");//affichage d'un message
+            }
+        }
+        if (mouse_y >= 600 && mouse_y <= 800 && mouse_x>=650 && mouse_x<=850){//si la souris est sur la zone de l'image
+            draw_sprite(buffer, B4, 450, 400);//affichage de l'image
+            if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                combinaison=4;//définition de la combinaison
+                allegro_message("vous avez pris des frites");//affichage d'un message
             }
         }
     }
@@ -636,15 +673,16 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
             if (joueur1.posx >= 0 && joueur1.posx <= 270 && joueur1.posy >= 400 && joueur1.posy <= 600){//si la position du joueur est comprise entre 0 et 270 et entre 400 et 600
                 joueur1.posx = 270;//définition de la position du joueur
                 if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
-                    joueur1.combinaison=menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);//définition de la combinaison du joueur
+                    tables(&joueur1, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur1.posx >= 200 && joueur1.posx <= 420 && joueur1.posy >= 100 && joueur1.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
                 joueur1.posy = 372;//définition de la position du joueur
                 if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
-                    tables(&joueur1, &table, nivchoisi,score);//appel de la fonction tables
+                    joueur1.combinaison=menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);//définition de la combinaison du joueur
                 }
             }
+
             if (joueur1.posx >= 530 && joueur1.posx <= 800 && joueur1.posy >= 320 && joueur1.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
                 joueur1.posx = 530;//définition de la position du joueur
                 if (key[KEY_1_PAD]){//si la touche 1 du pavé numérique est appuyée
@@ -660,13 +698,13 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
             if (joueur2.posx >= 0 && joueur2.posx <= 270 && joueur2.posy >= 400 && joueur2.posy <= 600){//si la position du joueur est comprise entre 0 et 270 et entre 400 et 600
                 joueur2.posx = 270;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);//définition de la combinaison du joueur
+                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
                 }
             }
             if (joueur2.posx >= 200 && joueur2.posx <= 420 && joueur2.posy >= 100 && joueur2.posy <= 372){//si la position du joueur est comprise entre 200 et 420 et entre 100 et 372
                 joueur2.posy = 372;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi,score);//appel de la fonction tables
+                    joueur2.combinaison = menu_cru(buffer, nivchoisi, joueur2.combinaison, 1);//définition de la combinaison du joueur
                 }
             }
             if (joueur2.posx >= 530 && joueur2.posx <= 800 && joueur2.posy >= 320 && joueur2.posy <= 480){//si la position du joueur est comprise entre 530 et 800 et entre 320 et 480
@@ -797,8 +835,15 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
                     occupation=2;//définition de la variable
                 }
                 joueur1.combinaison=4;//définition de la combinaison du joueur
-                allegro_message("vous avez fait du riz cuit");//affichage d'un message
-                score=+25;
+                if(nivchoisi==1){
+                    allegro_message("vous avez fait du riz cuit");//affichage d'un message
+                    score=+25;
+                }
+                if(nivchoisi==2){
+                    allegro_message("vous avez fait cuire du steak");//affichage d'un message
+                    score=+25;
+                }
+
             }
 
         }
@@ -855,7 +900,6 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
 
     return 0;
 }
-
 void imagefin(int score){//fonction imagefin
     install_mouse();//initialisation de la souris
     show_mouse(screen);//affichage de la souris
@@ -882,7 +926,6 @@ void imagefin(int score){//fonction imagefin
     destroy_bitmap(imagefinselect);//libération de la mémoire
     destroy_bitmap(imagefin);
 }
-
 void tuto(){//fonction tuto
     BITMAP *tutoP1=load_bitmap("../images/tuto1.bmp", NULL);//chargement des images
     BITMAP *tutoP2=load_bitmap("../images/tuto2.bmp", NULL);
@@ -932,7 +975,6 @@ void tuto(){//fonction tuto
         }
     }
 }
-
 void affiche_score(){//fonction affiche_score
     BITMAP *Score=load_bitmap("../images/Score.bmp", NULL);//chargement de l'image
     while (key[KEY_SPACE]==0){//tant que la touche ESPACE n'est pas appuyée
