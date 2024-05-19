@@ -69,7 +69,7 @@ void musique(Son *son, const char *filename, int fonctionson) {
     }
 }
 
-void affichagechargement(){//fonction qui affiche l'image de charg
+void affichagechargement(){//fonction qui affiche l'image de chargement
     set_trans_blender(0, 255, 0, 0);//définition de la couleur de transparence
     BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);//chargement de l'image
     if (!imagechargement){//si l'image n'est pas chargée
@@ -82,6 +82,7 @@ void affichagechargement(){//fonction qui affiche l'image de charg
         rest(100);//pause de 100 ms
     }
     destroy_bitmap(imagechargement);//libération de la mémoire
+
 }
 
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]){//fonction qui charge les images des joueurs
@@ -106,7 +107,7 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joue
 }
 
 int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison,int score){//fonction qui gère les commandes
-    if(fonction==1) {
+    if(fonction==1){
         BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};//tableau des recettes
         int random = rand() % 250;//génération d'un nombre aléatoire
         if (random == 1 && recettes <MAX_COMMANDES) {//si le nombre aléatoire est égal à 1 et qu'il y a moins de commandes que le nombre maximal de commandes
@@ -129,13 +130,14 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
         }
         return recettes;
     }
-    if (fonction == 2) {
+    if (fonction == 2){
         for (int i = 0; i < recettes; i++) {
             int commande = recette[i];
 
-            if ((commande == 0 && combinaison == 4) ||
-                (commande == 2 && combinaison == 5) ||
-                (commande == 1 && combinaison == 6)) {
+            if ((commande == 0 && combinaison == 4)||
+                (commande == 2 && combinaison == 5)||
+                (commande == 1 && combinaison == 6)){
+                allegro_message("Vous avez réussi la commande");
 
                 // Supprimer la commande associée à la combinaison
                 for (int j = i; j < recettes - 1; j++) {
