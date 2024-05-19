@@ -1,56 +1,63 @@
 #include "librairies.h"
 
-void save_score(int game_number, int score){//fonction qui sauvegarde le score
-    FILE *file = fopen(FILENAME, "a+");//ouverture du fichier
-    if (!file){//si le fichier n'est pas ouvert
-        allegro_message("Erreur d'ouverture du fichier de scores.");//affichage d'un message d'erreur
-        return;//sortie de la fonction
+void save_score(int game_number, int score) {
+    FILE *file = fopen(FILENAME, "a+");  // Tentative d'ouverture du fichier en mode ajout
+    if (!file) {  // Vérification si le fichier est correctement ouvert
+        perror("Erreur lors de l'ouverture du fichier pour ajout");
+        allegro_message("Erreur d'ouverture du fichier de scores.");
+        return;
     }
 
-    fprintf(file, "Partie %d: %d\n", game_number, score);//écriture dans le fichier
-    fclose(file);//fermeture du fichier
+    fprintf(file, "Partie %d: %d\n", game_number, score);  // Écriture du score dans le fichier
+    fflush(file);  // Force l'écriture du buffer dans le fichier
+    fclose(file);  // Fermeture du fichier après l'écriture
 
-    file = fopen(FILENAME, "r");//ouverture du fichier
-    if (!file){//si le fichier n'est pas ouvert
-        allegro_message("Erreur de lecture du fichier de scores.");//affichage d'un message d'erreur
-        return;//sortie de la fonction
+    file = fopen(FILENAME, "r");  // Réouverture du fichier en mode lecture
+    if (!file) {
+        perror("Erreur lors de la réouverture du fichier pour lecture");
+        allegro_message("Erreur de lecture du fichier de scores.");
+        return;
     }
 
-    typedef struct{//structure pour les scores
-        int game_number;//numéro de la partie
-        int score;//score
+    typedef struct {  // Définition de la structure pour stocker les scores
+        int game_number;  // Numéro de la partie
+        int score;  // Score de la partie
     } Score;
 
-    Score scores[100];//tableau des scores
-    int count=0;//initialisation de la variable
+    Score scores[100];  // Tableau pour stocker jusqu'à 100 scores
+    int count = 0;  // Compteur pour le nombre de scores lus
 
-    while (fscanf(file, "Partie %d: %d\n", &scores[count].game_number, &scores[count].score) == 2){//tant que la lecture est possible
-        count++;//incrémentation de la variable
+    // Lecture des scores du fichier
+    while (fscanf(file, "Partie %d: %d\n", &scores[count].game_number, &scores[count].score) == 2) {
+        count++;
+        if (count >= 100) break;  // Prévenir un débordement de tableau
     }
-    fclose(file);//fermeture du fichier
+    fclose(file);  // Fermeture du fichier après la lecture
 
-    for (int i = 0; i < count - 1; i++){//pour chaque score
-        for (int j = 0; j < count - i - 1; j++){//pour chaque score
-            if (scores[j].score < scores[j + 1].score){//si le score est inférieur
-                Score temp = scores[j];//échange des scores
+    // Tri des scores par ordre décroissant
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - i - 1; j++) {
+            if (scores[j].score < scores[j + 1].score) {
+                Score temp = scores[j];
                 scores[j] = scores[j + 1];
                 scores[j + 1] = temp;
             }
         }
     }
 
-    file = fopen(FILENAME, "w");//ouverture du fichier
-    if (!file){//si le fichier n'est pas ouvert
-        allegro_message("Erreur d'écriture dans le fichier de scores.");//affichage d'un message d'erreur
-        return;//sortie de la fonction
+    file = fopen(FILENAME, "w");  // Réouverture du fichier en mode écriture pour réécriture des scores triés
+    if (!file) {
+        perror("Erreur lors de la réouverture du fichier pour réécriture");
+        allegro_message("Erreur d'écriture dans le fichier de scores.");
+        return;
     }
 
-    for (int i = 0; i < count; i++){//pour chaque score
-        fprintf(file, "Partie %d: %d\n", scores[i].game_number, scores[i].score);//écriture dans le fichier
+    for (int i = 0; i < count; i++) {
+        fprintf(file, "Partie %d: %d\n", scores[i].game_number, scores[i].score);  // Réécriture des scores triés dans le fichier
     }
-    fclose(file);//fermeture du fichier
+    fflush(file);  // Force l'écriture du buffer dans le fichier
+    fclose(file);  // Fermeture finale du fichier
 }
-
 void musique(Son *son, const char *filename, int fonctionson){//fonction qui joue la musique
     if (fonctionson==1){//si la fonction est égale à 1
         son->sample=load_sample(filename);//chargement de la musique
