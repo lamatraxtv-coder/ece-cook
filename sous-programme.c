@@ -1,74 +1,70 @@
 #include "librairies.h"
 
-
-
-void save_score(int game_number, int score) {
-    FILE *file = fopen(FILENAME, "a+");
-    if (!file) {
-        allegro_message("Erreur d'ouverture du fichier de scores.");
-        return;
+void save_score(int game_number, int score){//fonction qui sauvegarde le score
+    FILE *file = fopen(FILENAME, "a+");//ouverture du fichier
+    if (!file){//si le fichier n'est pas ouvert
+        allegro_message("Erreur d'ouverture du fichier de scores.");//affichage d'un message d'erreur
+        return;//sortie de la fonction
     }
 
-    fprintf(file, "Partie %d: %d\n", game_number, score);
-    fclose(file);
+    fprintf(file, "Partie %d: %d\n", game_number, score);//écriture dans le fichier
+    fclose(file);//fermeture du fichier
 
-    file = fopen(FILENAME, "r");
-    if (!file) {
-        allegro_message("Erreur de lecture du fichier de scores.");
-        return;
+    file = fopen(FILENAME, "r");//ouverture du fichier
+    if (!file){//si le fichier n'est pas ouvert
+        allegro_message("Erreur de lecture du fichier de scores.");//affichage d'un message d'erreur
+        return;//sortie de la fonction
     }
 
-    typedef struct {
-        int game_number;
-        int score;
+    typedef struct{//structure pour les scores
+        int game_number;//numéro de la partie
+        int score;//score
     } Score;
 
-    Score scores[100];
-    int count = 0;
+    Score scores[100];//tableau des scores
+    int count=0;//initialisation de la variable
 
-    while (fscanf(file, "Partie %d: %d\n", &scores[count].game_number, &scores[count].score) == 2) {
-        count++;
+    while (fscanf(file, "Partie %d: %d\n", &scores[count].game_number, &scores[count].score) == 2){//tant que la lecture est possible
+        count++;//incrémentation de la variable
     }
-    fclose(file);
+    fclose(file);//fermeture du fichier
 
-
-    for (int i = 0; i < count - 1; i++) {
-        for (int j = 0; j < count - i - 1; j++) {
-            if (scores[j].score < scores[j + 1].score) {
-                Score temp = scores[j];
+    for (int i = 0; i < count - 1; i++){//pour chaque score
+        for (int j = 0; j < count - i - 1; j++){//pour chaque score
+            if (scores[j].score < scores[j + 1].score){//si le score est inférieur
+                Score temp = scores[j];//échange des scores
                 scores[j] = scores[j + 1];
                 scores[j + 1] = temp;
             }
         }
     }
 
-    file = fopen(FILENAME, "w");
-    if (!file) {
-        allegro_message("Erreur d'écriture dans le fichier de scores.");
-        return;
+    file = fopen(FILENAME, "w");//ouverture du fichier
+    if (!file){//si le fichier n'est pas ouvert
+        allegro_message("Erreur d'écriture dans le fichier de scores.");//affichage d'un message d'erreur
+        return;//sortie de la fonction
     }
 
-    for (int i = 0; i < count; i++) {
-        fprintf(file, "Partie %d: %d\n", scores[i].game_number, scores[i].score);
+    for (int i = 0; i < count; i++){//pour chaque score
+        fprintf(file, "Partie %d: %d\n", scores[i].game_number, scores[i].score);//écriture dans le fichier
     }
-    fclose(file);
+    fclose(file);//fermeture du fichier
 }
 
-void musique(Son *son, const char *filename, int fonctionson) {
-    if (fonctionson == 1) {
-        son->sample = load_sample(filename);
-        if (!son->sample) {
-            allegro_message("Erreur de chargement de la musique : %s", filename);
-            return;
+void musique(Son *son, const char *filename, int fonctionson){//fonction qui joue la musique
+    if (fonctionson==1){//si la fonction est égale à 1
+        son->sample=load_sample(filename);//chargement de la musique
+        if (!son->sample){//si la musique n'est pas chargée
+            allegro_message("Erreur de chargement de la musique : %s", filename);//affichage d'un message d'erreur
+            return;//sortie de la fonction
         }
-        play_sample(son->sample, 125, 128, 1000, 1);
-    } else if (fonctionson == 2) {
-        stop_sample(son->sample);
-        destroy_sample(son->sample);
-        son->sample = NULL;
+        play_sample(son->sample, 125, 128, 1000, 1);//joue la musique
+    } else if (fonctionson==2){//si la fonction est égale à 2
+        stop_sample(son->sample);//arrête la musique
+        destroy_sample(son->sample);//libération de la mémoire
+        son->sample=NULL;//initialisation de la variable
     }
 }
-
 void affichagechargement(){//fonction qui affiche l'image de chargement
     set_trans_blender(0, 255, 0, 0);//définition de la couleur de transparence
     BITMAP *imagechargement = load_bitmap("../images/ece cook chargement.bmp", NULL);//chargement de l'image
@@ -128,28 +124,28 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
         for (int i = 0; i < recettes; i++) {//pour chaque commande
             draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);//affichage de la commande
         }
-        return recettes;
+        return recettes;//retourne le nombre de commandes
     }
-    if (fonction == 2){
-        for (int i = 0; i < recettes; i++) {
-            int commande = recette[i];
+    if (fonction==2){//si la fonction est égale à 2
+        for (int i=0;i<recettes;i++){//pour chaque commande
+            int commande=recette[i];//définition de la commande
 
-            if ((commande == 0 && combinaison == 4)||
+            if ((commande == 0 && combinaison == 4)||//si la commande est valide
                 (commande == 2 && combinaison == 5)||
                 (commande == 1 && combinaison == 6)){
-                allegro_message("Vous avez réussi la commande");
+                allegro_message("Vous avez réussi la commande");//affichage d'un message
 
                 // Supprimer la commande associée à la combinaison
-                for (int j = i; j < recettes - 1; j++) {
-                    recette[j] = recette[j + 1];
+                for (int j = i; j < recettes - 1; j++){//pour chaque commande
+                    recette[j] = recette[j + 1];//décalage des commandes
                 }
                 recettes--; // Décrémente le nombre de commandes
                 combinaison = 0; // Réinitialiser la combinaison
                 sleep(1);
                 // Sortir de la boucle car nous avons trouvé et supprimé la commande associée
-                score=+100;
+                score=+100;//incrémentation du score
 
-                return score;
+                return score;//retourne le score
             }
         }
     }
@@ -291,75 +287,75 @@ int selectniv(int fini){//fonction qui affiche les niveaux
         }
         if (fini == 1){//si fini est égal à 1
             if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
-                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);
+                blit(choix2_1, screen, 0, 0, (SCREEN_W - choix2_1->w) / 2, (SCREEN_H - choix2_1->h) / 2, choix2_1->w, choix2_1->h);//affichage de l'image
                 if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
                     choixniv=1;//définition de la variable
                     a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);
-                if (mouse_b & 1) {
-                    choixniv = 2;
-                    a = 1;
+            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
+                blit(choix2_2, screen, 0, 0, (SCREEN_W - choix2_2->w) / 2, (SCREEN_H - choix2_2->h) / 2, choix2_2->w, choix2_2->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=2;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
-                blit(choix2_M, screen, 0, 0, (SCREEN_W - choix2_M->w) / 2, (SCREEN_H - choix2_M->h) / 2, choix2_M->w, choix2_M->h);
-                if (mouse_b & 1) {
-                    choixniv = 0;
-                    a = 1;
+            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112){//si la souris est sur la zone de l'image
+                blit(choix2_M, screen, 0, 0, (SCREEN_W - choix2_M->w) / 2, (SCREEN_H - choix2_M->h) / 2, choix2_M->w, choix2_M->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=0;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 335 && mouse_x < 583 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)) {
+            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 335 && mouse_x < 583 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)){//si la souris n'est pas sur la zone de l'image
                 blit(choix2, screen, 0, 0, (SCREEN_W - choix2->w) / 2, (SCREEN_H - choix2->h) / 2, choix2->w, choix2->h);
             }
-            if (key[KEY_UP]) {
-                fini = fini + 1;
+            if (key[KEY_UP]){//si la touche HAUT est appuyée
+                fini=fini+1;//incrémentation de la variable
             }
-            if (key[KEY_DOWN]) {
-                fini = fini - 1;
+            if (key[KEY_DOWN]){//si la touche BAS est appuyée
+                fini=fini-1;//décrémentation de la variable
             }
         }
-        if (fini == 2) {
-            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix3_1, screen, 0, 0, (SCREEN_W - choix3_1->w) / 2, (SCREEN_H - choix3_1->h) / 2, choix3_1->w, choix3_1->h);
-                if (mouse_b & 1) {
-                    choixniv = 1;
-                    a = 1;
+        if (fini==2){//si fini est égal à 2
+            if (mouse_x > 38 && mouse_x < 292 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
+                blit(choix3_1, screen, 0, 0, (SCREEN_W - choix3_1->w) / 2, (SCREEN_H - choix3_1->h) / 2, choix3_1->w, choix3_1->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=1;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix3_2, screen, 0, 0, (SCREEN_W - choix3_2->w) / 2, (SCREEN_H - choix3_2->h) / 2, choix3_2->w, choix3_2->h);
-                if (mouse_b & 1) {
-                    choixniv = 2;
-                    a = 1;
+            if (mouse_x > 335 && mouse_x < 583 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
+                blit(choix3_2, screen, 0, 0, (SCREEN_W - choix3_2->w) / 2, (SCREEN_H - choix3_2->h) / 2, choix3_2->w, choix3_2->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=2;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 625 && mouse_x < 876 && mouse_y > 237 && mouse_y < 739) {
-                blit(choix3_3, screen, 0, 0, (SCREEN_W - choix3_3->w) / 2, (SCREEN_H - choix3_3->h) / 2, choix3_3->w, choix3_3->h);
-                if (mouse_b & 1) {
-                    choixniv = 3;
-                    a = 1;
+            if (mouse_x > 625 && mouse_x < 876 && mouse_y > 237 && mouse_y < 739){//si la souris est sur la zone de l'image
+                blit(choix3_3, screen, 0, 0, (SCREEN_W - choix3_3->w) / 2, (SCREEN_H - choix3_3->h) / 2, choix3_3->w, choix3_3->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=3;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112) {
-                blit(choix3_M, screen, 0, 0, (SCREEN_W - choix3_M->w) / 2, (SCREEN_H - choix3_M->h) / 2, choix3_M->w, choix3_M->h);
-                if (mouse_b & 1) {
-                    choixniv = 0;
-                    a = 1;
+            if (mouse_x > 793 && mouse_x < 863 && mouse_y > 27 && mouse_y < 112){//si la souris est sur la zone de l'image
+                blit(choix3_M, screen, 0, 0, (SCREEN_W - choix3_M->w) / 2, (SCREEN_H - choix3_M->h) / 2, choix3_M->w, choix3_M->h);//affichage de l'image
+                if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
+                    choixniv=0;//définition de la variable
+                    a=1;//définition de la variable
                 }
             }
-            if (key[KEY_DOWN]) {
-                fini = fini - 1;
+            if (key[KEY_DOWN]){//si la touche BAS est appuyée
+                fini=fini-1;//décrémentation de la variable
             }
-            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 335 && mouse_x < 583 || mouse_x > 625 && mouse_x < 876 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)) {
-                blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w, choix3->h);
+            if (!(mouse_x > 38 && mouse_x < 292 || mouse_x > 335 && mouse_x < 583 || mouse_x > 625 && mouse_x < 876 || mouse_x > 793 && mouse_x < 863 && mouse_y > 237 && mouse_y < 739 || mouse_y > 27 && mouse_y < 112)){//si la souris n'est pas sur la zone de l'image
+                blit(choix3, screen, 0, 0, (SCREEN_W - choix3->w) / 2, (SCREEN_H - choix3->h) / 2, choix3->w, choix3->h);//affichage de l'image
             }
         }
     }
 
-    destroy_bitmap(choix1);
+    destroy_bitmap(choix1);//libération de la mémoire
     destroy_bitmap(choix1_1);
     destroy_bitmap(choix2);
     destroy_bitmap(choix2_1);
@@ -371,101 +367,101 @@ int selectniv(int fini){//fonction qui affiche les niveaux
     destroy_bitmap(choix1_M);
     destroy_bitmap(choix2_M);
     destroy_bitmap(choix3_M);
-    show_mouse(NULL);
+    show_mouse(NULL);//masquage de la souris
 
-    return choixniv;
+    return choixniv;//retourne le niveau choisi
 }
 
-void tables(Joueur *joueur, int *table, int nivchoisi, int score) {
-    if (joueur->combinaison == 0 && *table != 0) {
-        printf("rentrez");
-        joueur->combinaison = *table;
-        if (joueur->combinaison == 1) {
+void tables(Joueur *joueur, int *table, int nivchoisi, int score){//fonction qui gère les tables
+    if (joueur->combinaison == 0 && *table != 0){//si le joueur n'a pas d'ingrédient et qu'il y a un ingrédient sur la table
+        printf("rentrez");//affichage d'un message
+        joueur->combinaison = *table;//définition de la combinaison
+        if (joueur->combinaison == 1){//si la combinaison est égale à 1
             allegro_message("thon pris");
-            *table = 0;
-        } else if (joueur->combinaison == 2) {
+            *table=0;//définition de la variable
+        } else if (joueur->combinaison==2){//si la combinaison est égale à 2
             allegro_message("saumon pris");
-            *table = 0;
-        } else if (joueur->combinaison == 4) {
+            *table=0;//définition de la variable
+        } else if (joueur->combinaison==4){//si la combinaison est égale à 4
             allegro_message("riz cuit pris");
-            *table = 0;
-        } else if (joueur->combinaison == 5) {
+            *table=0;//définition de la variable
+        } else if (joueur->combinaison==5){//si la combinaison est égale à 5
             allegro_message("sushi thon pris");
-            *table = 0;
-        } else if (joueur->combinaison == 6) {
+            *table=0;//définition de la variable
+        } else if (joueur->combinaison==6){//si la combinaison est égale à 6
             allegro_message("sushi saumon pris");
-            *table = 0;
+            *table=0;//définition de la variable
         }
-    } else if (*table == 0 && joueur->combinaison != 3) {
-        *table = joueur->combinaison;
-        if (*table == 1) {
+    } else if (*table==0 && joueur->combinaison != 3){//si il n'y a pas d'ingrédient sur la table et que le joueur n'a pas de riz cru
+        *table=joueur->combinaison;//définition de la variable
+        if (*table==1){//si la variable est égale à 1
             allegro_message("vous avez posé du thon");
-            joueur->combinaison = 0;
-            score=+25;
-        } else if (*table == 2) {
+            joueur->combinaison=0;//définition de la variable
+            score=+25;//incrémentation du score
+        } else if (*table == 2){//si la variable est égale à 2
             allegro_message("vous avez posé du saumon");
-            joueur->combinaison = 0;
-            score=+25;
-        } else if (*table == 4) {
-            allegro_message("vous avez posé du riz cuit");
-            joueur->combinaison = 0;
-            score=+25;
+            joueur->combinaison = 0;//définition de la variable
+            score=+25;//incrémentation du score
+        } else if (*table==4){//si la variable est égale à 4
+            allegro_message("vous avez posé du riz cuit");//affichage d'un message
+            joueur->combinaison=0;//définition de la variable
+            score=+25;//incrémentation du score
         }
-    } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4) {
-        joueur->combinaison += *table;
-        if (joueur->combinaison == 5) {
+    } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4){//si il y a du thon ou du saumon sur la table et que le joueur a du riz cuit
+        joueur->combinaison += *table;//définition de la variable
+        if (joueur->combinaison == 5){//si la variable est égale à 5
             allegro_message("vous avez combiné un sushi thon");
-            joueur->combinaison = 0;
-            *table=5;
-            score=+50;
-        } else if (joueur->combinaison == 6) {
+            joueur->combinaison=0;//définition de la variable
+            *table=5;//définition de la variable
+            score=+50;//incrémentation du score
+        } else if (joueur->combinaison == 6){//si la variable est égale à 6
             allegro_message("vous avez combiné un sushi saumon");
-            joueur->combinaison = 0;
+            joueur->combinaison=0;//définition de la variable
             *table=6;
             score=+50;
         }
-    } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4) {
-        joueur->combinaison += *table;
-        if (joueur->combinaison == 5) {
+    } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4){//si le joueur a du thon ou du saumon et qu'il y a du riz cuit sur la table
+        joueur->combinaison += *table;//définition de la variable
+        if (joueur->combinaison==5){//si la variable est égale à 5
             allegro_message("vous avez combiné un sushi thon");
-            joueur->combinaison = 0;
+            joueur->combinaison=0;//définition de la variable
             *table=5;
             score=+50;
-        } else if (joueur->combinaison == 6) {
+        } else if (joueur->combinaison==6){//si la variable est égale à 6
             allegro_message("vous avez combiné un sushi saumon");
-            joueur->combinaison = 0;
+            joueur->combinaison=0;//définition de la variable
             *table= 6;
             score=+50;
         }
-    }else if (*table == 3) {
+    }else if (*table == 3){//si il y a du riz cru sur la table
         allegro_message("vous ne pouvez pas poser du riz cru");
-        *table = 0;
-        joueur->combinaison = 3;
-        score=+50;
+        *table=0;//définition de la variable
+        joueur->combinaison=3;//définition de la variable
+        score=+50;//incrémentation du score
     }
-    if(key[KEY_H]){
+    if(key[KEY_H]){//si la touche H est appuyée
         joueur->combinaison = 0;
         *table = 0;
     }
 }
 
-int jeu(int nivchoisi) {
-    Joueur joueur1, joueur2;
-    int nbrecette = 0;
-    int deplacement = 10;
-    int recette[MAX_COMMANDES];
-    int fin = 0;
-    int occupation = 0;
-    int table = 0;
-    int score = 0;
+int jeu(int nivchoisi){//fonction qui gère le jeu
+    Joueur joueur1, joueur2;//initialisation des joueurs
+    int nbrecette=0;//initialisation de la variable
+    int deplacement=10;
+    int recette[MAX_COMMANDES];//initialisation du tableau
+    int fin=0;//initialisation de la variable
+    int occupation=0;
+    int table=0;
+    int score=0;
 
-    Son son;
-    musique(&son, "../images/videoplayback-_3_.wav", 1);
+    Son son;//initialisation du son
+    musique(&son, "../images/videoplayback-_3_.wav", 1);//chargement de la musique
 
-    time_t debut, actuel;
+    time_t debut, actuel;//initialisation des variables
     double seconde;
     time(&debut);
-    BITMAP *bouf1_1comm = load_bitmap("../images/commande riz.bmp", NULL);
+    BITMAP *bouf1_1comm = load_bitmap("../images/commande riz.bmp", NULL);//chargement des images
     BITMAP *bouf2_1comm = load_bitmap("../images/commande sushi saumon.bmp", NULL);
     BITMAP *bouf3_1comm = load_bitmap("../images/commande sushi thon.bmp", NULL);
     BITMAP *bouf1_2comm = load_bitmap("../images/commande PTOMATE.bmp", NULL);
@@ -475,23 +471,23 @@ int jeu(int nivchoisi) {
     BITMAP *bouf2_3comm = load_bitmap("../images/commande crepe au sucre.bmp", NULL);
     BITMAP *bouf3_3comm = load_bitmap("../images/commande crepe.bmp", NULL);
 
-    BITMAP *buffer;
-    BITMAP *PERSO1_O[4];
+    BITMAP *buffer;//initialisation du buffer
+    BITMAP *PERSO1_O[4];//initialisation des images
     BITMAP *PERSO2_O[4];
 
-    if (nivchoisi == 1) {
+    if (nivchoisi == 1){//si le niveau choisi est le niveau 1
         joueur1.posx = 255;
         joueur1.posy = 370;
         joueur2.posx = 555;
         joueur2.posy = 370;
     }
-    if (nivchoisi == 2) {
+    if (nivchoisi == 2){//si le niveau choisi est le niveau 2
         joueur1.posx = SCREEN_W / 2;
         joueur1.posy = SCREEN_H / 2;
         joueur2.posx = SCREEN_W / 2;
         joueur2.posy = SCREEN_H / 2;
     }
-    if (nivchoisi == 3) {
+    if (nivchoisi == 3){//si le niveau choisi est le niveau 3
         joueur1.posx = SCREEN_W / 2;
         joueur1.posy = SCREEN_H / 2;
         joueur2.posx = SCREEN_W / 2;
@@ -503,10 +499,10 @@ int jeu(int nivchoisi) {
     joueur1.orientation = 1;
     joueur2.orientation = 1;
 
-    buffer = create_bitmap(SCREEN_W, SCREEN_H);
-    show_mouse(screen);
-    affichagechargement();
-    load_player_images(PERSO1_O, PERSO2_O);
+    buffer = create_bitmap(SCREEN_W, SCREEN_H);//création du buffer
+    show_mouse(screen);//affichage de la souris
+    affichagechargement();//affichage du chargement
+    load_player_images(PERSO1_O, PERSO2_O);//chargement des images
 
     BITMAP *NIV1 = load_bitmap("../images/niv1.BMP", NULL);
     BITMAP *NIV2 = load_bitmap("../images/niv2.BMP", NULL);
@@ -518,23 +514,23 @@ int jeu(int nivchoisi) {
     BITMAP *NIV3B1 = load_bitmap("../images/niv3B1.BMP", NULL);
     BITMAP *NIV3B2 = load_bitmap("../images/niv3B2.BMP", NULL);
 
-    while (!key[KEY_DEL] && !fin) {
+    while (!key[KEY_DEL] && !fin){//tant que la touche DEL n'est pas appuyée et que la variable fin est égale à 0
         time(&actuel);
         seconde = difftime(actuel, debut);
 
-        fflush(stdout);
+        fflush(stdout);//vide le buffer
 
-        if (nivchoisi == 1) {
-            if (occupation == 0) {
-                blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w, NIV1->h);
+        if (nivchoisi == 1){//si le niveau choisi est le niveau 1
+            if (occupation == 0){//si l'occupation est égale à 0
+                blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w, NIV1->h);//affichage de l'image
             }
-            if (occupation == 1) {
-                blit(NIV1B1, buffer, 0, 0, (SCREEN_W - NIV1B1->w) / 2, (SCREEN_H - NIV1B1->h) / 2, NIV1B1->w, NIV1B1->h);
+            if (occupation == 1){//si l'occupation est égale à 1
+                blit(NIV1B1, buffer, 0, 0, (SCREEN_W - NIV1B1->w) / 2, (SCREEN_H - NIV1B1->h) / 2, NIV1B1->w, NIV1B1->h);//affichage de l'image
             }
-            if (occupation == 2) {
-                blit(NIV1B2, buffer, 0, 0, (SCREEN_W - NIV1B2->w) / 2, (SCREEN_H - NIV1B2->h) / 2, NIV1B2->w, NIV1B2->h);
+            if (occupation == 2){//si l'occupation est égale à 2
+                blit(NIV1B2, buffer, 0, 0, (SCREEN_W - NIV1B2->w) / 2, (SCREEN_H - NIV1B2->h) / 2, NIV1B2->w, NIV1B2->h);//affichage de l'image
             }
-            if (joueur1.posx <= 60) joueur1.posx = 60;
+            if (joueur1.posx <= 60) joueur1.posx = 60;//si la position du joueur est inférieure à 60
             if (joueur1.posx >= 705) joueur1.posx = 705;
             if (joueur1.posy <= 175) joueur1.posy = 175;
             if (joueur1.posy >= 625) joueur1.posy = 625;
@@ -544,14 +540,14 @@ int jeu(int nivchoisi) {
             if (joueur2.posy <= 175) joueur2.posy = 175;
             if (joueur2.posy >= 625) joueur2.posy = 625;
 
-            if (joueur1.posx >= 60 && joueur1.posx <= 150 && joueur1.posy >= 205 && joueur1.posy <= 520) {
+            if (joueur1.posx >= 60 && joueur1.posx <= 150 && joueur1.posy >= 205 && joueur1.posy <= 520){//si la position du joueur est comprise entre 60 et 150 et entre 205 et 520
                 joueur1.posx = 150;
-                if (key[KEY_1_PAD] && joueur1.orientation == 4) {
-                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);
+                if (key[KEY_1_PAD] && joueur1.orientation == 4){//si la touche 1 du pavé numérique est appuyée et que l'orientation du joueur est égale à 4
+                    joueur1.combinaison = menu_cru(buffer, nivchoisi, joueur1.combinaison, 1);//appel de la fonction menu_cru
                 }
             }
 
-            putpixel(buffer, joueur2.posx, joueur2.posy, makecol(0, 0, 0));
+            putpixel(buffer, joueur2.posx, joueur2.posy, makecol(0, 0, 0));//affichage du joueur
 
             if (joueur1.posx >= 140 && joueur1.posx <= 500 && joueur1.posy >= 530 && joueur1.posy <= 700){//si la position du joueur est comprise entre 140 et 500 et entre 530 et 700
                 joueur1.posy = 530;//définition de la position du joueur

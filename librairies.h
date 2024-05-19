@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 typedef struct{//structure pour les joueurs
     int posx, posy;//position x et y
     int combinaison;//combinaison de touches
@@ -23,8 +22,8 @@ typedef struct {
     SAMPLE *sample;
 } Son;
 
-void save_score(int game_number, int score);
-void play_music(const char *filename, int fonctionson);
+void save_score(int game_number, int score);//fonction qui sauvegarde le score
+void play_music(const char *filename, int fonctionson);//fonction qui joue la musique
 void affichagechargement();//fonction qui affiche le chargement
 void animation_bouil(int nivchoisi, BITMAP * buffer,int occupation);//fonction qui affiche l'animation de la bouilloire
 void load_player_images(BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4]);//fonction qui charge les images des joueurs

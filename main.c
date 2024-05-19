@@ -11,12 +11,12 @@ int main() {
         allegro_exit();//sortie de allegro
         exit(EXIT_FAILURE);//sortie du programme
     }
-    //
-    int niv_fini=0;
-    int select=0;
-    int nivchoisi=0;
-    int infinite=1;
-    srand(time(NULL));
+
+    int niv_fini=0;//niveau fini
+    int select=0;//choix du joueur
+    int nivchoisi=0;//niveau choisi
+    int infinite=1;//boucle infinie
+    srand(time(NULL));//initialisation de rand
     do {
         select=menu();//fonction qui affiche le menu
         if (select==1){//lance le jeu
