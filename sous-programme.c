@@ -1,6 +1,59 @@
 #include "librairies.h"
 
 
+
+void save_score(int game_number, int score) {
+    FILE *file = fopen(FILENAME, "a+");
+    if (!file) {
+        allegro_message("Erreur d'ouverture du fichier de scores.");
+        return;
+    }
+
+    fprintf(file, "Partie %d: %d\n", game_number, score);
+    fclose(file);
+
+    file = fopen(FILENAME, "r");
+    if (!file) {
+        allegro_message("Erreur de lecture du fichier de scores.");
+        return;
+    }
+
+    typedef struct {
+        int game_number;
+        int score;
+    } Score;
+
+    Score scores[100];
+    int count = 0;
+
+    while (fscanf(file, "Partie %d: %d\n", &scores[count].game_number, &scores[count].score) == 2) {
+        count++;
+    }
+    fclose(file);
+
+
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - i - 1; j++) {
+            if (scores[j].score < scores[j + 1].score) {
+                Score temp = scores[j];
+                scores[j] = scores[j + 1];
+                scores[j + 1] = temp;
+            }
+        }
+    }
+
+    file = fopen(FILENAME, "w");
+    if (!file) {
+        allegro_message("Erreur d'écriture dans le fichier de scores.");
+        return;
+    }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(file, "Partie %d: %d\n", scores[i].game_number, scores[i].score);
+    }
+    fclose(file);
+}
+
 void musique(Son *son, const char *filename, int fonctionson) {
     if (fonctionson == 1) {
         son->sample = load_sample(filename);
@@ -791,26 +844,35 @@ int jeu(int nivchoisi) {
     destroy_bitmap(NIV2B1);
     destroy_bitmap(NIV2B2);
     destroy_bitmap(NIV3);
-    imagefin();
+    imagefin(score);
+    static int game_number = 1;
+    save_score(game_number++, score);
+
     return 0;
 }
 
-void imagefin(){//fonction imagefin
+void imagefin(int score){//fonction imagefin
     install_mouse();//initialisation de la souris
     show_mouse(screen);//affichage de la souris
     int verif=0;//définition de la variable
     BITMAP *imagefin=load_bitmap("../images/imagefin.bmp", NULL);//chargement des images
     BITMAP *imagefinselect=load_bitmap("../images/imagefinselect.bmp", NULL);//chargement des images
+    textprintf_ex(screen, font, SCREEN_W/2-10, 700, makecol(0, 0, 0), -1, "score : %d", score);
     while (!verif){//tant que la variable verif est fausse
         if (mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715){//si la position de la souris est comprise entre 390 et 530 et entre 650 et 715
             blit(imagefinselect, screen, 0, 0, (SCREEN_W - imagefinselect->w) / 2, (SCREEN_H - imagefinselect->h) / 2, imagefinselect->w, imagefinselect->h);//affichage de l'image
+            textprintf_ex(screen, font, SCREEN_W/2-10, 700, makecol(0, 0, 0), -1, "score : %d", score);
+
             if (mouse_b & 1){//si le bouton gauche de la souris est appuyé
                 verif=1;//définition de la variable
             }
+            textprintf_ex(screen, font, SCREEN_W/2-10, 700, makecol(0, 0, 0), -1, "score : %d", score);
         }
+        textprintf_ex(screen, font, SCREEN_W/2-10, 700, makecol(0, 0, 0), -1, "score : %d", score);
         if (!(mouse_x > 390 && mouse_x < 530 && mouse_y > 650 && mouse_y < 715)){//si la position de la souris n'est pas comprise entre 390 et 530 et entre 650 et 715
             blit(imagefin, screen, 0, 0, (SCREEN_W - imagefin->w) / 2, (SCREEN_H - imagefin->h) / 2, imagefin->w, imagefin->h);//affichage de l'image
         }
+        textprintf_ex(screen, font, SCREEN_W/2-10, 700, makecol(0, 0, 0), -1, "score : %d", score);
     }
     destroy_bitmap(imagefinselect);//libération de la mémoire
     destroy_bitmap(imagefin);
