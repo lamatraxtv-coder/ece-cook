@@ -11,6 +11,7 @@ int main() {
         allegro_exit();//sortie de allegro
         exit(EXIT_FAILURE);//sortie du programme
     }
+    //
     int niv_fini=0;
     int select=0;
     int nivchoisi=0;

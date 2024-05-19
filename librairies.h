@@ -32,6 +32,6 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
 int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison,int capte);//fonction qui affiche le menu des ingrédients crus
 void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recette1, BITMAP *recette2, BITMAP *recette3);//fonction qui affiche les commandes
 void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);//fonction qui affiche les pages du tutoriel
-void affiche_score();//fonction qui affiche le score
+void affiche_score();//fonction qui affiche le score//
 void score();//fonction qui gère le score
 void tables(Joueur *joueur, int *table, int nivchoisi);//fonction qui gère les tables

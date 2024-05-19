@@ -688,6 +688,7 @@ int jeu(int nivchoisi) {
                     }
                 }
             }
+            //
             if (joueur2.posy>=575){//si la position du joueur est supérieure à 575
                 joueur2.posy=575;//définition de la position du joueur
                 if (key[KEY_V] && joueur2.orientation==3){//si la touche V est appuyée et que l'orientation du joueur est égale à 3
