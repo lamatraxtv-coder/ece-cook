@@ -38,28 +38,51 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joue
     }
 }
 
-int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index){//fonction qui gère les commandes
-    BITMAP *recettesDisponibles[3]={recette1, recette2, recette3};//tableau des recettes
-    int random=rand()%500;//génération d'un nombre aléatoire
-    if (random==1 && recettes < MAX_COMMANDES){//si le nombre aléatoire est égal à 1 et qu'il y a moins de commandes que le nombre maximal de commandes
-        recette[recettes]=rand() % 3;//génération d'un nombre aléatoire
-        recettes++;//incrémentation du nombre de commandes
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison){//fonction qui gère les commandes
+    if(fonction==1) {
+        BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};//tableau des recettes
+        int random = rand() % 250;//génération d'un nombre aléatoire
+        if (random == 1 && recettes <MAX_COMMANDES) {//si le nombre aléatoire est égal à 1 et qu'il y a moins de commandes que le nombre maximal de commandes
+            recette[recettes] = rand() % 3;//génération d'un nombre aléatoire
+            recettes++;//incrémentation du nombre de commandes
+        }
+
+        if (key[KEY_U]) {//si la touche U est appuyée
+            if (index < 0 || index >= recettes) {//si l'index est invalide
+                allegro_message("Index invalide pour la suppression: %d\n", index);//affichage d'un message d'erreur
+                return recettes;//retourne le nombre de commandes
+            }
+            for (int i = index; i < recettes - 1; i++) {//pour chaque commande
+                recette[i] = recette[i + 1];//décalage des commandes
+            }
+            recettes--;//décrémentation du nombre de commandes
+        }
+        for (int i = 0; i < recettes; i++) {//pour chaque commande
+            draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);//affichage de la commande
+        }
+        return recettes;
+    }
+    if (fonction == 2) {
+        for (int i = 0; i < recettes; i++) {
+            int commande = recette[i];
+
+            if ((commande == 0 && combinaison == 4) ||
+                (commande == 2 && combinaison == 5) ||
+                (commande == 1 && combinaison == 6)) {
+
+                // Supprimer la commande associée à la combinaison
+                for (int j = i; j < recettes - 1; j++) {
+                    recette[j] = recette[j + 1];
+                }
+                recettes--; // Décrémente le nombre de commandes
+                combinaison = 0; // Réinitialiser la combinaison
+
+                // Sortir de la boucle car nous avons trouvé et supprimé la commande associée
+                break;
+            }
+        }
     }
 
-    if (key[KEY_U]){//si la touche U est appuyée
-        if (index < 0 || index >= recettes){//si l'index est invalide
-            allegro_message("Index invalide pour la suppression: %d\n", index);//affichage d'un message d'erreur
-            return recettes;//retourne le nombre de commandes
-        }
-        for (int i = index; i < recettes - 1; i++){//pour chaque commande
-            recette[i] = recette[i + 1];//décalage des commandes
-        }
-        recettes--;//décrémentation du nombre de commandes
-    }
-    for (int i = 0; i < recettes; i++){//pour chaque commande
-        draw_sprite(buffer, recettesDisponibles[recette[i]], 20 + (200 * i), -100);//affichage de la commande
-    }
-    return recettes;
 }
 
 int menu_cru(BITMAP *buffer, int nivchoisi, int combinaison, int capte){//fonction qui gère le menu des ingrédients crus
@@ -282,7 +305,6 @@ int selectniv(int fini){//fonction qui affiche les niveaux
     return choixniv;
 }
 
-
 void tables(Joueur *joueur, int *table, int nivchoisi) {
     if (joueur->combinaison == 0 && *table != 0) {
         printf("rentrez");
@@ -347,7 +369,7 @@ void tables(Joueur *joueur, int *table, int nivchoisi) {
         *table = 0;
     }
 }
-//
+
 int jeu(int nivchoisi) {
     Joueur joueur1, joueur2;
     int nbrecette = 0;
@@ -501,7 +523,7 @@ int jeu(int nivchoisi) {
             if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550){//si la position du joueur est comprise entre 610 et 705 et entre 340 et 550
                 joueur2.posx = 610;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    tables(&joueur2, &table, nivchoisi);//appel de la fonction tables
+                    nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,2,joueur2.combinaison);
                 }
             }
         }
@@ -701,13 +723,13 @@ int jeu(int nivchoisi) {
 
         image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);//appel de la fonction image_joueur
         if (nivchoisi==1){//si le niveau choisi est le niveau 1
-            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0);//appel de la fonction gerer_commandes
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,1,0);//appel de la fonction gerer_commandes
         }
         if (nivchoisi==2){//si le niveau choisi est le niveau 2
-            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0);
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0,1,0);
         }
         if (nivchoisi==3){//si le niveau choisi est le niveau 3
-            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0);
+            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0,1,0);
         }
         textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);//affichage du texte
         textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, " j2 : %4d %4d", joueur2.posx, joueur2.posy);
