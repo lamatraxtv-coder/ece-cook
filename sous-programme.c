@@ -839,14 +839,73 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
                 if (occupation>2){//si l'occupation est supérieure à 2
                     occupation=2;//définition de la variable
                 }
-                joueur1.combinaison=4;//définition de la combinaison du joueur
+
                 if(nivchoisi==1){
                     allegro_message("vous avez fait du riz cuit");//affichage d'un message
+                    joueur1.combinaison=4;//définition de la combinaison du joueur
                     score=+25;
                 }
                 if(nivchoisi==2){
-                    allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                    score=+25;
+                    if(joueur1.combinaison==1){
+                        allegro_message("vous avez fait cuire du steak");//affichage d'un message
+                        joueur1.combinaison=+1;
+                        score=+25;
+                    }
+                    if(joueur2.combinaison==1){
+                        allegro_message("vous avez fait cuire du steak");//affichage d'un message
+                        joueur1.combinaison=+1;
+                        score=+25;
+                    }
+                    if(joueur1.combinaison==2){
+                        allegro_message("vous avez fait cuire des sphag");//affichage d'un message
+                        joueur1.combinaison=+2;
+                        score=+25;
+                    }
+                    if(joueur2.combinaison==2){
+                        allegro_message("vous avez fait cuire des sphag");//affichage d'un message
+                        joueur1.combinaison=+2;
+                        score=+25;
+                        if(joueur1.combinaison==1){
+                            allegro_message("vous avez fait cuire du steak");//affichage d'un message
+                            joueur1.combinaison=+1;
+                            score=+25;
+                        }
+                        if(joueur2.combinaison==1){
+                            allegro_message("vous avez fait cuire du steak");//affichage d'un message
+                            joueur1.combinaison=+1;
+                            score=+25;
+                        }
+                        if(joueur1.combinaison==2){
+                            allegro_message("vous avez fait cuire des sphag");//affichage d'un message
+                            joueur1.combinaison=+2;
+                            score=+25;
+                        }
+                        if(joueur2.combinaison==2){
+                            allegro_message("vous avez fait cuire des sphag");//affichage d'un message
+                            joueur1.combinaison=+2;
+                            score=+25;
+                        }
+                        if(joueur1.combinaison==3){
+                            allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
+                            joueur1.combinaison=+5;
+                            score=+25;
+                        }
+                        if(joueur2.combinaison==3){
+                            allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
+                            joueur1.combinaison=+5;
+                            score=+25;
+                        }
+                        if(joueur1.combinaison==4){
+                            allegro_message("vous avez fait cuire des frites");//affichage d'un message
+                            joueur1.combinaison=+2;
+                            score=+25;
+                        }
+                        if(joueur2.combinaison==4){
+                            allegro_message("vous avez fait cuire des frites");//affichage d'un message
+                            joueur1.combinaison=+2;
+                            score=+25;
+                        }
+                    }
                 }
 
             }
