@@ -422,78 +422,153 @@ int selectniv(int fini){//fonction qui affiche les niveaux
 }
 
 void tables(Joueur *joueur, int *table, int nivchoisi, int score){//fonction qui gère les tables
-    if (joueur->combinaison == 0 && *table != 0){//si le joueur n'a pas d'ingrédient et qu'il y a un ingrédient sur la table
-        printf("rentrez");//affichage d'un message
-        joueur->combinaison = *table;//définition de la combinaison
-        if (joueur->combinaison == 1){//si la combinaison est égale à 1
-            allegro_message("thon pris");
+    if(nivchoisi==1){
+        if (joueur->combinaison == 0 && *table != 0){//si le joueur n'a pas d'ingrédient et qu'il y a un ingrédient sur la table
+            printf("rentrez");//affichage d'un message
+            joueur->combinaison = *table;//définition de la combinaison
+            if (joueur->combinaison == 1){//si la combinaison est égale à 1
+                allegro_message("thon pris");
+                *table=0;//définition de la variable
+            } else if (joueur->combinaison==2){//si la combinaison est égale à 2
+                allegro_message("saumon pris");
+                *table=0;//définition de la variable
+            } else if (joueur->combinaison==4){//si la combinaison est égale à 4
+                allegro_message("riz cuit pris");
+                *table=0;//définition de la variable
+            } else if (joueur->combinaison==5){//si la combinaison est égale à 5
+                allegro_message("sushi thon pris");
+                *table=0;//définition de la variable
+            } else if (joueur->combinaison==6){//si la combinaison est égale à 6
+                allegro_message("sushi saumon pris");
+                *table=0;//définition de la variable
+            }
+        } else if (*table==0 && joueur->combinaison != 3){//si il n'y a pas d'ingrédient sur la table et que le joueur n'a pas de riz cru
+            *table=joueur->combinaison;//définition de la variable
+            if (*table==1){//si la variable est égale à 1
+                allegro_message("vous avez posé du thon");
+                joueur->combinaison=0;//définition de la variable
+                score=+25;//incrémentation du score
+            } else if (*table == 2){//si la variable est égale à 2
+                allegro_message("vous avez posé du saumon");
+                joueur->combinaison = 0;//définition de la variable
+                score=+25;//incrémentation du score
+            } else if (*table==4){//si la variable est égale à 4
+                allegro_message("vous avez posé du riz cuit");//affichage d'un message
+                joueur->combinaison=0;//définition de la variable
+                score=+25;//incrémentation du score
+            }
+        } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4){//si il y a du thon ou du saumon sur la table et que le joueur a du riz cuit
+            joueur->combinaison += *table;//définition de la variable
+            if (joueur->combinaison == 5){//si la variable est égale à 5
+                allegro_message("vous avez combiné un sushi thon");
+                joueur->combinaison=0;//définition de la variable
+                *table=5;//définition de la variable
+                score=+50;//incrémentation du score
+            } else if (joueur->combinaison == 6){//si la variable est égale à 6
+                allegro_message("vous avez combiné un sushi saumon");
+                joueur->combinaison=0;//définition de la variable
+                *table=6;
+                score=+50;
+            }
+        } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4){//si le joueur a du thon ou du saumon et qu'il y a du riz cuit sur la table
+            joueur->combinaison += *table;//définition de la variable
+            if (joueur->combinaison==5){//si la variable est égale à 5
+                allegro_message("vous avez combiné un sushi thon");
+                joueur->combinaison=0;//définition de la variable
+                *table=5;
+                score=+50;
+            } else if (joueur->combinaison==6){//si la variable est égale à 6
+                allegro_message("vous avez combiné un sushi saumon");
+                joueur->combinaison=0;//définition de la variable
+                *table= 6;
+                score=+50;
+            }
+        }else if (*table == 3){//si il y a du riz cru sur la table
+            allegro_message("vous ne pouvez pas poser du riz cru");
             *table=0;//définition de la variable
-        } else if (joueur->combinaison==2){//si la combinaison est égale à 2
-            allegro_message("saumon pris");
-            *table=0;//définition de la variable
-        } else if (joueur->combinaison==4){//si la combinaison est égale à 4
-            allegro_message("riz cuit pris");
-            *table=0;//définition de la variable
-        } else if (joueur->combinaison==5){//si la combinaison est égale à 5
-            allegro_message("sushi thon pris");
-            *table=0;//définition de la variable
-        } else if (joueur->combinaison==6){//si la combinaison est égale à 6
-            allegro_message("sushi saumon pris");
-            *table=0;//définition de la variable
-        }
-    } else if (*table==0 && joueur->combinaison != 3){//si il n'y a pas d'ingrédient sur la table et que le joueur n'a pas de riz cru
-        *table=joueur->combinaison;//définition de la variable
-        if (*table==1){//si la variable est égale à 1
-            allegro_message("vous avez posé du thon");
-            joueur->combinaison=0;//définition de la variable
-            score=+25;//incrémentation du score
-        } else if (*table == 2){//si la variable est égale à 2
-            allegro_message("vous avez posé du saumon");
-            joueur->combinaison = 0;//définition de la variable
-            score=+25;//incrémentation du score
-        } else if (*table==4){//si la variable est égale à 4
-            allegro_message("vous avez posé du riz cuit");//affichage d'un message
-            joueur->combinaison=0;//définition de la variable
-            score=+25;//incrémentation du score
-        }
-    } else if ((*table == 1 || *table == 2) && joueur->combinaison == 4){//si il y a du thon ou du saumon sur la table et que le joueur a du riz cuit
-        joueur->combinaison += *table;//définition de la variable
-        if (joueur->combinaison == 5){//si la variable est égale à 5
-            allegro_message("vous avez combiné un sushi thon");
-            joueur->combinaison=0;//définition de la variable
-            *table=5;//définition de la variable
+            joueur->combinaison=3;//définition de la variable
             score=+50;//incrémentation du score
-        } else if (joueur->combinaison == 6){//si la variable est égale à 6
-            allegro_message("vous avez combiné un sushi saumon");
-            joueur->combinaison=0;//définition de la variable
-            *table=6;
-            score=+50;
         }
-    } else if ((joueur->combinaison == 1 || joueur->combinaison == 2) && *table == 4){//si le joueur a du thon ou du saumon et qu'il y a du riz cuit sur la table
-        joueur->combinaison += *table;//définition de la variable
-        if (joueur->combinaison==5){//si la variable est égale à 5
-            allegro_message("vous avez combiné un sushi thon");
-            joueur->combinaison=0;//définition de la variable
-            *table=5;
-            score=+50;
-        } else if (joueur->combinaison==6){//si la variable est égale à 6
-            allegro_message("vous avez combiné un sushi saumon");
-            joueur->combinaison=0;//définition de la variable
-            *table= 6;
-            score=+50;
-        }
-    }else if (*table == 3){//si il y a du riz cru sur la table
-        allegro_message("vous ne pouvez pas poser du riz cru");
-        *table=0;//définition de la variable
-        joueur->combinaison=3;//définition de la variable
-        score=+50;//incrémentation du score
     }
+    if(nivchoisi==2){
+        // Code de gestion des ingrédients et des combinaisons pour le niveau 2
+        if (joueur->combinaison == 0 && *table != 0) { // si le joueur n'a pas d'ingrédient et qu'il y a un ingrédient sur la table
+            printf("rentrez"); // affichage d'un message
+            joueur->combinaison = *table; // définition de la combinaison
+            if (joueur->combinaison == 11) { // si la combinaison est égale à 11 (steak cuit)
+                allegro_message("steak cuit pris");
+                *table = 0; // définition de la variable
+            } else if (joueur->combinaison == 12) { // si la combinaison est égale à 12 (spaghetti)
+                allegro_message("spaghetti pris");
+                *table = 0; // définition de la variable
+            } else if (joueur->combinaison == 3) { // si la combinaison est égale à 3 (tomate)
+                allegro_message("tomate prise");
+                *table = 0; // définition de la variable
+            } else if (joueur->combinaison == 4) { // si la combinaison est égale à 4 (frites)
+                allegro_message("frites prises");
+                *table = 0; // définition de la variable
+            }
+        } else if (*table == 0 && joueur->combinaison != 3 && joueur->combinaison != 2 && joueur->combinaison != 1) { // si il n'y a pas d'ingrédient sur la table et que le joueur n'a pas de combinaison interdite
+            *table = joueur->combinaison; // définition de la variable
+            if (*table == 11) { // si la variable est égale à 11 (steak cuit)
+                allegro_message("vous avez posé du steak cuit");
+                joueur->combinaison = 0; // définition de la variable
+                score += 25; // incrémentation du score
+            } else if (*table == 12) { // si la variable est égale à 12 (spaghetti)
+                allegro_message("vous avez posé des spaghetti");
+                joueur->combinaison = 0; // définition de la variable
+                score += 25; // incrémentation du score
+            } else if (*table == 4) { // si la variable est égale à 4 (frites)
+                allegro_message("vous avez posé des frites");
+                joueur->combinaison = 0; // définition de la variable
+                score += 25; // incrémentation du score
+            }
+        } else if ((*table == 11 || *table == 4) && joueur->combinaison == 4) { // si il y a du steak cuit ou des frites sur la table et que le joueur a des frites
+            joueur->combinaison += *table; // définition de la variable
+            if (joueur->combinaison == 15) { // si la variable est égale à 15 (steak + frites)
+                allegro_message("vous avez combiné un steak-frites");
+                joueur->combinaison = 0; // définition de la variable
+                *table = 15; // définition de la variable
+                score += 50; // incrémentation du score
+            }
+        } else if ((*table == 12 || *table == 3) && joueur->combinaison == 3) { // si il y a des spaghetti ou une tomate sur la table et que le joueur a une tomate
+            joueur->combinaison += *table; // définition de la variable
+            if (joueur->combinaison == 15) { // si la variable est égale à 15 (spaghetti + tomate)
+                allegro_message("vous avez combiné des spaghetti-tomate");
+                joueur->combinaison = 0; // définition de la variable
+                *table = 15; // définition de la variable
+                score += 50; // incrémentation du score
+            }
+        } else if ((joueur->combinaison == 11 || joueur->combinaison == 4) && *table == 4) { // si le joueur a du steak cuit ou des frites et qu'il y a des frites sur la table
+            joueur->combinaison += *table; // définition de la variable
+            if (joueur->combinaison == 15) { // si la variable est égale à 15 (steak + frites)
+                allegro_message("vous avez combiné un steak-frites");
+                joueur->combinaison = 0; // définition de la variable
+                *table = 15;
+                score += 50;
+            }
+        } else if ((joueur->combinaison == 12 || joueur->combinaison == 3) && *table == 3) { // si le joueur a des spaghetti ou une tomate et qu'il y a une tomate sur la table
+            joueur->combinaison += *table; // définition de la variable
+            if (joueur->combinaison == 15) { // si la variable est égale à 15 (spaghetti + tomate)
+                allegro_message("vous avez combiné des spaghetti-tomate");
+                joueur->combinaison = 0; // définition de la variable
+                *table = 15;
+                score += 50;
+            }
+        } else if (*table == 1 || *table == 2 || *table == 3) { // si il y a un ingrédient interdit sur la table
+            allegro_message("vous ne pouvez pas poser cet ingrédient");
+            *table = 0; // définition de la variable
+            joueur->combinaison = 3; // définition de la variable
+            score += 50; // incrémentation du score
+        }
+
+    }
+
     if(key[KEY_H]){//si la touche H est appuyée
         joueur->combinaison = 0;
         *table = 0;
     }
 }
-
 int jeu(int nivchoisi){//fonction qui gère le jeu
     Joueur joueur1, joueur2;//initialisation des joueurs
     int nbrecette=0;//initialisation de la variable
@@ -848,64 +923,36 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
                 if(nivchoisi==2){
                     if(joueur1.combinaison==1){
                         allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                        joueur1.combinaison=+1;
+                        joueur1.combinaison=+10;
                         score=+25;
                     }
                     if(joueur2.combinaison==1){
                         allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                        joueur1.combinaison=+1;
+                        joueur1.combinaison=+10;
                         score=+25;
                     }
                     if(joueur1.combinaison==2){
                         allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                        joueur1.combinaison=+2;
+                        joueur1.combinaison=+10;
                         score=+25;
                     }
                     if(joueur2.combinaison==2){
                         allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                        joueur1.combinaison=+2;
+                        joueur1.combinaison=+10;
                         score=+25;
-                        if(joueur1.combinaison==1){
-                            allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                            joueur1.combinaison=+1;
-                            score=+25;
-                        }
-                        if(joueur2.combinaison==1){
-                            allegro_message("vous avez fait cuire du steak");//affichage d'un message
-                            joueur1.combinaison=+1;
-                            score=+25;
-                        }
-                        if(joueur1.combinaison==2){
-                            allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                            joueur1.combinaison=+2;
-                            score=+25;
-                        }
-                        if(joueur2.combinaison==2){
-                            allegro_message("vous avez fait cuire des sphag");//affichage d'un message
-                            joueur1.combinaison=+2;
-                            score=+25;
-                        }
-                        if(joueur1.combinaison==3){
-                            allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
-                            joueur1.combinaison=+5;
-                            score=+25;
-                        }
-                        if(joueur2.combinaison==3){
-                            allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
-                            joueur1.combinaison=+5;
-                            score=+25;
-                        }
-                        if(joueur1.combinaison==4){
-                            allegro_message("vous avez fait cuire des frites");//affichage d'un message
-                            joueur1.combinaison=+2;
-                            score=+25;
-                        }
-                        if(joueur2.combinaison==4){
-                            allegro_message("vous avez fait cuire des frites");//affichage d'un message
-                            joueur1.combinaison=+2;
-                            score=+25;
-                        }
+
                     }
+                    if(joueur1.combinaison==3){
+                        allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
+                        joueur1.combinaison=+5;
+                        score=+25;
+                    }
+                    if(joueur2.combinaison==3){
+                        allegro_message("vous avez fait cuire des tomates et fait une soupe à la tomate");//affichage d'un message
+                        joueur1.combinaison=+5;
+                        score=+25;
+                    }
+
                 }
 
             }
