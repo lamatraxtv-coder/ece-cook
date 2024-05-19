@@ -41,3 +41,5 @@ void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, B
 void affiche_score();//fonction qui affiche le score//
 void score();//fonction qui gère le score
 void tables(Joueur *joueur, int *table, int nivchoisi, int score);//fonction qui gère les tables
+void afficher_pseudo_joueur1(char pseudo[]);//fonction afficher_pseudo//fonction qui affiche le pseudo
+void entre();

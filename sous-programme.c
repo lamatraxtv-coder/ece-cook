@@ -494,6 +494,7 @@ void tables(Joueur *joueur, int *table, int nivchoisi, int score){//fonction qui
     }
 }
 
+
 int jeu(int nivchoisi){//fonction qui gère le jeu
     Joueur joueur1, joueur2;//initialisation des joueurs
     int nbrecette=0;//initialisation de la variable
@@ -503,6 +504,7 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
     int occupation=0;
     int table=0;
     int score=0;
+    char pseudo[20];
 
     Son son;//initialisation du son
     musique(&son, "../images/videoplayback-_3_.wav", 1);//chargement de la musique
@@ -570,6 +572,8 @@ int jeu(int nivchoisi){//fonction qui gère le jeu
         fflush(stdout);//vide le buffer
 
         if (nivchoisi == 1){//si le niveau choisi est le niveau 1
+            // afficher_pseudo_joueur1(pseudo);
+
             if (occupation == 0){//si l'occupation est égale à 0
                 blit(NIV1, buffer, 0, 0, (SCREEN_W - NIV1->w) / 2, (SCREEN_H - NIV1->h) / 2, NIV1->w, NIV1->h);//affichage de l'image
             }
@@ -1046,3 +1050,38 @@ void affiche_score(){//fonction affiche_score
     }
     destroy_bitmap(Score);//libération de la mémoire
 }
+
+/*
+void afficher_pseudo_joueur1(char pseudo[]){//fonction afficher_pseudo
+    BITMAP *Pseudo=load_bitmap("../images/Pseudo.bmp", NULL);//chargement de l'image
+    BITMAP *niv1=load_bitmap("../images/niv1.bmp", NULL);//chargement de l'image
+    int i=0;//définition de la variable
+    int verif=0;//définition de la variable
+    while (!verif) {//tant que la variable verif est fausse
+        blit(Pseudo, screen, 0, 0, (SCREEN_W - Pseudo->w) / 2, (SCREEN_H - Pseudo->h) / 2, Pseudo->w,
+             Pseudo->h);//affichage de l'image
+        textprintf_ex(screen, font, 400, 400, makecol(0, 0, 0), -1, "%s", pseudo);//affichage du texte
+        if (keypressed()) {//si une touche est appuyée
+            char c = readkey();//lecture de la touche
+            if (c == KEY_BACKSPACE && i > 0) {//si la touche est la touche retour arrière et que i est supérieur à 0
+                i--;//décrémentation de la variable
+                pseudo[i - 2] = '\0';//définition du tableau
+            } else if (c >= 32 && c <= 126 &&
+                       i < 10) {//si la touche est comprise entre 32 et 126 et que i est inférieur à 10
+                pseudo[i] = c;//définition du tableau
+                i++;//incrémentation de la variable
+                pseudo[i] = '\0';//définition du tableau
+            }
+            if (c == KEY_ENTER) {//si la touche est la touche ENTREE
+                blit(niv1, screen, 0, 0, (SCREEN_W - niv1->w) / 2, (SCREEN_H - niv1->h) / 2, niv1->w, niv1->h);//affichage de l'image
+                verif = 1;//définition de la variable
+            }
+
+        }
+        rest(20);//pause
+    }
+
+    destroy_bitmap(niv1);//libération de la mémoire
+    destroy_bitmap(Pseudo);//libération de la mémoire
+}
+*/
