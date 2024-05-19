@@ -28,7 +28,7 @@ int jeu(int nivchoisi);//fonction qui lance le jeu
 void tuto();//fonction qui affiche le tutoriel
 void affiche_score();//fonction qui affiche le score
 void imagefin();//fonction qui affiche l'image de fin
-int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison);//fonction qui gère les commandes
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison,int score);//fonction qui gère les commandes
 int menu_cru(BITMAP *buffer,int nivchoisi, int combinaison,int capte);//fonction qui affiche le menu des ingrédients crus
 void affiche_commandes(BITMAP *buffer, int recette[MAX_COMMANDES], BITMAP *recette1, BITMAP *recette2, BITMAP *recette3);//fonction qui affiche les commandes
 void affiche_page_tuto(BITMAP *buffer, int page, BITMAP *tuto1, BITMAP *tuto2, BITMAP *tuto3, BITMAP *tuto4);//fonction qui affiche les pages du tutoriel

@@ -38,7 +38,7 @@ void image_joueur(BITMAP *buffer, BITMAP *PERSO1_O[4], BITMAP *PERSO2_O[4], Joue
     }
 }
 
-int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison){//fonction qui gère les commandes
+int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *recette2, BITMAP *recette3, int recette[MAX_COMMANDES], int index,int fonction,int combinaison,int score){//fonction qui gère les commandes
     if(fonction==1) {
         BITMAP *recettesDisponibles[3] = {recette1, recette2, recette3};//tableau des recettes
         int random = rand() % 250;//génération d'un nombre aléatoire
@@ -76,9 +76,11 @@ int gerer_commandes(BITMAP *buffer, int recettes, BITMAP *recette1, BITMAP *rece
                 }
                 recettes--; // Décrémente le nombre de commandes
                 combinaison = 0; // Réinitialiser la combinaison
-
+                sleep(1);
                 // Sortir de la boucle car nous avons trouvé et supprimé la commande associée
-                break;
+                score=+100;
+
+                return score;
             }
         }
     }
@@ -378,6 +380,7 @@ int jeu(int nivchoisi) {
     int fin = 0;
     int occupation = 0;
     int table = 0;
+    int score = 0;
 
     time_t debut, actuel;
     double seconde;
@@ -523,7 +526,7 @@ int jeu(int nivchoisi) {
             if (joueur2.posx >= 610 && joueur2.posx <= 705 && joueur2.posy >= 340 && joueur2.posy <= 550){//si la position du joueur est comprise entre 610 et 705 et entre 340 et 550
                 joueur2.posx = 610;//définition de la position du joueur
                 if (key[KEY_C]){//si la touche C est appuyée
-                    nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,2,joueur2.combinaison);
+                    score=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,2,joueur2.combinaison,score);
                 }
             }
         }
@@ -701,15 +704,19 @@ int jeu(int nivchoisi) {
             }
         }
         if (key[KEY_E]){//si la touche E est appuyée
-            occupation--;//décrémentation de la variable
-            if (occupation<0){//si l'occupation est inférieure à 0
-                occupation=0;//définition de la variable
+            if(occupation!=0){
+                occupation--;//décrémentation de la variable
+                if (occupation<0){//si l'occupation est inférieure à 0
+                    occupation=0;//définition de la variable
+                }
+                if (occupation>2){//si l'occupation est supérieure à 2
+                    occupation=2;//définition de la variable
+                }
+                joueur1.combinaison=4;//définition de la combinaison du joueur
+                allegro_message("vous avez fait du riz cuit");//affichage d'un message
+                score=+25;
             }
-            if (occupation>2){//si l'occupation est supérieure à 2
-                occupation=2;//définition de la variable
-            }
-            joueur1.combinaison=4;//définition de la combinaison du joueur
-            allegro_message("vous avez fait du riz cuit");//affichage d'un message
+
         }
 
         if (key[KEY_UP]) { joueur1.posy -= deplacement; joueur1.orientation=1;}//si la touche HAUT est appuyée
@@ -723,13 +730,13 @@ int jeu(int nivchoisi) {
 
         image_joueur(buffer, PERSO1_O, PERSO2_O, joueur1, joueur2);//appel de la fonction image_joueur
         if (nivchoisi==1){//si le niveau choisi est le niveau 1
-            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,1,0);//appel de la fonction gerer_commandes
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_1comm, bouf2_1comm, bouf3_1comm, recette, 0,1,0,0);//appel de la fonction gerer_commandes
         }
         if (nivchoisi==2){//si le niveau choisi est le niveau 2
-            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0,1,0);
+            nbrecette=gerer_commandes(buffer, nbrecette, bouf1_2comm, bouf2_2comm, bouf3_2comm, recette, 0,1,0,0);
         }
         if (nivchoisi==3){//si le niveau choisi est le niveau 3
-            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0,1,0);
+            nbrecette = gerer_commandes(buffer, nbrecette, bouf1_3comm, bouf2_3comm, bouf3_3comm, recette, 0,1,0,0);
         }
         textprintf_ex(buffer, font, 60, 100, makecol(0, 0, 0), -1, "J1 : %4d %4d", joueur1.posx, joueur1.posy);//affichage du texte
         textprintf_ex(buffer, font, 60, 120, makecol(0, 0, 0), -1, " j2 : %4d %4d", joueur2.posx, joueur2.posy);

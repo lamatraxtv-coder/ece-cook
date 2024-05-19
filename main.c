@@ -5,6 +5,7 @@ int main() {
     allegro_init();//initialisation de allegro
     install_keyboard();//initialisation du clavier
     set_color_depth(desktop_color_depth());//définition de la profondeur de couleur
+    install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL);
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED, 900, 800, 0, 0) != 0){//initialisation du mode graphique
         allegro_message("problème de mode graphique");//affichage d'un message d'erreur
         allegro_exit();//sortie de allegro
